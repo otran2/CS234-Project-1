@@ -4,7 +4,59 @@
     "question": "What are the two things you need to create a multi-config specification in RapidFire AI?",
     "reference_answer": "To create a multi-config specification in RapidFire AI, you need to have two things, knob set generators (to generate knob values) and config group generators (to generate groups of full configs using set-valued knobs)",
     "source_evidence": [
-      {"file": "configs.rst", "lines": [19, 20, 21]}
+      {"file": "configs.rst", "lines": [19, 21]}
+    ]
+  },
+  {
+    "question_id": 2,
+    "question": "What is the default confidence interval strategy in RapidFire AI's online aggregation?",
+    "reference_answer": "Normal Approximation is the default confidence interval strategy, which uses the Central Limit Theorem and is particularly suitable for cases with non-trivial sample sizes (n > 30).",
+    "source_evidence": [
+      {"file": "onlineagg.rst", "lines": [140, 145]}
+    ]
+  },
+  {
+    "question_id": 3,
+    "question": "How does RapidFire AI use FSDP for SFT, and why does this matter for larger LLMs?",
+    "reference_answer": "RapidFire AI uses PyTorch's native FSDP to automate large-model partitioning across GPUs on the same machine. Users provide FSDP settings as config knobs (optionally with the number of GPUs for a run), which allows SFT workflows to fit larger models that would not fit on a single GPU and makes those runs practical.",
+    "source_evidence": [
+      {"file": "sft.rst", "lines": [45, 47]},
+      {"file": "sft.rst", "lines": [56, 56]}
+    ]
+  },
+  {
+    "question_id": 4,
+    "question": "Why can the SciFact RAG tutorial run without a GPU, and what workflow choice enables that?",
+    "reference_answer": "The SciFact tutorial can run without a GPU because it uses an all-closed-model API workflow with OpenAI calls for both embeddings and generation, so model inference is handled through external APIs rather than local GPU execution.",
+    "source_evidence": [
+      {"file": "rag_scifact.rst", "lines": [8, 8]},
+      {"file": "overview.rst", "lines": [19, 20]},
+      {"file": "walkthroughrag.rst", "lines": [29, 30]}
+    ]
+  },
+  {
+    "question_id": 5,
+    "question": "How do you resolve Hugging Face permission errors when login credentials are not picked up?",
+    "reference_answer": "Use the same virtual environment where RapidFire AI is installed, then log in to Hugging Face from that environment. Specifically: (1) activate the venv, (2) install huggingface-hub, (3) run huggingface-cli login, and (4) run huggingface-cli whoami to verify credentials. If using Jupyter, restart the notebook kernel after logging in and ensure the notebook uses the same venv kernel.",
+    "source_evidence": [
+      {"file": "troubleshooting.rst", "lines": [20, 38]}
+    ]
+  },
+  {
+    "question_id": 6,
+    "question": "What is the difference between using Google Colab and Full Installation to get started with RapidFire AI for SFT/RFT?",
+    "reference_answer": "Google Colab is a zero-local-setup option that gets you started in under 3 minutes, but it is limited by free-resource constraints and is suitable only for smaller models and datasets. Full Installation requires a complete setup on a local or cloud machine, but it provides full functionality without those size limitations and supports models and datasets of any size.",
+    "source_evidence": [
+      {"file": "walkthroughft.rst", "lines": [4, 8]},
+      {"file": "walkthroughft.rst", "lines": [16, 27]}
+    ]
+  },
+  {
+    "question_id": 7,
+    "question": "What generator, reasoning-effort, and few-shot-k combinations are compared in the GSM8K tutorial, and how many total combinations does this produce?",
+    "reference_answer": "The GSM8K tutorial compares two generator models (gpt-5-mini and gpt-4o), applies reasoning effort levels (medium and high) only to gpt-5-mini, and varies few-shot k across 3 and 5. This yields 6 total combinations using a union of two grids: 1 x 1 x 2 + 1 x 2 x 2 = 6.",
+    "source_evidence": [
+      {"file": "rag_gsm8k.rst", "lines": [27, 39]}
     ]
   }
 ]
