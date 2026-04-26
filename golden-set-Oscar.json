@@ -1,0 +1,10 @@
+[
+  {
+    "question_id": 1,
+    "question": "What are the two things you need to create a multi-config specification in RapidFire AI?",
+    "reference_answer": "To create a multi-config specification in RapidFire AI, you need to have two things, knob set generators (to generate knob values) and config group generators (to generate groups of full configs using set-valued knobs)",
+    "source_evidence": [
+      {"file": "configs.rst", "lines": [19, 20, 21]}
+    ]
+  }
+]

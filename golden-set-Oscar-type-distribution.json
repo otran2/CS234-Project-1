@@ -1,0 +1,42 @@
+{
+  "question_type_distribution": {
+    "factual_lookup": {
+      "description": "Questions asking for specific facts, parameters, columns, or version requirements directly stated in the documentation.",
+      "question_ids": [1],
+      "count": 1
+    },
+    "conceptual_explanation": {
+      "description": "Questions asking to explain how a concept, mechanism, or technique works and why it matters.",
+      "question_ids": [0],
+      "count": 0
+    },
+    "procedural": {
+      "description": "Questions asking how to perform a task, set something up, or resolve an issue step by step.",
+      "question_ids": [0],
+      "count": 0
+    },
+    "comparative": {
+      "description": "Questions asking to compare two or more concepts, APIs, or approaches and explain their differences.",
+      "question_ids": [0],
+      "count": 0
+    },
+    "feature_enumeration": {
+      "description": "Questions asking to list and describe supported features, components, configurations, or knobs.",
+      "question_ids": [0],
+      "count": 0
+    },
+    "multi_file_synthesis": {
+      "description": "Questions whose answers draw evidence from two or more distinct source files.",
+      "question_ids": [],
+      "count": 0
+    }
+  },
+  "questions_appearing_in_multiple_types": {
+  },
+  "summary": {
+    "total_questions": 10,
+    "unique_type_assignments": 1,
+    "questions_with_single_type": 1,
+    "questions_with_multiple_types": 9
+  }
+}
