@@ -18,7 +18,7 @@
   {
     "question_id": 3,
     "question": "How does RapidFire AI use FSDP for SFT, and why does this matter for larger LLMs?",
-    "reference_answer": "RapidFire AI uses PyTorch's native FSDP to automate large-model partitioning across GPUs on the same machine. Users provide FSDP settings as config knobs (optionally with the number of GPUs for a run), which allows SFT workflows to fit larger models that would not fit on a single GPU and makes those runs practical.",
+    "reference_answer": "RapidFire AI uses PyTorch's native FSDP to automate large-model partitioning across GPUs on the same machine. Users provide FSDP settings as config knobs (optionally with the number of GPUs for a run), which allows SFT workflows to fit larger models.",
     "source_evidence": [
       {"file": "sft.rst", "lines": [45, 47]},
       {"file": "sft.rst", "lines": [56, 56]}
