@@ -1,3 +1,14 @@
+import argparse
+
+#Parse command line arguments for the input/output file paths
+parser = argparse.ArgumentParser(description='Command line input for the automated RAG pipleline')
+parser.add_argument('--input', required=True, help="Input json file path")
+parser.add_argument('--output', required=True, help="Desired output json file path")
+
+args = parser.parse_args()
+input = open(args.input, "r")
+output = open(args.output, "w")
+
 #Get API Key
 from pathlib import Path
 TRITON_API_KEY = Path("~/api-key.txt").expanduser().read_text(encoding="utf-8").splitlines()[0].strip()
@@ -80,3 +91,58 @@ rag_cpu = RFLangChainRagSpec(
     },
     enable_gpu_search=False,
 )
+
+#Instructions for data processing
+INSTRUCTIONS = """You are a precise technical assistant for the RapidFire AI documentation.
+You will be given a user question and relevant context chunks retrieved from the RapidFire AI docs.
+
+Rules:
+- Answer using ONLY information present in the provided context. Do not use outside knowledge.
+- Be specific and complete — include parameter names, types, defaults, and exact values when present.
+- For procedural questions, list the steps in order.
+- For comparative questions, clearly distinguish between the two things being compared.
+- For factual/lookup questions, give the exact answer directly.
+- If the context does not contain enough information to answer, say: "The provided context does not contain enough information to answer this question."
+- Do not add caveats, filler phrases, or unnecessary preamble. Get to the answer immediately.
+- Stay within 2000 tokens total context budget.
+
+Respond with your answer only. No reasoning prefix needed.
+"""
+
+#Data processing/post-processing functions for RAG pipeline
+def openai_sample_preprocess_fn(
+    batch: Dict[str, listtype], rag: RFLangChainRagSpec, prompt_manager: RFPromptManager
+) -> Dict[str, listtype]:
+    """Function to prepare the final inputs given to the generator model"""
+    
+    all_context = rag.get_context(batch_queries=batch["query"], serialize=False)
+    serialized_context = rag.serialize_documents(all_context)
+    batch["query_id"] = [int(query_id) for query_id in batch["query_id"]]
+
+    return {
+        "prompts": [
+            [
+                {"role": "system", "content": INSTRUCTIONS},
+                {
+                    "role": "user", 
+                    "content": f"\nQuestion:\n{question}\n\nContext:\n{context}\n\nAnswer:"
+                },
+            ]
+            for question, context in zip(batch["query"], serialized_context)
+        ],
+        "retrieved_context": serialized_context,
+        "sources": [
+            [{"file": Path(doc.metadata["source"]).name, "lines": [0, 0]} for doc in docs]
+            for docs in all_context
+        ],
+        **batch,
+    }
+
+def sample_postprocess_fn(batch: Dict[str, listtype]) -> Dict[str, listtype]:
+    """No regex extraction needed — LLM judge scores raw prose answers"""
+    batch["answer"] = batch["generated_text"]
+    return batch
+
+
+input.close()
+output.close()
