@@ -114,7 +114,7 @@ def openai_sample_preprocess_fn(
     batch: Dict[str, listtype], rag: RFLangChainRagSpec, prompt_manager: RFPromptManager
 ) -> Dict[str, listtype]:
     """Function to prepare the final inputs given to the generator model"""
-    
+
     all_context = rag.get_context(batch_queries=batch["query"], serialize=False)
     serialized_context = rag.serialize_documents(all_context)
     batch["query_id"] = [int(query_id) for query_id in batch["query_id"]]
@@ -145,17 +145,39 @@ def sample_postprocess_fn(batch: Dict[str, listtype]) -> Dict[str, listtype]:
 
 #Custom evaluation metrics for RAG pipeline
 def sample_compute_metrics_fn(batch: Dict[str, listtype]) -> Dict[str, Dict[str, Any]]:
-    """Retrieval scoring handled externally by evaluate_retrieval.py"""
-    return {"Total": {"value": len(batch["query"])}}
+    """Function to compute all eval metrics based on retrievals and/or generations"""
 
-def sample_accumulate_metrics_fn(
-    aggregated_metrics: Dict[str, listtype],
-) -> Dict[str, Dict[str, Any]]:
-    """Accumulate total query count across batches"""
+    true_positives, precisions, recalls, f1_scores, ndcgs, rrs, acc = 0, [], [], [], [], [], []
+    total_queries = len(batch["query"])
+
+    for pred, gt in zip(batch["retrieved_documents"], batch["ground_truth_documents"]):
+        expected_set = set(gt)
+        retrieved_set = set(pred[:3])
+
+        true_positives = len(expected_set.intersection(retrieved_set))
+        precision = true_positives / len(retrieved_set) if len(retrieved_set) > 0 else 0
+        recall = true_positives / len(expected_set) if len(expected_set) > 0 else 0
+        f1 = (
+            2 * precision * recall / (precision + recall)
+            if (precision + recall) > 0
+            else 0
+        )
+
+        precisions.append(precision)
+        recalls.append(recall)
+        f1_scores.append(f1)
+        ndcgs.append(compute_ndcg_at_k(retrieved_set, expected_set, k=3))
+        rrs.append(compute_rr(retrieved_set, expected_set))
+    
+    accuracy = compute_accuracy(batch["answer"], batch["label"])
+        
+
     return {
-        "Total": {
-            "value": sum(m["value"] for m in aggregated_metrics["Total"])
-        }
+        "Total": {"value": total_queries},
+        "Precision": {"value": sum(precisions) / total_queries},
+        "Recall": {"value": sum(recalls) / total_queries},
+        "F1 Score": {"value": sum(f1_scores) / total_queries},
+        "NDCG@3": {"value": sum(ndcgs) / total_queries},
+        "MRR": {"value": sum(rrs) / total_queries},
+        "Accuracy": {"value": accuracy}
     }
-input.close()
-output.close()
