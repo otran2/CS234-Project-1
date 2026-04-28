@@ -21,7 +21,7 @@
     "reference_answer": "RapidFire AI uses PyTorch's native FSDP to automate large-model partitioning across GPUs on the same machine. Users provide FSDP settings as config knobs (optionally with the number of GPUs for a run), which allows SFT workflows to fit larger models.",
     "source_evidence": [
       {"file": "sft.rst", "lines": [45, 47]},
-      {"file": "sft.rst", "lines": [56, 56]}
+      {"file": "sft.rst", "lines": [55, 56]}
     ]
   },
   {
@@ -41,7 +41,9 @@
     "source_evidence": [
       {"file": "experiment.rst", "lines": [7, 14]},
       {"file": "experiment.rst", "lines": [68, 72]},
-      {"file": "experiment.rst", "lines": [133, 137]}
+      {"file": "experiment.rst", "lines": [110, 114]},
+      {"file": "experiment.rst", "lines": [133, 137]},
+      {"file": "experiment.rst", "lines": [170, 176]}
     ]
   },
   {

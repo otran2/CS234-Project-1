@@ -139,7 +139,7 @@ def openai_sample_preprocess_fn(
     batch: Dict[str, listtype], rag: RFLangChainRagSpec, prompt_manager: RFPromptManager
 ) -> Dict[str, listtype]:
     """Function to prepare the final inputs given to the generator model"""
-    
+
     all_context = rag.get_context(batch_queries=batch["query"], serialize=False)
     serialized_context = rag.serialize_documents(all_context)
     batch["query_id"] = [int(query_id) for query_id in batch["query_id"]]

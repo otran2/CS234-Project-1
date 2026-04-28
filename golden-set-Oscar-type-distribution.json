@@ -27,13 +27,13 @@
     },
     "multi_file_synthesis": {
       "description": "Questions whose answers draw evidence from two or more distinct source files.",
-      "question_ids": [4, 5],
+      "question_ids": [4, 10],
       "count": 2
     }
   },
   "questions_appearing_in_multiple_types": {
     "4": ["conceptual_explanation", "multi_file_synthesis"],
-    "5": ["conceptual_explanation", "multi_file_synthesis"]
+    "10": ["feature_enumeration", "multi_file_synthesis"]
   },
   "summary": {
     "total_questions": 10,
