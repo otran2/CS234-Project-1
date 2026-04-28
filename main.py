@@ -6,8 +6,8 @@ parser.add_argument('--input', required=True, help="Input json file path")
 parser.add_argument('--output', required=True, help="Desired output json file path")
 
 args = parser.parse_args()
-input = open(args.input, "r")
-output = open(args.output, "w")
+# input = open(args.input, "r")
+# output = open(args.output, "w")
 
 #Get API Key
 from pathlib import Path
@@ -35,8 +35,31 @@ from typing import List as listtype, Dict, Any
 import pandas as pd
 from datasets import Dataset
 
-#Create Experiment
-experiment = Experiment(experiment_name="exp1-sourcedocs-full-evaluation", mode="evals")
+# =============================================================================
+# LOAD INPUT JSON & BUILD HUGGINGFACE DATASET
+# =============================================================================
+
+
+with open(args.input, "r") as f:
+    data = json.load(f)
+
+rows = [
+    {
+        "query_id": int(entry["question_id"]),          
+        "query":    str(entry["question"]),
+        "reference_answer": entry.get("reference_answer", ""), 
+        "ground_truth_spans": entry.get("source_evidence", [])         
+    }
+    for entry in data
+]
+
+dataset = Dataset.from_list(rows)
+
+
+# =============================================================================
+# CREATE EXPERIMENT
+# =============================================================================
+experiment = Experiment(experiment_name="exp1-sourcedocs-full-evaluation", mode="eval")
 
 #Knobs for langchain part of RAG pipeline
 from langchain_community.document_loaders import DirectoryLoader, JSONLoader, TextLoader
@@ -60,7 +83,7 @@ rag_cpu = RFLangChainRagSpec(
         sample_seed=1337,
     ),
     text_splitter=RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-        encoding_name="gpt2", chunk_size=512, chunk_overlap=32
+        encoding_name="gpt2", chunk_size=512, chunk_overlap=32, add_start_index=True
     ),
     embedding_cfg=List([
         # {
@@ -109,7 +132,9 @@ Rules:
 Respond with your answer only. No reasoning prefix needed.
 """
 
-#Data processing/post-processing functions for RAG pipeline
+# =============================================================================
+# PREPROCESS / POSTPROCESS FUNCTIONS TODO 
+# =============================================================================
 def openai_sample_preprocess_fn(
     batch: Dict[str, listtype], rag: RFLangChainRagSpec, prompt_manager: RFPromptManager
 ) -> Dict[str, listtype]:
@@ -132,7 +157,7 @@ def openai_sample_preprocess_fn(
         ],
         "retrieved_context": serialized_context,
         "sources": [
-            [{"file": Path(doc.metadata["source"]).name, "lines": [0, 0]} for doc in docs]
+            [{"file": Path(doc.metadata["source"]).name, "lines": [doc.metadata["start_line"], doc.metadata["end_line"]]} for doc in docs]
             for docs in all_context
         ],
         **batch,
@@ -143,7 +168,9 @@ def sample_postprocess_fn(batch: Dict[str, listtype]) -> Dict[str, listtype]:
     batch["answer"] = batch["generated_text"]
     return batch
 
-#Custom evaluation metrics for RAG pipeline
+# =============================================================================
+# CUSTOM EVALUATION METRIC FUNCTIONS FOR RAG TODO
+# =============================================================================
 def sample_compute_metrics_fn(batch: Dict[str, listtype]) -> Dict[str, Dict[str, Any]]:
     """Function to compute all eval metrics based on retrievals and/or generations"""
 
@@ -209,5 +236,48 @@ def sample_accumulate_metrics_fn(
             for metric in algebraic_metrics
         },
     }
-input.close()
-output.close()
+
+
+# =============================================================================
+# GENERATOR CONFIG (RFOpenAIAPIModelConfig) 
+# -----------------------------------------------------------------------------
+#
+openai_config = RFOpenAIAPIModelConfig(
+    client_config={"api_key": TRITON_API_KEY, "base_url": "https://tritonai-api.ucsd.edu", "max_retries": 2},
+    model_config={
+        "model": "api-mistral-small-3.2-2506",
+        "max_completion_tokens": 2048,
+    },
+    rpm_limit=120, 
+    tpm_limit=1_000_000, 
+    rag=rag_cpu,
+    prompt_manager=None,
+)
+
+config_set = {
+    "openai_config": openai_config,
+    "preprocess_fn": openai_sample_preprocess_fn,
+    "postprocess_fn": sample_postprocess_fn,
+    "compute_metrics_fn": sample_compute_metrics_fn,
+    "accumulate_metrics_fn": sample_accumulate_metrics_fn,
+    "batch_size": batch_size,
+}
+config_group = RFGridSearch(config_set)
+
+# =============================================================================
+# RUN EVALS
+# =============================================================================
+results = experiment.run_evals(
+    config_group=config_group,
+    dataset=dataset,
+    num_shards=4,
+    num_actors=4,
+    seed=42,
+)
+
+# =============================================================================
+# OUTPUT JSON
+# =============================================================================
+# output_rows.sort(key=lambda x: x["question_id"])
+# with open(args.output, "w") as f:
+#     json.dump(output_rows, f, indent=2)
