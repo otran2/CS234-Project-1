@@ -54,6 +54,7 @@ rows = [
 ]
 
 dataset = Dataset.from_list(rows)
+output_rows = []
 
 
 # =============================================================================
@@ -166,6 +167,19 @@ def openai_sample_preprocess_fn(
 def sample_postprocess_fn(batch: Dict[str, listtype]) -> Dict[str, listtype]:
     """No regex extraction needed — LLM judge scores raw prose answers"""
     batch["answer"] = batch["generated_text"]
+    
+    for qid, answer, context, srcs in zip(
+        batch["query_id"], 
+        batch["answer"], 
+        batch["retrieved_context"], 
+        batch["sources"],
+        ):
+            output_rows.append({
+                "question_id": int(qid),
+                "answer": answer,
+                "retrieved_context": context,
+                "sources": srcs,
+            })
     return batch
 
 # =============================================================================
@@ -279,5 +293,5 @@ results = experiment.run_evals(
 # OUTPUT JSON
 # =============================================================================
 # output_rows.sort(key=lambda x: x["question_id"])
-# with open(args.output, "w") as f:
-#     json.dump(output_rows, f, indent=2)
+with open(args.output, "w") as f:
+    json.dump(output_rows, f, indent=2)
