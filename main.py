@@ -145,69 +145,17 @@ def sample_postprocess_fn(batch: Dict[str, listtype]) -> Dict[str, listtype]:
 
 #Custom evaluation metrics for RAG pipeline
 def sample_compute_metrics_fn(batch: Dict[str, listtype]) -> Dict[str, Dict[str, Any]]:
-    """Function to compute all eval metrics based on retrievals and/or generations"""
-
-    true_positives, precisions, recalls, f1_scores, ndcgs, rrs, acc = 0, [], [], [], [], [], []
-    total_queries = len(batch["query"])
-
-    for pred, gt in zip(batch["retrieved_documents"], batch["ground_truth_documents"]):
-        expected_set = set(gt)
-        retrieved_set = set(pred[:3])
-
-        true_positives = len(expected_set.intersection(retrieved_set))
-        precision = true_positives / len(retrieved_set) if len(retrieved_set) > 0 else 0
-        recall = true_positives / len(expected_set) if len(expected_set) > 0 else 0
-        f1 = (
-            2 * precision * recall / (precision + recall)
-            if (precision + recall) > 0
-            else 0
-        )
-
-        precisions.append(precision)
-        recalls.append(recall)
-        f1_scores.append(f1)
-        ndcgs.append(compute_ndcg_at_k(retrieved_set, expected_set, k=3))
-        rrs.append(compute_rr(retrieved_set, expected_set))
-    
-    accuracy = compute_accuracy(batch["answer"], batch["label"])
-        
-
-    return {
-        "Total": {"value": total_queries},
-        "Precision": {"value": sum(precisions) / total_queries},
-        "Recall": {"value": sum(recalls) / total_queries},
-        "F1 Score": {"value": sum(f1_scores) / total_queries},
-        "NDCG@3": {"value": sum(ndcgs) / total_queries},
-        "MRR": {"value": sum(rrs) / total_queries},
-        "Accuracy": {"value": accuracy}
-    }
-
+    """Retrieval scoring handled externally by evaluate_retrieval.py"""
+    return {"Total": {"value": len(batch["query"])}}
 
 def sample_accumulate_metrics_fn(
     aggregated_metrics: Dict[str, listtype],
 ) -> Dict[str, Dict[str, Any]]:
-    """Function to accumulate eval metrics across all batches"""
-
-    num_queries_per_batch = [m["value"] for m in aggregated_metrics["Total"]]
-    total_queries = sum(num_queries_per_batch)
-    algebraic_metrics = ["Precision", "Recall", "F1 Score", "NDCG@3", "MRR", "Accuracy"]
-
+    """Accumulate total query count across batches"""
     return {
-        "Total": {"value": total_queries},
-        **{
-            metric: {
-                "value": sum(
-                    m["value"] * queries
-                    for m, queries in zip(
-                        aggregated_metrics[metric], num_queries_per_batch
-                    )
-                )
-                / total_queries,
-                "is_algebraic": True,
-                "value_range": (0, 1),
-            }
-            for metric in algebraic_metrics
-        },
+        "Total": {
+            "value": sum(m["value"] for m in aggregated_metrics["Total"])
+        }
     }
 input.close()
 output.close()
