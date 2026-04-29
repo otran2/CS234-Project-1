@@ -17,7 +17,9 @@ TRITON_API_KEY = Path("~/api-key.txt").expanduser().read_text(encoding="utf-8").
 #Issues with API keys
 os.environ.setdefault("OPENAI_API_KEY", TRITON_API_KEY)
 os.environ.setdefault("JUDGE_BASE_URL", "https://tritonai-api.ucsd.edu/v1")
-os.environ.setdefault("JUDGE_MODEL", "claude-sonnet-4-6")
+#os.environ.setdefault("JUDGE_MODEL", "claude-sonnet-4-6")
+#os.environ.pop("OPENAI_API_KEY", None)
+#os.environ.pop("OPENAI_BASE_URL", None)
 
 sys.path.insert(0, str(Path(__file__).parent / "Metrics"))
 
@@ -69,7 +71,7 @@ output_rows = []
 # =============================================================================
 # CREATE EXPERIMENT
 # =============================================================================
-experiment = Experiment(experiment_name="exp1-sourcedocs-full-evaluation", mode="eval")
+experiment = Experiment(experiment_name="exp1-sourcedocs-full-evaluation3", mode="evals")
 
 #Knobs for langchain part of RAG pipeline
 from langchain_community.document_loaders import DirectoryLoader, JSONLoader, TextLoader
@@ -229,19 +231,7 @@ def openai_sample_preprocess_fn(
 def sample_postprocess_fn(batch: Dict[str, listtype]) -> Dict[str, listtype]:
     """No regex extraction needed — LLM judge scores raw prose answers"""
     batch["answer"] = batch["generated_text"]
-    
-    for qid, answer, context, srcs in zip(
-        batch["query_id"], 
-        batch["answer"], 
-        batch["retrieved_context"], 
-        batch["sources"],
-        ):
-            output_rows.append({
-                "question_id": int(qid),
-                "answer": answer,
-                "retrieved_context": context,
-                "sources": srcs,
-            })
+    # Don't modify global output_rows in workers — just add to batch for collection
     return batch
 
 # =============================================================================
@@ -377,3 +367,5 @@ results = experiment.run_evals(
 # output_rows.sort(key=lambda x: x["question_id"])
 with open(args.output, "w") as f:
     json.dump(output_rows, f, indent=2)
+
+experiment.end()
