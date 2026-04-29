@@ -1,4 +1,5 @@
 import argparse
+import sys
 
 #Parse command line arguments for the input/output file paths
 parser = argparse.ArgumentParser(description='Command line input for the automated RAG pipleline')
@@ -12,6 +13,8 @@ args = parser.parse_args()
 #Get API Key
 from pathlib import Path
 TRITON_API_KEY = Path("~/api-key.txt").expanduser().read_text(encoding="utf-8").splitlines()[0].strip()
+
+sys.path.insert(0, str(Path(__file__).parent / "Metrics"))
 
 #RapidFireAI Imports
 from rapidfireai.automl import (
@@ -34,6 +37,7 @@ from typing import List as listtype, Dict, Any
 
 import pandas as pd
 from datasets import Dataset
+from project1_eval import call_judge, f1_at_k, precision_at_k, recall_at_k, to_spans
 
 # =============================================================================
 # LOAD INPUT JSON & BUILD HUGGINGFACE DATASET
@@ -133,6 +137,54 @@ Rules:
 Respond with your answer only. No reasoning prefix needed.
 """
 
+
+_SOURCE_FILE_CACHE: Dict[str, listtype] = {}
+
+
+def _compute_doc_line_span(doc: Document) -> listtype:
+    """Best-effort mapping from a retrieved chunk back to source file line span."""
+    source = str(doc.metadata.get("source", ""))
+    content = (doc.page_content or "").strip()
+    if not source or not content:
+        return [0, 0]
+
+    source_path = Path(source)
+    if not source_path.exists():
+        candidate = Path.cwd() / source
+        if candidate.exists():
+            source_path = candidate
+        else:
+            return [0, 0]
+
+    cache_key = str(source_path.resolve())
+    if cache_key not in _SOURCE_FILE_CACHE:
+        _SOURCE_FILE_CACHE[cache_key] = source_path.read_text(
+            encoding="utf-8", errors="ignore"
+        ).splitlines()
+
+    file_lines = _SOURCE_FILE_CACHE[cache_key]
+    chunk_lines = [line.rstrip() for line in content.splitlines() if line.strip()]
+    if not chunk_lines:
+        return [0, 0]
+
+    first_line = chunk_lines[0]
+    max_start = len(file_lines) - len(chunk_lines) + 1
+    for start_idx in range(max(max_start, 0)):
+        if file_lines[start_idx].rstrip() != first_line:
+            continue
+
+        window = [line.rstrip() for line in file_lines[start_idx : start_idx + len(chunk_lines)]]
+        if window == chunk_lines:
+            start_line = start_idx + 1
+            end_line = start_idx + len(chunk_lines)
+            return [start_line, end_line]
+
+    for idx, line in enumerate(file_lines):
+        if first_line and first_line in line:
+            return [idx + 1, idx + 1]
+
+    return [0, 0]
+
 # =============================================================================
 # PREPROCESS / POSTPROCESS FUNCTIONS TODO 
 # =============================================================================
@@ -156,9 +208,14 @@ def openai_sample_preprocess_fn(
             ]
             for question, context in zip(batch["query"], serialized_context)
         ],
+        "serialized_context": serialized_context,
         "retrieved_context": serialized_context,
         "sources": [
-            [{"file": Path(doc.metadata["source"]).name, "lines": [doc.metadata["start_line"], doc.metadata["end_line"]]} for doc in docs]
+            [{"file": Path(doc.metadata["source"]).name, "lines": _compute_doc_line_span(doc)} for doc in docs]
+            for docs in all_context
+        ],
+        "retrieved_spans": [
+            [(Path(doc.metadata["source"]).name, span[0], span[1]) for doc, span in zip(docs, [_compute_doc_line_span(doc) for doc in docs])]
             for docs in all_context
         ],
         **batch,
@@ -186,70 +243,90 @@ def sample_postprocess_fn(batch: Dict[str, listtype]) -> Dict[str, listtype]:
 # CUSTOM EVALUATION METRIC FUNCTIONS FOR RAG TODO
 # =============================================================================
 def sample_compute_metrics_fn(batch: Dict[str, listtype]) -> Dict[str, Dict[str, Any]]:
-    """Function to compute all eval metrics based on retrievals and/or generations"""
+    """Compute project retrieval and judge metrics using the shared helpers."""
 
-    true_positives, precisions, recalls, f1_scores, ndcgs, rrs, acc = 0, [], [], [], [], [], []
-    total_queries = len(batch["query"])
+    total = len(batch["query"])
+    mean = lambda xs: sum(xs) / total if total else 0.0
 
-    for pred, gt in zip(batch["retrieved_documents"], batch["ground_truth_documents"]):
-        expected_set = set(gt)
-        retrieved_set = set(pred[:3])
+    retrieved_spans = [to_spans(spans) for spans in batch["retrieved_spans"]]
+    ground_truth_spans = [to_spans(spans) for spans in batch["ground_truth_spans"]]
 
-        true_positives = len(expected_set.intersection(retrieved_set))
-        precision = true_positives / len(retrieved_set) if len(retrieved_set) > 0 else 0
-        recall = true_positives / len(expected_set) if len(expected_set) > 0 else 0
-        f1 = (
-            2 * precision * recall / (precision + recall)
-            if (precision + recall) > 0
-            else 0
-        )
+    f1s = [f1_at_k(r, g) for r, g in zip(retrieved_spans, ground_truth_spans)]
+    ps = [precision_at_k(r, g) for r, g in zip(retrieved_spans, ground_truth_spans)]
+    rs = [recall_at_k(r, g) for r, g in zip(retrieved_spans, ground_truth_spans)]
 
-        precisions.append(precision)
-        recalls.append(recall)
-        f1_scores.append(f1)
-        ndcgs.append(compute_ndcg_at_k(retrieved_set, expected_set, k=3))
-        rrs.append(compute_rr(retrieved_set, expected_set))
-    
-    accuracy = compute_accuracy(batch["answer"], batch["label"])
-        
-
-    return {
-        "Total": {"value": total_queries},
-        "Precision": {"value": sum(precisions) / total_queries},
-        "Recall": {"value": sum(recalls) / total_queries},
-        "F1 Score": {"value": sum(f1_scores) / total_queries},
-        "NDCG@3": {"value": sum(ndcgs) / total_queries},
-        "MRR": {"value": sum(rrs) / total_queries},
-        "Accuracy": {"value": accuracy}
+    metrics: Dict[str, Dict[str, Any]] = {
+        "Total": {"value": total},
+        "F1_at_5": {"value": mean(f1s)},
+        "Precision_at_5": {"value": mean(ps)},
+        "Recall_at_5": {"value": mean(rs)},
+        "Retrieval Score": {"value": (mean(f1s) + mean(ps) + mean(rs)) / 3 if total else 0.0},
     }
+
+    if "generated_text" in batch:
+        import os
+
+        model = os.environ.get("JUDGE_MODEL", "claude-sonnet-4-6")
+        base_url = os.environ.get("JUDGE_BASE_URL") or None
+        corr, faith, comp, failures = [], [], [], 0
+
+        for q, ref, ctx, ans in zip(
+            batch["query"],
+            batch["reference_answer"],
+            batch["serialized_context"],
+            batch["generated_text"],
+        ):
+            result = call_judge(q, ref, ctx, ans, model=model, base_url=base_url)
+            if result.get("failed"):
+                failures += 1
+            corr.append(result["correctness"])
+            faith.append(result["faithfulness"])
+            comp.append(result["completeness"] / 5.0)
+
+        metrics.update({
+            "Correctness_pass_rate": {"value": mean(corr)},
+            "Faithfulness_pass_rate": {"value": mean(faith)},
+            "Completeness_normalized": {"value": mean(comp)},
+            "Generation_Score_3_released": {"value": (mean(corr) + mean(faith) + mean(comp)) / 3 if total else 0.0},
+            "Judge Failures": {"value": failures},
+        })
+
+    return metrics
 
 
 def sample_accumulate_metrics_fn(
     aggregated_metrics: Dict[str, listtype],
 ) -> Dict[str, Dict[str, Any]]:
-    """Function to accumulate eval metrics across all batches"""
+    """Weighted averages over batches, weighted by query count."""
 
-    num_queries_per_batch = [m["value"] for m in aggregated_metrics["Total"]]
+    num_queries_per_batch = [m["value"] for m in aggregated_metrics.get("Total", [])]
     total_queries = sum(num_queries_per_batch)
-    algebraic_metrics = ["Precision", "Recall", "F1 Score", "NDCG@3", "MRR", "Accuracy"]
+    out: Dict[str, Dict[str, Any]] = {"Total": {"value": total_queries}}
 
-    return {
-        "Total": {"value": total_queries},
-        **{
-            metric: {
-                "value": sum(
-                    m["value"] * queries
-                    for m, queries in zip(
-                        aggregated_metrics[metric], num_queries_per_batch
-                    )
-                )
-                / total_queries,
+    if total_queries == 0:
+        return out
+
+    for metric in [
+        "F1_at_5",
+        "Precision_at_5",
+        "Recall_at_5",
+        "Retrieval Score",
+        "Correctness_pass_rate",
+        "Faithfulness_pass_rate",
+        "Completeness_normalized",
+        "Generation_Score_3_released",
+    ]:
+        if metric in aggregated_metrics:
+            out[metric] = {
+                "value": sum(m["value"] * n for m, n in zip(aggregated_metrics[metric], num_queries_per_batch)) / total_queries,
                 "is_algebraic": True,
                 "value_range": (0, 1),
             }
-            for metric in algebraic_metrics
-        },
-    }
+
+    if "Judge Failures" in aggregated_metrics:
+        out["Judge Failures"] = {"value": sum(m["value"] for m in aggregated_metrics["Judge Failures"])}
+
+    return out
 
 
 # =============================================================================
