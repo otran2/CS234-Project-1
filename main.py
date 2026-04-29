@@ -1,5 +1,6 @@
 import argparse
 import sys
+import os
 
 #Parse command line arguments for the input/output file paths
 parser = argparse.ArgumentParser(description='Command line input for the automated RAG pipleline')
@@ -13,6 +14,10 @@ args = parser.parse_args()
 #Get API Key
 from pathlib import Path
 TRITON_API_KEY = Path("~/api-key.txt").expanduser().read_text(encoding="utf-8").splitlines()[0].strip()
+#Issues with API keys
+os.environ.setdefault("OPENAI_API_KEY", TRITON_API_KEY)
+os.environ.setdefault("JUDGE_BASE_URL", "https://tritonai-api.ucsd.edu/v1")
+os.environ.setdefault("JUDGE_MODEL", "claude-sonnet-4-6")
 
 sys.path.insert(0, str(Path(__file__).parent / "Metrics"))
 
