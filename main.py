@@ -66,6 +66,9 @@ rows = [
 
 dataset = Dataset.from_list(rows)
 output_rows = []
+output_rows_jsonl = Path(str(args.output) + ".rows.jsonl")
+if output_rows_jsonl.exists():
+    output_rows_jsonl.unlink()
 
 
 # =============================================================================
@@ -145,52 +148,18 @@ Respond with your answer only. No reasoning prefix needed.
 """
 
 
-_SOURCE_FILE_CACHE: Dict[str, listtype] = {}
-
-
-def _compute_doc_line_span(doc: Document) -> listtype:
-    """Best-effort mapping from a retrieved chunk back to source file line span."""
-    source = str(doc.metadata.get("source", ""))
-    content = (doc.page_content or "").strip()
-    if not source or not content:
-        return [0, 0]
-
-    source_path = Path(source)
-    if not source_path.exists():
-        candidate = Path.cwd() / source
-        if candidate.exists():
-            source_path = candidate
-        else:
-            return [0, 0]
-
-    cache_key = str(source_path.resolve())
-    if cache_key not in _SOURCE_FILE_CACHE:
-        _SOURCE_FILE_CACHE[cache_key] = source_path.read_text(
-            encoding="utf-8", errors="ignore"
-        ).splitlines()
-
-    file_lines = _SOURCE_FILE_CACHE[cache_key]
-    chunk_lines = [line.rstrip() for line in content.splitlines() if line.strip()]
-    if not chunk_lines:
-        return [0, 0]
-
-    first_line = chunk_lines[0]
-    max_start = len(file_lines) - len(chunk_lines) + 1
-    for start_idx in range(max(max_start, 0)):
-        if file_lines[start_idx].rstrip() != first_line:
-            continue
-
-        window = [line.rstrip() for line in file_lines[start_idx : start_idx + len(chunk_lines)]]
-        if window == chunk_lines:
-            start_line = start_idx + 1
-            end_line = start_idx + len(chunk_lines)
-            return [start_line, end_line]
-
-    for idx, line in enumerate(file_lines):
-        if first_line and first_line in line:
-            return [idx + 1, idx + 1]
-
-    return [0, 0]
+def chunk_to_lines(doc: Document) -> listtype:
+    """Convert a chunk's character `start_index` into [start_line, end_line]."""
+    src = doc.metadata["source"]
+    start_idx = doc.metadata["start_index"]
+    # Keep this self-contained so Ray workers can deserialize it reliably.
+    text = Path(src).read_text(encoding="utf-8")
+    start_line = text[:start_idx].count("\n") + 1
+    # Use chunk newline count from the actual chunk text to avoid span inversions.
+    end_line = start_line + (doc.page_content or "").count("\n")
+    if end_line < start_line:
+        end_line = start_line
+    return [start_line, end_line]
 
 # =============================================================================
 # PREPROCESS / POSTPROCESS FUNCTIONS TODO 
@@ -204,12 +173,14 @@ def openai_sample_preprocess_fn(
     serialized_context = rag.serialize_documents(all_context)
     batch["query_id"] = [int(query_id) for query_id in batch["query_id"]]
 
+    per_doc_lines = [[chunk_to_lines(doc) for doc in docs] for docs in all_context]
+
     return {
         "prompts": [
             [
                 {"role": "system", "content": INSTRUCTIONS},
                 {
-                    "role": "user", 
+                    "role": "user",
                     "content": f"\nQuestion:\n{question}\n\nContext:\n{context}\n\nAnswer:"
                 },
             ]
@@ -217,13 +188,29 @@ def openai_sample_preprocess_fn(
         ],
         "serialized_context": serialized_context,
         "retrieved_context": serialized_context,
+        # old version:
+        # "sources": [
+        #     [{"file": Path(doc.metadata["source"]).name, "lines": _compute_doc_line_span(doc)} for doc in docs]
+        #     for docs in all_context
+        # ],
         "sources": [
-            [{"file": Path(doc.metadata["source"]).name, "lines": _compute_doc_line_span(doc)} for doc in docs]
-            for docs in all_context
+            [
+                {"file": Path(doc.metadata["source"]).name, "lines": lines}
+                for doc, lines in zip(docs, doc_lines)
+            ]
+            for docs, doc_lines in zip(all_context, per_doc_lines)
         ],
+        # old version:
+        # "retrieved_spans": [
+        #     [(Path(doc.metadata["source"]).name, span[0], span[1]) for doc, span in zip(docs, [_compute_doc_line_span(doc) for doc in docs])]
+        #     for docs in all_context
+        # ],
         "retrieved_spans": [
-            [(Path(doc.metadata["source"]).name, span[0], span[1]) for doc, span in zip(docs, [_compute_doc_line_span(doc) for doc in docs])]
-            for docs in all_context
+            [
+                (Path(doc.metadata["source"]).name, lines[0], lines[1])
+                for doc, lines in zip(docs, doc_lines)
+            ]
+            for docs, doc_lines in zip(all_context, per_doc_lines)
         ],
         **batch,
     }
@@ -231,7 +218,24 @@ def openai_sample_preprocess_fn(
 def sample_postprocess_fn(batch: Dict[str, listtype]) -> Dict[str, listtype]:
     """No regex extraction needed — LLM judge scores raw prose answers"""
     batch["answer"] = batch["generated_text"]
-    # Don't modify global output_rows in workers — just add to batch for collection
+
+    for qid, ans, ctx, srcs in zip(
+        batch["query_id"],
+        batch["answer"],
+        batch["retrieved_context"],
+        batch["sources"],
+    ):
+        row = {
+            "question_id": int(qid),
+            "answer": ans,
+            "retrieved_context": ctx,
+            "sources": srcs,
+        }
+        output_rows.append(row)
+        # Persist each row so outputs survive multi-process Ray workers.
+        with open(output_rows_jsonl, "a", encoding="utf-8") as f:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
     return batch
 
 # =============================================================================
@@ -364,7 +368,11 @@ results = experiment.run_evals(
 # =============================================================================
 # OUTPUT JSON
 # =============================================================================
-# output_rows.sort(key=lambda x: x["question_id"])
+output_rows.sort(key=lambda x: x["question_id"])
+if output_rows_jsonl.exists():
+    with open(output_rows_jsonl, "r", encoding="utf-8") as f:
+        output_rows = [json.loads(line) for line in f if line.strip()]
+    output_rows.sort(key=lambda x: x["question_id"])
 with open(args.output, "w") as f:
     json.dump(output_rows, f, indent=2)
 
