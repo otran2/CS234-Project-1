@@ -108,6 +108,7 @@ def call_judge(
     base_url: str | None = None,
     api_key: str | None = None,
     max_attempts: int = 3,
+    timeout_s: float = 30.0,
 ) -> Dict[str, float]:
     """Score one answer on Correctness (binary 0/1), Faithfulness (binary 0/1),
     and Completeness (integer 0-5).
@@ -139,6 +140,7 @@ def call_judge(
                 model=model,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.0,
+                timeout=timeout_s,
             )
             text = resp.choices[0].message.content
             # Some OpenAI-compatible providers return None content if the

@@ -40,7 +40,7 @@ from rapidfireai.automl import (
 from rapidfireai import Experiment
 
 import re, json
-from typing import List as listtype, Dict, Any
+from typing import List as listtype, Dict, Any, Optional
 
 import pandas as pd
 from datasets import Dataset
@@ -147,6 +147,16 @@ Rules:
 Respond with your answer only. No reasoning prefix needed.
 """
 
+# Cap serialized retrieval text (characters) for generator + judge token use.
+# Set to None to disable truncation.
+MAX_RETRIEVED_CONTEXT_CHARS: Optional[int] = 8000
+
+
+def _truncate_context(text: str, max_chars: Optional[int]) -> str:
+    if max_chars is None or len(text) <= max_chars:
+        return text
+    return text[:max_chars] + "\n\n[context truncated]"
+
 
 def chunk_to_lines(doc: Document) -> listtype:
     """Convert a chunk's character `start_index` into [start_line, end_line]."""
@@ -171,6 +181,9 @@ def openai_sample_preprocess_fn(
 
     all_context = rag.get_context(batch_queries=batch["query"], serialize=False)
     serialized_context = rag.serialize_documents(all_context)
+    serialized_context = [
+        _truncate_context(ctx, MAX_RETRIEVED_CONTEXT_CHARS) for ctx in serialized_context
+    ]
     batch["query_id"] = [int(query_id) for query_id in batch["query_id"]]
 
     per_doc_lines = [[chunk_to_lines(doc) for doc in docs] for docs in all_context]
@@ -188,11 +201,6 @@ def openai_sample_preprocess_fn(
         ],
         "serialized_context": serialized_context,
         "retrieved_context": serialized_context,
-        # old version:
-        # "sources": [
-        #     [{"file": Path(doc.metadata["source"]).name, "lines": _compute_doc_line_span(doc)} for doc in docs]
-        #     for docs in all_context
-        # ],
         "sources": [
             [
                 {"file": Path(doc.metadata["source"]).name, "lines": lines}
@@ -200,11 +208,6 @@ def openai_sample_preprocess_fn(
             ]
             for docs, doc_lines in zip(all_context, per_doc_lines)
         ],
-        # old version:
-        # "retrieved_spans": [
-        #     [(Path(doc.metadata["source"]).name, span[0], span[1]) for doc, span in zip(docs, [_compute_doc_line_span(doc) for doc in docs])]
-        #     for docs in all_context
-        # ],
         "retrieved_spans": [
             [
                 (Path(doc.metadata["source"]).name, lines[0], lines[1])
@@ -265,7 +268,7 @@ def sample_compute_metrics_fn(batch: Dict[str, listtype]) -> Dict[str, Dict[str,
     if "generated_text" in batch:
         import os
 
-        model = os.environ.get("JUDGE_MODEL", "claude-sonnet-4-6")
+        model = os.environ.get("JUDGE_MODEL", "claude-sonnet-4-6-aws")
         base_url = os.environ.get("JUDGE_BASE_URL") or None
         corr, faith, comp, failures = [], [], [], 0
 

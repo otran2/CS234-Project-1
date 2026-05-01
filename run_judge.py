@@ -41,9 +41,10 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--output", required=True)
     ap.add_argument("--validation", required=True)
-    ap.add_argument("--model", default="claude-sonnet-4-6")
+    ap.add_argument("--model", default="claude-sonnet-4-6-aws")
     ap.add_argument("--base-url", default=None)
     ap.add_argument("--max-attempts", type=int, default=3)
+    ap.add_argument("--timeout-s", type=float, default=30.0)
     args = ap.parse_args()
 
     val = {int(e["question_id"]): e for e in json.load(open(args.validation))}
@@ -56,18 +57,23 @@ def main() -> int:
     n_missing_context = 0
     n_judge_failures = 0
 
-    for qid in sorted(val):
+    sorted_qids = sorted(val)
+    total = len(sorted_qids)
+    for idx, qid in enumerate(sorted_qids, start=1):
         v = val[qid]
         if qid not in out:
             per_question.append({"question_id": qid, "correctness": 0, "faithfulness": 0,
                                  "completeness": 0, "status": "missing"})
+            print(f"[judge][{idx}/{total}] qid={qid} status=missing", file=sys.stderr, flush=True)
             continue
         ctx = out[qid].get("retrieved_context")
         if not ctx:
             n_missing_context += 1
             per_question.append({"question_id": qid, "correctness": 0, "faithfulness": 0,
                                  "completeness": 0, "status": "no_context"})
+            print(f"[judge][{idx}/{total}] qid={qid} status=no_context", file=sys.stderr, flush=True)
             continue
+        print(f"[judge][{idx}/{total}] qid={qid} status=judging", file=sys.stderr, flush=True)
         r = call_judge(
             query=v["question"],
             reference_answer=v["reference_answer"],
@@ -76,6 +82,7 @@ def main() -> int:
             model=args.model,
             base_url=args.base_url,
             max_attempts=args.max_attempts,
+            timeout_s=args.timeout_s,
         )
         entry = {
             "question_id": qid,
@@ -87,8 +94,10 @@ def main() -> int:
             n_judge_failures += 1
             entry["status"] = "judge_failed"
             entry["error"] = r.get("error", "")
+            print(f"[judge][{idx}/{total}] qid={qid} status=judge_failed", file=sys.stderr, flush=True)
         else:
             entry["status"] = "ok"
+            print(f"[judge][{idx}/{total}] qid={qid} status=ok", file=sys.stderr, flush=True)
         per_question.append(entry)
 
     n = len(per_question)
@@ -114,6 +123,7 @@ def main() -> int:
         "meta": {
             "model": args.model,
             "base_url": args.base_url,
+            "timeout_s": args.timeout_s,
             "n_questions": n,
             "n_missing_from_output": len(missing),
             "n_extra_in_output": len(extras),
