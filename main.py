@@ -17,11 +17,7 @@ TRITON_API_KEY = Path("~/api-key.txt").expanduser().read_text(encoding="utf-8").
 #Issues with API keys
 os.environ.setdefault("OPENAI_API_KEY", TRITON_API_KEY)
 os.environ.setdefault("JUDGE_BASE_URL", "https://tritonai-api.ucsd.edu/v1")
-#os.environ.setdefault("JUDGE_MODEL", "claude-sonnet-4-6")
-#os.environ.pop("OPENAI_API_KEY", None)
-#os.environ.pop("OPENAI_BASE_URL", None)
-
-sys.path.insert(0, str(Path(__file__).parent / "Metrics"))
+os.environ.setdefault("JUDGE_MODEL", "claude-sonnet-4-6-aws")
 
 #RapidFireAI Imports
 from rapidfireai.automl import (
@@ -45,6 +41,7 @@ from typing import List as listtype, Dict, Any, Optional
 import pandas as pd
 from datasets import Dataset
 from project1_eval import call_judge, f1_at_k, precision_at_k, recall_at_k, to_spans
+from rapidfire_integration_example import sample_compute_metrics_fn, sample_accumulate_metrics_fn
 
 # =============================================================================
 # LOAD INPUT JSON & BUILD HUGGINGFACE DATASET
@@ -58,8 +55,8 @@ rows = [
     {
         "query_id": int(entry["question_id"]),          
         "query":    str(entry["question"]),
-        "reference_answer": entry.get("reference_answer", ""), 
-        "ground_truth_spans": entry.get("source_evidence", [])         
+        "reference_answer": str(entry.get("reference_answer", "")), 
+        "source_evidence": entry.get("source_evidence", []),
     }
     for entry in data
 ]
@@ -86,6 +83,9 @@ from langchain_openai import OpenAIEmbeddings
 from typing import Dict
 
 batch_size = 32
+final_model = "api-mistral-small-3.2-2506"
+final_rag_search_type = "similarity"
+final_rag_k = 10
 
 # CPU-based RAG
 rag_cpu = RFLangChainRagSpec(
@@ -120,7 +120,8 @@ rag_cpu = RFLangChainRagSpec(
         "type": "faiss", 
         "batch_size": batch_size
     }, # if not set, uses FAISS by default
-    search_cfg=List([{"type": "similarity", "k": 10}, {"type": "mmr", "k": 10}]), # 2 different search types
+    # Final single-run retriever config (no sweep over search type / k).
+    search_cfg=List([{"type": final_rag_search_type, "k": final_rag_k}]),
     reranker_cfg={
         "class": CrossEncoderReranker,
         "model_name": "cross-encoder/ms-marco-MiniLM-L6-v2",
@@ -145,6 +146,12 @@ Rules:
 - Stay within 2000 tokens total context budget.
 
 Respond with your answer only. No reasoning prefix needed.
+Question: "What are the two main execution functions provided by the Experiment class for launching workflows?"
+Answer: "The two main execution functions are run_fit() for training/evaluation workflows and run_evals() for LLM evaluation workflows."
+Source Evidence: source_evidence": [
+    { "file": "experiment.rst", "lines": [69, 75] },
+    { "file": "experiment.rst", "lines": [154, 160] }
+    ]
 """
 
 # Cap serialized retrieval text (characters) for generator + judge token use.
@@ -185,6 +192,15 @@ def openai_sample_preprocess_fn(
         _truncate_context(ctx, MAX_RETRIEVED_CONTEXT_CHARS) for ctx in serialized_context
     ]
     batch["query_id"] = [int(query_id) for query_id in batch["query_id"]]
+
+    batch["ground_truth_spans"] = [
+        [
+            (item["file"], int(item["lines"][0]), int(item["lines"][1]))
+            for item in evidence
+            if item.get("file") and item.get("lines") and len(item["lines"]) >= 2
+        ]
+        for evidence in batch.get("source_evidence", [])
+    ]
 
     per_doc_lines = [[chunk_to_lines(doc) for doc in docs] for docs in all_context]
 
@@ -244,91 +260,7 @@ def sample_postprocess_fn(batch: Dict[str, listtype]) -> Dict[str, listtype]:
 # =============================================================================
 # CUSTOM EVALUATION METRIC FUNCTIONS FOR RAG TODO
 # =============================================================================
-def sample_compute_metrics_fn(batch: Dict[str, listtype]) -> Dict[str, Dict[str, Any]]:
-    """Compute project retrieval and judge metrics using the shared helpers."""
-
-    total = len(batch["query"])
-    mean = lambda xs: sum(xs) / total if total else 0.0
-
-    retrieved_spans = [to_spans(spans) for spans in batch["retrieved_spans"]]
-    ground_truth_spans = [to_spans(spans) for spans in batch["ground_truth_spans"]]
-
-    f1s = [f1_at_k(r, g) for r, g in zip(retrieved_spans, ground_truth_spans)]
-    ps = [precision_at_k(r, g) for r, g in zip(retrieved_spans, ground_truth_spans)]
-    rs = [recall_at_k(r, g) for r, g in zip(retrieved_spans, ground_truth_spans)]
-
-    metrics: Dict[str, Dict[str, Any]] = {
-        "Total": {"value": total},
-        "F1_at_5": {"value": mean(f1s)},
-        "Precision_at_5": {"value": mean(ps)},
-        "Recall_at_5": {"value": mean(rs)},
-        "Retrieval Score": {"value": (mean(f1s) + mean(ps) + mean(rs)) / 3 if total else 0.0},
-    }
-
-    if "generated_text" in batch:
-        import os
-
-        model = os.environ.get("JUDGE_MODEL", "claude-sonnet-4-6-aws")
-        base_url = os.environ.get("JUDGE_BASE_URL") or None
-        corr, faith, comp, failures = [], [], [], 0
-
-        for q, ref, ctx, ans in zip(
-            batch["query"],
-            batch["reference_answer"],
-            batch["serialized_context"],
-            batch["generated_text"],
-        ):
-            result = call_judge(q, ref, ctx, ans, model=model, base_url=base_url)
-            if result.get("failed"):
-                failures += 1
-            corr.append(result["correctness"])
-            faith.append(result["faithfulness"])
-            comp.append(result["completeness"] / 5.0)
-
-        metrics.update({
-            "Correctness_pass_rate": {"value": mean(corr)},
-            "Faithfulness_pass_rate": {"value": mean(faith)},
-            "Completeness_normalized": {"value": mean(comp)},
-            "Generation_Score_3_released": {"value": (mean(corr) + mean(faith) + mean(comp)) / 3 if total else 0.0},
-            "Judge Failures": {"value": failures},
-        })
-
-    return metrics
-
-
-def sample_accumulate_metrics_fn(
-    aggregated_metrics: Dict[str, listtype],
-) -> Dict[str, Dict[str, Any]]:
-    """Weighted averages over batches, weighted by query count."""
-
-    num_queries_per_batch = [m["value"] for m in aggregated_metrics.get("Total", [])]
-    total_queries = sum(num_queries_per_batch)
-    out: Dict[str, Dict[str, Any]] = {"Total": {"value": total_queries}}
-
-    if total_queries == 0:
-        return out
-
-    for metric in [
-        "F1_at_5",
-        "Precision_at_5",
-        "Recall_at_5",
-        "Retrieval Score",
-        "Correctness_pass_rate",
-        "Faithfulness_pass_rate",
-        "Completeness_normalized",
-        "Generation_Score_3_released",
-    ]:
-        if metric in aggregated_metrics:
-            out[metric] = {
-                "value": sum(m["value"] * n for m, n in zip(aggregated_metrics[metric], num_queries_per_batch)) / total_queries,
-                "is_algebraic": True,
-                "value_range": (0, 1),
-            }
-
-    if "Judge Failures" in aggregated_metrics:
-        out["Judge Failures"] = {"value": sum(m["value"] for m in aggregated_metrics["Judge Failures"])}
-
-    return out
+# Use metrics implemented in rapidfire_integration_example.py
 
 
 # =============================================================================
@@ -338,7 +270,7 @@ def sample_accumulate_metrics_fn(
 openai_config = RFOpenAIAPIModelConfig(
     client_config={"api_key": TRITON_API_KEY, "base_url": "https://tritonai-api.ucsd.edu", "max_retries": 2},
     model_config={
-        "model": "api-mistral-small-3.2-2506",
+        "model": final_model,
         "max_completion_tokens": 2048,
     },
     rpm_limit=120, 

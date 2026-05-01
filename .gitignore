@@ -3,3 +3,5 @@ tutorial_notebooks/
 project1-statement.pdf
 discussion1-rag-scifact.ipynb
 main2.py
+__pycache__/
+testing.json*
