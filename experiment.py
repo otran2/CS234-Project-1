@@ -179,25 +179,22 @@ MAX_TOKENS_PER_QUERY: int = 2000
 SAFETY_TOKENS: int = 50
 
 def _truncate_context_by_tokens(text: str, max_tokens: Optional[int], encoding) -> str:
-    """Truncate text to at most `max_tokens` tokens using a tiktoken-like encoding.
-
-    If `encoding` is None or `max_tokens` is None, returns the original text or a
-    best-effort truncated string.
-    """
     if max_tokens is None:
         return text
     if max_tokens <= 0:
         return ""
     if encoding is None:
-        # fallback: use character truncation roughly (not guaranteed tokens)
+        #Basically character level truncation matching our fallback of the 8000 max chars
         return _truncate_context(text, max_chars=int(max_tokens * 4))
     toks = encoding.encode(text)
+    # We don't reach token quota
     if len(toks) <= max_tokens:
         return text
+    # Truncate tokens to quota
     try:
         return encoding.decode(toks[:max_tokens]) + "\n\n[context truncated]"
     except Exception:
-        # decode may not be available for fake encodings; join as best-effort
+        #If any issues with decoding
         try:
             return "".join(toks[:max_tokens]) + "\n\n[context truncated]"
         except Exception:
