@@ -71,7 +71,7 @@ if output_rows_jsonl.exists():
 # =============================================================================
 # CREATE EXPERIMENT
 # =============================================================================
-experiment = Experiment(experiment_name="exp1-sourcedocs-full-evaluation3", mode="evals")
+experiment = Experiment(experiment_name="experimentOscar", mode="evals")
 
 #Knobs for langchain part of RAG pipeline
 from langchain_community.document_loaders import DirectoryLoader, JSONLoader, TextLoader
@@ -83,9 +83,6 @@ from langchain_openai import OpenAIEmbeddings
 from typing import Dict
 
 batch_size = 32
-final_model = "api-mistral-small-3.2-2506"
-final_rag_search_type = "similarity"
-final_rag_k = 10
 
 # CPU-based RAG
 rag_cpu = RFLangChainRagSpec(
@@ -98,15 +95,15 @@ rag_cpu = RFLangChainRagSpec(
         sample_seed=1337,
     ),
     text_splitter=RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-        encoding_name="gpt2", chunk_size=512, chunk_overlap=32, add_start_index=True
+        encoding_name="gpt2", chunk_size=128, chunk_overlap=16, add_start_index=True
     ),
     embedding_cfg=List([
-        # {
-        #     "class": HuggingFaceEmbeddings,
-        #     "model_name": "sentence-transformers/all-MiniLM-L6-v2",
-        #     "model_kwargs": {"device": "cpu"},
-        #     "encode_kwargs": {"normalize_embeddings": True, "batch_size": batch_size},
-        # },
+        {
+            "class": HuggingFaceEmbeddings,
+            "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+            "model_kwargs": {"device": "cpu"},
+            "encode_kwargs": {"normalize_embeddings": True, "batch_size": batch_size},
+        },
         { # For quicker demo in class
             "class": OpenAIEmbeddings,
             "model": "api-tgpt-embeddings",
@@ -120,14 +117,21 @@ rag_cpu = RFLangChainRagSpec(
         "type": "faiss", 
         "batch_size": batch_size
     }, # if not set, uses FAISS by default
-    # Final single-run retriever config (no sweep over search type / k).
-    search_cfg=List([{"type": final_rag_search_type, "k": final_rag_k}]),
-    reranker_cfg={
-        "class": CrossEncoderReranker,
-        "model_name": "cross-encoder/ms-marco-MiniLM-L6-v2",
-        "model_kwargs": {"device": "cpu"},
-        "top_n": 5,
-    },
+    search_cfg=List([{"type": "similarity", "k": 10}, {"type": "mmr", "k": 10}, {"type": "similarity_score_threshold", "score_threshold": 0.5, "k": 10}]), # 2 different search types
+    reranker_cfg=List([
+        {
+            "class": CrossEncoderReranker,
+            "model_name": "cross-encoder/ms-marco-MiniLM-L6-v2",
+            "model_kwargs": {"device": "cpu"},
+            "top_n": 3,
+        },
+        {
+            "class": CrossEncoderReranker,
+            "model_name": "BAAI/bge-reranker-v2-m3",
+            "model_kwargs": {"device": "cpu"},
+            "top_n": 3,
+        }
+    ]),
     enable_gpu_search=False,
 )
 
@@ -156,13 +160,42 @@ Source Evidence: source_evidence": [
 
 # Cap serialized retrieval text (characters) for generator + judge token use.
 # Set to None to disable truncation.
-MAX_RETRIEVED_CONTEXT_CHARS: Optional[int] = 8000
+# MAX_RETRIEVED_CONTEXT_CHARS: Optional[int] = 8000
 
 
 def _truncate_context(text: str, max_chars: Optional[int]) -> str:
     if max_chars is None or len(text) <= max_chars:
         return text
     return text[:max_chars] + "\n\n[context truncated]"
+
+# Token-aware truncation.
+import tiktoken
+
+# Per-query token budget and safety margin
+MAX_TOKENS_PER_QUERY: int = 2000
+SAFETY_TOKENS: int = 50
+
+def _truncate_context_by_tokens(text: str, max_tokens: Optional[int], encoding) -> str:
+    if max_tokens is None:
+        return text
+    if max_tokens <= 0:
+        return ""
+    if encoding is None:
+        #Basically character level truncation matching our fallback of the 8000 max chars
+        return _truncate_context(text, max_chars=int(max_tokens * 4))
+    toks = encoding.encode(text)
+    # We don't reach token quota
+    if len(toks) <= max_tokens:
+        return text
+    # Truncate tokens to quota
+    try:
+        return encoding.decode(toks[:max_tokens]) + "\n\n[context truncated]"
+    except Exception:
+        #If any issues with decoding
+        try:
+            return "".join(toks[:max_tokens]) + "\n\n[context truncated]"
+        except Exception:
+            return "\n\n[context truncated]"
 
 
 def chunk_to_lines(doc: Document) -> listtype:
@@ -188,9 +221,20 @@ def openai_sample_preprocess_fn(
 
     all_context = rag.get_context(batch_queries=batch["query"], serialize=False)
     serialized_context = rag.serialize_documents(all_context)
-    serialized_context = [
-        _truncate_context(ctx, MAX_RETRIEVED_CONTEXT_CHARS) for ctx in serialized_context
-    ]
+    # Token-aware per-query truncation: reserve tokens for system + question + template
+    encoding = tiktoken.get_encoding("gpt2")
+    system_tokens = len(encoding.encode(INSTRUCTIONS or ""))
+    template_tokens = len(encoding.encode("\nQuestion:\n\nContext:\n\nAnswer:"))
+    new_serialized = []
+    for question, ctx in zip(batch.get("query", []), serialized_context):
+        q_tokens = len(encoding.encode(question or ""))
+        avail = MAX_TOKENS_PER_QUERY - (system_tokens + q_tokens + template_tokens + SAFETY_TOKENS)
+        if avail <= 0:
+            # no room for context after reserved tokens
+            new_serialized.append("")
+        else:
+            new_serialized.append(_truncate_context_by_tokens(ctx, avail, encoding))
+    serialized_context = new_serialized
     batch["query_id"] = [int(query_id) for query_id in batch["query_id"]]
 
     batch["ground_truth_spans"] = [
@@ -270,7 +314,7 @@ def sample_postprocess_fn(batch: Dict[str, listtype]) -> Dict[str, listtype]:
 openai_config = RFOpenAIAPIModelConfig(
     client_config={"api_key": TRITON_API_KEY, "base_url": "https://tritonai-api.ucsd.edu", "max_retries": 2},
     model_config={
-        "model": final_model,
+        "model": "api-mistral-small-3.2-2506",
         "max_completion_tokens": 2048,
     },
     rpm_limit=120, 

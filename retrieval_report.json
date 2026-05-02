@@ -5,14 +5,14 @@
     "n_missing_from_output": 0,
     "n_extra_in_output": 0,
     "n_malformed_sources": 0,
-    "output_file": "output.json",
+    "output_file": "testoutput.json",
     "validation_file": "validation-set-golden-qa-pairs.json"
   },
   "summary": {
-    "F1@5": 0.368342151675485,
-    "Precision@5": 0.24444444444444444,
-    "Recall@5": 0.8444444444444444,
-    "Retrieval Score": 0.4857436801881246
+    "F1@5": 0.3922398589065256,
+    "Precision@5": 0.25777777777777783,
+    "Recall@5": 0.9055555555555556,
+    "Retrieval Score": 0.5185243974132864
   },
   "per_question": [
     {
@@ -24,9 +24,9 @@
     },
     {
       "question_id": 2,
-      "F1@5": 0.0,
-      "Precision@5": 0.0,
-      "Recall@5": 0.0,
+      "F1@5": 0.33333333333333337,
+      "Precision@5": 0.2,
+      "Recall@5": 1.0,
       "status": "ok"
     },
     {
@@ -45,8 +45,8 @@
     },
     {
       "question_id": 5,
-      "F1@5": 0.5714285714285715,
-      "Precision@5": 0.4,
+      "F1@5": 0.33333333333333337,
+      "Precision@5": 0.2,
       "Recall@5": 1.0,
       "status": "ok"
     },
@@ -66,9 +66,9 @@
     },
     {
       "question_id": 8,
-      "F1@5": 0.28571428571428575,
-      "Precision@5": 0.2,
-      "Recall@5": 0.5,
+      "F1@5": 0.5714285714285715,
+      "Precision@5": 0.4,
+      "Recall@5": 1.0,
       "status": "ok"
     },
     {
@@ -80,15 +80,15 @@
     },
     {
       "question_id": 10,
-      "F1@5": 0.33333333333333337,
-      "Precision@5": 0.2,
-      "Recall@5": 1.0,
+      "F1@5": 0.0,
+      "Precision@5": 0.0,
+      "Recall@5": 0.0,
       "status": "ok"
     },
     {
       "question_id": 11,
-      "F1@5": 0.7499999999999999,
-      "Precision@5": 0.6,
+      "F1@5": 0.5714285714285715,
+      "Precision@5": 0.4,
       "Recall@5": 1.0,
       "status": "ok"
     },
@@ -101,16 +101,16 @@
     },
     {
       "question_id": 13,
-      "F1@5": 0.33333333333333337,
-      "Precision@5": 0.2,
+      "F1@5": 0.5714285714285715,
+      "Precision@5": 0.4,
       "Recall@5": 1.0,
       "status": "ok"
     },
     {
       "question_id": 14,
-      "F1@5": 0.0,
-      "Precision@5": 0.0,
-      "Recall@5": 0.0,
+      "F1@5": 0.33333333333333337,
+      "Precision@5": 0.2,
+      "Recall@5": 1.0,
       "status": "ok"
     },
     {
@@ -136,16 +136,16 @@
     },
     {
       "question_id": 18,
-      "F1@5": 0.33333333333333337,
-      "Precision@5": 0.2,
-      "Recall@5": 1.0,
+      "F1@5": 0.0,
+      "Precision@5": 0.0,
+      "Recall@5": 0.0,
       "status": "ok"
     },
     {
       "question_id": 19,
-      "F1@5": 0.0,
-      "Precision@5": 0.0,
-      "Recall@5": 0.0,
+      "F1@5": 0.33333333333333337,
+      "Precision@5": 0.2,
+      "Recall@5": 1.0,
       "status": "ok"
     },
     {
@@ -171,16 +171,16 @@
     },
     {
       "question_id": 23,
-      "F1@5": 0.5714285714285715,
-      "Precision@5": 0.4,
+      "F1@5": 0.33333333333333337,
+      "Precision@5": 0.2,
       "Recall@5": 1.0,
       "status": "ok"
     },
     {
       "question_id": 24,
-      "F1@5": 0.0,
-      "Precision@5": 0.0,
-      "Recall@5": 0.0,
+      "F1@5": 0.33333333333333337,
+      "Precision@5": 0.2,
+      "Recall@5": 1.0,
       "status": "ok"
     },
     {
@@ -192,8 +192,8 @@
     },
     {
       "question_id": 26,
-      "F1@5": 0.33333333333333337,
-      "Precision@5": 0.2,
+      "F1@5": 0.5714285714285715,
+      "Precision@5": 0.4,
       "Recall@5": 1.0,
       "status": "ok"
     },
@@ -206,8 +206,8 @@
     },
     {
       "question_id": 28,
-      "F1@5": 0.33333333333333337,
-      "Precision@5": 0.2,
+      "F1@5": 0.5714285714285715,
+      "Precision@5": 0.4,
       "Recall@5": 1.0,
       "status": "ok"
     },
@@ -276,9 +276,9 @@
     },
     {
       "question_id": 38,
-      "F1@5": 0.4444444444444445,
-      "Precision@5": 0.4,
-      "Recall@5": 0.5,
+      "F1@5": 0.22222222222222224,
+      "Precision@5": 0.2,
+      "Recall@5": 0.25,
       "status": "ok"
     },
     {
@@ -290,16 +290,16 @@
     },
     {
       "question_id": 40,
-      "F1@5": 0.33333333333333337,
-      "Precision@5": 0.2,
+      "F1@5": 0.5714285714285715,
+      "Precision@5": 0.4,
       "Recall@5": 1.0,
       "status": "ok"
     },
     {
       "question_id": 41,
-      "F1@5": 0.0,
-      "Precision@5": 0.0,
-      "Recall@5": 0.0,
+      "F1@5": 0.28571428571428575,
+      "Precision@5": 0.2,
+      "Recall@5": 0.5,
       "status": "ok"
     },
     {
@@ -318,8 +318,8 @@
     },
     {
       "question_id": 44,
-      "F1@5": 0.5714285714285715,
-      "Precision@5": 0.4,
+      "F1@5": 0.33333333333333337,
+      "Precision@5": 0.2,
       "Recall@5": 1.0,
       "status": "ok"
     },
