@@ -95,43 +95,26 @@ rag_cpu = RFLangChainRagSpec(
         sample_seed=1337,
     ),
     text_splitter=RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-        encoding_name="gpt2", chunk_size=128, chunk_overlap=16, add_start_index=True
+        encoding_name="gpt2", chunk_size=512, chunk_overlap=16, add_start_index=True
     ),
-    embedding_cfg=List([
-        {
+    embedding_cfg={
             "class": HuggingFaceEmbeddings,
             "model_name": "sentence-transformers/all-MiniLM-L6-v2",
             "model_kwargs": {"device": "cpu"},
             "encode_kwargs": {"normalize_embeddings": True, "batch_size": batch_size},
         },
-        { # For quicker demo in class
-            "class": OpenAIEmbeddings,
-            "model": "api-tgpt-embeddings",
-            "api_key": TRITON_API_KEY,
-            "base_url": "https://tritonai-api.ucsd.edu",
-            "check_embedding_ctx_length": False,
-        },
-    ]),
     # FAISS is an in-memory store and only works in create mode. 
     vector_store_cfg={
         "type": "faiss", 
         "batch_size": batch_size
     }, # if not set, uses FAISS by default
-    search_cfg=List([{"type": "similarity", "k": 10}, {"type": "mmr", "k": 10}, {"type": "similarity_score_threshold", "score_threshold": 0.5, "k": 10}]), # 2 different search types
-    reranker_cfg=List([
-        {
-            "class": CrossEncoderReranker,
-            "model_name": "cross-encoder/ms-marco-MiniLM-L6-v2",
-            "model_kwargs": {"device": "cpu"},
-            "top_n": 3,
-        },
-        {
-            "class": CrossEncoderReranker,
-            "model_name": "BAAI/bge-reranker-v2-m3",
-            "model_kwargs": {"device": "cpu"},
-            "top_n": 3,
-        }
-    ]),
+    search_cfg={"type": "similarity", "k": 10},
+    reranker_cfg={
+        "class": CrossEncoderReranker,
+        "model_name": "BAAI/bge-reranker-v2-m3",
+        "model_kwargs": {"device": "cpu"},
+        "top_n": 2,
+    },
     enable_gpu_search=False,
 )
 

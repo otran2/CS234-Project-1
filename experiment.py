@@ -104,32 +104,32 @@ rag_cpu = RFLangChainRagSpec(
             "model_kwargs": {"device": "cpu"},
             "encode_kwargs": {"normalize_embeddings": True, "batch_size": batch_size},
         },
-        { # For quicker demo in class
-            "class": OpenAIEmbeddings,
-            "model": "api-tgpt-embeddings",
-            "api_key": TRITON_API_KEY,
-            "base_url": "https://tritonai-api.ucsd.edu",
-            "check_embedding_ctx_length": False,
-        },
+        # { # For quicker demo in class
+        #     "class": OpenAIEmbeddings,
+        #     "model": "api-tgpt-embeddings",
+        #     "api_key": TRITON_API_KEY,
+        #     "base_url": "https://tritonai-api.ucsd.edu",
+        #     "check_embedding_ctx_length": False,
+        # },
     ]),
     # FAISS is an in-memory store and only works in create mode. 
     vector_store_cfg={
         "type": "faiss", 
         "batch_size": batch_size
     }, # if not set, uses FAISS by default
-    search_cfg=List([{"type": "similarity", "k": 10}, {"type": "mmr", "k": 10}, {"type": "similarity_score_threshold", "score_threshold": 0.5, "k": 10}]), # 2 different search types
+    search_cfg=List([{"type": "similarity", "k": 10}, {"type": "mmr", "k": 10}]), # 2 different search types
     reranker_cfg=List([
         {
             "class": CrossEncoderReranker,
             "model_name": "cross-encoder/ms-marco-MiniLM-L6-v2",
             "model_kwargs": {"device": "cpu"},
-            "top_n": 3,
+            "top_n": 2,
         },
         {
             "class": CrossEncoderReranker,
             "model_name": "BAAI/bge-reranker-v2-m3",
             "model_kwargs": {"device": "cpu"},
-            "top_n": 3,
+            "top_n": 2,
         }
     ]),
     enable_gpu_search=False,
@@ -160,7 +160,7 @@ Source Evidence: source_evidence": [
 
 # Cap serialized retrieval text (characters) for generator + judge token use.
 # Set to None to disable truncation.
-MAX_RETRIEVED_CONTEXT_CHARS: Optional[int] = 8000
+# MAX_RETRIEVED_CONTEXT_CHARS: Optional[int] = 8000
 
 
 def _truncate_context(text: str, max_chars: Optional[int]) -> str:
@@ -168,11 +168,8 @@ def _truncate_context(text: str, max_chars: Optional[int]) -> str:
         return text
     return text[:max_chars] + "\n\n[context truncated]"
 
-# Token-aware truncation: try to use tiktoken if available, otherwise fall back to char-based truncation.
-try:
-    import tiktoken
-except Exception:
-    tiktoken = None
+# Token-aware truncation.
+import tiktoken
 
 # Per-query token budget and safety margin
 MAX_TOKENS_PER_QUERY: int = 2000
@@ -225,25 +222,19 @@ def openai_sample_preprocess_fn(
     all_context = rag.get_context(batch_queries=batch["query"], serialize=False)
     serialized_context = rag.serialize_documents(all_context)
     # Token-aware per-query truncation: reserve tokens for system + question + template
-    if tiktoken is not None:
-        encoding = tiktoken.get_encoding("gpt2")
-        system_tokens = len(encoding.encode(INSTRUCTIONS or ""))
-        template_tokens = len(encoding.encode("\nQuestion:\n\nContext:\n\nAnswer:"))
-        new_serialized = []
-        for question, ctx in zip(batch.get("query", []), serialized_context):
-            q_tokens = len(encoding.encode(question or ""))
-            avail = MAX_TOKENS_PER_QUERY - (system_tokens + q_tokens + template_tokens + SAFETY_TOKENS)
-            if avail <= 0:
-                # no room for context after reserved tokens
-                new_serialized.append("")
-            else:
-                new_serialized.append(_truncate_context_by_tokens(ctx, avail, encoding))
-        serialized_context = new_serialized
-    else:
-        # fallback to char-based truncation if tiktoken not available
-        serialized_context = [
-            _truncate_context(ctx, MAX_RETRIEVED_CONTEXT_CHARS) for ctx in serialized_context
-        ]
+    encoding = tiktoken.get_encoding("gpt2")
+    system_tokens = len(encoding.encode(INSTRUCTIONS or ""))
+    template_tokens = len(encoding.encode("\nQuestion:\n\nContext:\n\nAnswer:"))
+    new_serialized = []
+    for question, ctx in zip(batch.get("query", []), serialized_context):
+        q_tokens = len(encoding.encode(question or ""))
+        avail = MAX_TOKENS_PER_QUERY - (system_tokens + q_tokens + template_tokens + SAFETY_TOKENS)
+        if avail <= 0:
+            # no room for context after reserved tokens
+            new_serialized.append("")
+        else:
+            new_serialized.append(_truncate_context_by_tokens(ctx, avail, encoding))
+    serialized_context = new_serialized
     batch["query_id"] = [int(query_id) for query_id in batch["query_id"]]
 
     batch["ground_truth_spans"] = [
