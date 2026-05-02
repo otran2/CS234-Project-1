@@ -1,0 +1,153 @@
+2026-05-01 19:51:31 | DocProcessingActor | INFO | doc_actor.py:59 | [experimentOscar_3:DocProcessingActor] DocProcessingActor initialized
+2026-05-01 19:51:33 | DocProcessingActor | INFO | doc_actor.py:96 | [experimentOscar_3:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-01 19:51:33 | DocProcessingActor | INFO | doc_actor.py:107 | [experimentOscar_3:DocProcessingActor] Building document index...
+2026-05-01 19:51:33 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 19:51:35 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 19:51:44 | DocProcessingActor | INFO | doc_actor.py:109 | [experimentOscar_3:DocProcessingActor] Document index built successfully
+2026-05-01 19:51:44 | DocProcessingActor | INFO | doc_actor.py:134 | [experimentOscar_3:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-01 19:51:44 | DocProcessingActor | INFO | doc_actor.py:144 | [experimentOscar_3:DocProcessingActor] FAISS index serialized: 238964 bytes
+2026-05-01 19:51:44 | DocProcessingActor | INFO | doc_actor.py:189 | [experimentOscar_3:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-01 19:52:07 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [experimentOscar_3:QueryProcessingActor-0] Initializing new inference engine (config hash: b0be3d17)
+2026-05-01 19:52:08 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 19:52:09 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 19:52:09 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 19:52:09 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 19:52:09 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 19:52:09 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-01 19:52:09 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 19:52:11 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 19:52:11 | QueryProcessingActor-1 | INFO | query_actor.py:165 | [experimentOscar_3:QueryProcessingActor-1] Initializing new inference engine (config hash: b0be3d17)
+2026-05-01 19:52:11 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 19:52:13 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-1] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 19:52:13 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 19:52:13 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 19:52:13 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 19:52:13 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-01 19:52:13 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 19:52:15 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 19:52:15 | QueryProcessingActor-2 | INFO | query_actor.py:165 | [experimentOscar_3:QueryProcessingActor-2] Initializing new inference engine (config hash: b0be3d17)
+2026-05-01 19:52:15 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 19:52:17 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-2] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 19:52:17 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 19:52:17 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 19:52:17 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 19:52:17 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-2] Recreated retriever with search_type=mmr
+2026-05-01 19:52:17 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 19:52:18 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 19:52:18 | QueryProcessingActor-3 | INFO | query_actor.py:165 | [experimentOscar_3:QueryProcessingActor-3] Initializing new inference engine (config hash: b0be3d17)
+2026-05-01 19:52:19 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 19:52:20 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-3] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 19:52:20 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 19:52:20 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 19:52:20 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 19:52:20 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-3] Recreated retriever with search_type=mmr
+2026-05-01 19:52:21 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 19:52:23 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 19:53:27 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar_3:QueryProcessingActor-0] Reusing existing inference engine (config hash: b0be3d17)
+2026-05-01 19:53:27 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 19:53:29 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 19:53:29 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 19:53:29 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 19:53:29 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 19:53:29 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-01 19:53:29 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 19:53:30 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 19:53:38 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar_3:QueryProcessingActor-2] Reusing existing inference engine (config hash: b0be3d17)
+2026-05-01 19:53:38 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 19:53:40 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-2] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 19:53:40 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 19:53:40 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 19:53:40 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 19:53:40 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-2] Recreated retriever with search_type=mmr
+2026-05-01 19:53:40 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 19:53:41 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 19:54:52 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar_3:QueryProcessingActor-2] Reusing existing inference engine (config hash: b0be3d17)
+2026-05-01 19:54:52 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 19:54:54 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-2] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 19:54:54 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 19:54:54 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 19:54:54 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 19:54:54 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-2] Recreated retriever with search_type=mmr
+2026-05-01 19:54:54 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 19:54:55 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 19:54:55 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar_3:QueryProcessingActor-0] Reusing existing inference engine (config hash: b0be3d17)
+2026-05-01 19:54:56 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 19:54:57 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 19:54:57 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 19:54:57 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 19:54:57 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 19:54:57 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-01 19:54:57 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 19:54:59 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 19:56:09 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar_3:QueryProcessingActor-2] Reusing existing inference engine (config hash: b0be3d17)
+2026-05-01 19:56:09 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 19:56:10 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-2] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 19:56:10 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 19:56:10 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 19:56:10 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 19:56:10 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-2] Recreated retriever with search_type=mmr
+2026-05-01 19:56:10 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 19:56:12 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 19:56:15 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar_3:QueryProcessingActor-0] Reusing existing inference engine (config hash: b0be3d17)
+2026-05-01 19:56:16 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 19:56:17 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 19:56:17 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 19:56:17 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 19:56:17 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 19:56:17 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-01 19:56:17 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 19:56:18 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 20:00:15 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar_3:QueryProcessingActor-0] Reusing existing inference engine (config hash: b0be3d17)
+2026-05-01 20:00:15 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 20:00:17 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 20:00:17 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 20:00:17 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 20:00:17 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 20:00:17 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-0] Recreated retriever with search_type=mmr
+2026-05-01 20:00:17 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 20:00:19 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 20:00:33 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar_3:QueryProcessingActor-1] Reusing existing inference engine (config hash: b0be3d17)
+2026-05-01 20:00:33 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 20:00:35 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-1] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 20:00:35 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 20:00:35 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 20:00:35 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 20:00:35 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-01 20:00:35 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 20:00:37 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 20:06:49 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar_3:QueryProcessingActor-0] Reusing existing inference engine (config hash: b0be3d17)
+2026-05-01 20:06:49 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 20:06:51 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 20:06:51 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 20:06:51 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 20:06:51 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 20:06:51 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-0] Recreated retriever with search_type=mmr
+2026-05-01 20:06:51 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 20:06:53 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 20:06:58 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar_3:QueryProcessingActor-1] Reusing existing inference engine (config hash: b0be3d17)
+2026-05-01 20:06:58 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 20:07:00 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-1] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 20:07:00 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 20:07:00 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 20:07:00 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 20:07:00 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-01 20:07:00 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 20:07:02 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 20:13:19 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar_3:QueryProcessingActor-0] Reusing existing inference engine (config hash: b0be3d17)
+2026-05-01 20:13:20 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 20:13:22 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 20:13:22 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 20:13:22 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 20:13:22 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 20:13:22 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-0] Recreated retriever with search_type=mmr
+2026-05-01 20:13:22 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 20:13:24 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 20:13:24 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar_3:QueryProcessingActor-1] Reusing existing inference engine (config hash: b0be3d17)
+2026-05-01 20:13:24 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 20:13:26 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar_3:QueryProcessingActor-1] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 20:13:26 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar_3:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 20:13:26 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar_3:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 20:13:26 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar_3:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 20:13:26 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar_3:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-01 20:13:26 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 20:13:28 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar_3:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
