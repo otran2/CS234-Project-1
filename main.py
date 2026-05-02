@@ -71,7 +71,7 @@ if output_rows_jsonl.exists():
 # =============================================================================
 # CREATE EXPERIMENT
 # =============================================================================
-experiment = Experiment(experiment_name="experimentOscar", mode="evals")
+experiment = Experiment(experiment_name="early_sub", mode="evals")
 
 #Knobs for langchain part of RAG pipeline
 from langchain_community.document_loaders import DirectoryLoader, JSONLoader, TextLoader
