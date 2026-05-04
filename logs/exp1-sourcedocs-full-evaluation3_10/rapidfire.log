@@ -1,0 +1,334 @@
+2026-05-01 10:56:53 | Experiment | INFO | experiment.py:165 | [exp1-sourcedocs-full-evaluation3_10:Experiment] An experiment with the same name already exists. Created a new experiment 'exp1-sourcedocs-full-evaluation3_10' with Experiment ID: 18 at /home/ostran/rapidfireai/rapidfire_experiments/exp1-sourcedocs-full-evaluation3_10
+2026-05-01 10:57:11 | Experiment | INFO | metric_rfmetric_manager.py:55 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-01 10:57:11 | Experiment | INFO | metric_rfmetric_manager.py:119 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Creating MLflow experiment: exp1-sourcedocs-full-evaluation3_10
+2026-05-01 10:57:11 | Experiment | INFO | experiment.py:210 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Initialized MetricLogger experiment: 16
+2026-05-01 10:57:11 | Experiment | INFO | experiment.py:226 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-01 10:57:13 | Experiment | WARNING | experiment.py:381 | [exp1-sourcedocs-full-evaluation3_10:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-01 10:57:13 | Experiment | INFO | experiment.py:383 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-01 10:57:13 | Experiment | INFO | experiment.py:392 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-01 10:57:14 | Controller | INFO | controller.py:895 | [exp1-sourcedocs-full-evaluation3_10:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-01 10:57:14 | Controller | INFO | controller.py:900 | [exp1-sourcedocs-full-evaluation3_10:Controller] Received 12 pipeline configuration(s)
+2026-05-01 10:57:14 | Controller | INFO | controller.py:309 | [exp1-sourcedocs-full-evaluation3_10:Controller] Found 2 unique RAG context(s)
+2026-05-01 10:57:14 | Controller | INFO | controller.py:320 | [exp1-sourcedocs-full-evaluation3_10:Controller] Will build new context c0aaab93...
+2026-05-01 10:57:14 | Controller | INFO | controller.py:320 | [exp1-sourcedocs-full-evaluation3_10:Controller] Will build new context 9f7161b8...
+2026-05-01 10:57:14 | Controller | INFO | controller.py:346 | [exp1-sourcedocs-full-evaluation3_10:Controller] Building 2 context(s) in parallel...
+2026-05-01 10:57:14 | Controller | INFO | controller.py:373 | [exp1-sourcedocs-full-evaluation3_10:Controller] Creating 2 DocProcessingActor(s) for parallel processing
+2026-05-01 10:57:15 | matplotlib.font_manager | INFO | font_manager.py:1639 | generated new fontManager
+2026-05-01 10:57:15 | Controller | INFO | controller.py:461 | [exp1-sourcedocs-full-evaluation3_10:Controller] Submitted 2 build task(s) in parallel
+2026-05-01 10:57:36 | DocProcessingActor | INFO | doc_actor.py:59 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] DocProcessingActor initialized
+2026-05-01 10:57:36 | DocProcessingActor | INFO | doc_actor.py:59 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] DocProcessingActor initialized
+2026-05-01 10:57:37 | DocProcessingActor | INFO | doc_actor.py:96 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-01 10:57:37 | DocProcessingActor | INFO | doc_actor.py:107 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] Building document index...
+2026-05-01 10:57:37 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 10:57:38 | DocProcessingActor | INFO | doc_actor.py:96 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-01 10:57:38 | DocProcessingActor | INFO | doc_actor.py:107 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] Building document index...
+2026-05-01 10:57:38 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 10:57:41 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 10:57:45 | DocProcessingActor | INFO | doc_actor.py:109 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] Document index built successfully
+2026-05-01 10:57:45 | DocProcessingActor | INFO | doc_actor.py:134 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-01 10:57:45 | DocProcessingActor | INFO | doc_actor.py:144 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] FAISS index serialized: 1276456 bytes
+2026-05-01 10:57:45 | DocProcessingActor | INFO | doc_actor.py:189 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-01 10:57:57 | DocProcessingActor | INFO | doc_actor.py:109 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] Document index built successfully
+2026-05-01 10:57:57 | DocProcessingActor | INFO | doc_actor.py:134 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-01 10:57:57 | DocProcessingActor | INFO | doc_actor.py:144 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] FAISS index serialized: 505896 bytes
+2026-05-01 10:57:57 | DocProcessingActor | INFO | doc_actor.py:189 | [exp1-sourcedocs-full-evaluation3_10:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-01 10:57:57 | Controller | INFO | controller.py:482 | [exp1-sourcedocs-full-evaluation3_10:Controller] Built context 1 (c0aaab93...) successfully in 43.34s
+2026-05-01 10:57:57 | Controller | INFO | controller.py:482 | [exp1-sourcedocs-full-evaluation3_10:Controller] Built context 2 (9f7161b8...) successfully in 43.34s
+2026-05-01 10:57:57 | Controller | INFO | controller.py:523 | [exp1-sourcedocs-full-evaluation3_10:Controller] Completed parallel context building for 2 context(s)
+2026-05-01 10:57:57 | Controller | INFO | controller.py:920 | [exp1-sourcedocs-full-evaluation3_10:Controller] Created 4 query processing actors (generic pool)
+2026-05-01 10:57:57 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Created MLflow run: c43671c2024d47edb720d14de45aaed6, 1
+2026-05-01 10:57:57 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Created MLflow run: 6aa79fbbb7f9497ba1a9688b551538c3, 2
+2026-05-01 10:57:57 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Created MLflow run: 7f81f91ea11b4a2390cbade1ab8c2407, 3
+2026-05-01 10:57:58 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Created MLflow run: f515d563a35448a49b85e083b2f507ed, 4
+2026-05-01 10:57:58 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Created MLflow run: 1dd8ab5bedf840f49052b96cc63145f6, 5
+2026-05-01 10:57:58 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Created MLflow run: e098a89f063a48ef9d657acb7665a393, 6
+2026-05-01 10:57:58 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Created MLflow run: ac3ccfcc24404c37908febe197dd5d93, 7
+2026-05-01 10:57:58 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Created MLflow run: 6c0cdaf95688494ca0f5aa9b8589aa70, 8
+2026-05-01 10:57:58 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Created MLflow run: 8b5a0574cdf247ca82a263ac21879835, 9
+2026-05-01 10:57:58 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Created MLflow run: 671d5cc561e542bc8eefda4bf56e106b, 10
+2026-05-01 10:57:58 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Created MLflow run: b58a43ed6f8b4b268572fefae1887321, 11
+2026-05-01 10:57:58 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_10:Experiment] Created MLflow run: 5058eccbf44543fcaee409139ff57f7d, 12
+2026-05-01 10:57:58 | Controller | INFO | controller.py:931 | [exp1-sourcedocs-full-evaluation3_10:Controller] Initialized scheduler with 12 pipelines, 4 actors, 4 shards
+2026-05-01 10:57:58 | Controller | INFO | controller.py:1118 | [exp1-sourcedocs-full-evaluation3_10:Controller] Created experiment-wide rate limiter actor for 12 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-01 10:57:58 | Controller | INFO | controller.py:1124 | [exp1-sourcedocs-full-evaluation3_10:Controller] Starting multi-pipeline inference scheduling...
+2026-05-01 10:57:58 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_10:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 0 (1 batches)
+2026-05-01 10:58:20 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Initializing new inference engine (config hash: fe7d698e)
+2026-05-01 10:58:20 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 10:58:22 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 10:58:22 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 10:58:22 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 10:58:22 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 10:58:22 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-01 10:58:22 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 10:58:23 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 10:58:23 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_10:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 0 (1 batches)
+2026-05-01 10:58:23 | QueryProcessingActor-1 | INFO | query_actor.py:165 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Initializing new inference engine (config hash: fe7d698e)
+2026-05-01 10:58:24 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 10:58:26 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 10:58:26 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 10:58:26 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 10:58:26 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 10:58:26 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-01 10:58:26 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 10:58:33 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 10:58:33 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_10:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 2 for shard 0 (1 batches)
+2026-05-01 10:58:33 | QueryProcessingActor-2 | INFO | query_actor.py:165 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Initializing new inference engine (config hash: fe7d698e)
+2026-05-01 10:58:33 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 10:58:35 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 10:58:35 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 10:58:35 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 10:58:35 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 10:58:35 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Recreated retriever with search_type=mmr
+2026-05-01 10:58:35 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 10:58:37 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 10:58:37 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_10:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 3 for shard 0 (1 batches)
+2026-05-01 10:58:37 | QueryProcessingActor-3 | INFO | query_actor.py:165 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Initializing new inference engine (config hash: fe7d698e)
+2026-05-01 10:58:37 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 10:58:39 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 10:58:39 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 10:58:39 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 10:58:39 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 10:58:39 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Recreated retriever with search_type=mmr
+2026-05-01 10:58:39 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 10:58:41 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 11:00:50 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_10:Controller] Pipeline 1 completed shard 0 (1 batches, 146.32s)
+2026-05-01 11:00:50 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_10:Controller] Scheduling pipeline 5 (Pipeline 5) on actor 0 for shard 0 (1 batches)
+2026-05-01 11:00:50 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Reusing existing inference engine (config hash: fe7d698e)
+2026-05-01 11:00:50 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 11:00:52 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 11:00:52 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 11:00:52 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 11:00:52 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 11:00:52 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 11:00:52 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 11:00:53 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 11:06:54 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_10:Controller] Pipeline 3 completed shard 0 (1 batches, 496.87s)
+2026-05-01 11:06:54 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_10:Controller] Scheduling pipeline 6 (Pipeline 6) on actor 2 for shard 0 (1 batches)
+2026-05-01 11:06:54 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Reusing existing inference engine (config hash: fe7d698e)
+2026-05-01 11:06:54 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 11:06:56 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 11:06:56 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 11:06:56 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 11:06:56 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 11:06:56 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 11:06:56 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 11:06:58 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 11:08:54 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_10:Controller] Pipeline 5 completed shard 0 (1 batches, 480.48s)
+2026-05-01 11:08:54 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_10:Controller] Scheduling pipeline 7 (Pipeline 7) on actor 0 for shard 0 (1 batches)
+2026-05-01 11:08:54 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Reusing existing inference engine (config hash: fe7d698e)
+2026-05-01 11:08:54 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 11:08:54 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 11:08:54 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 11:08:54 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 11:08:54 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-01 11:08:54 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 11:08:56 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 11:11:26 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_10:Controller] Pipeline 4 completed shard 0 (1 batches, 765.29s)
+2026-05-01 11:11:26 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_10:Controller] Scheduling pipeline 8 (Pipeline 8) on actor 3 for shard 0 (1 batches)
+2026-05-01 11:11:26 | QueryProcessingActor-3 | INFO | query_actor.py:169 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Reusing existing inference engine (config hash: fe7d698e)
+2026-05-01 11:11:26 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 11:11:26 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 11:11:26 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 11:11:26 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 11:11:26 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Recreated retriever with search_type=similarity
+2026-05-01 11:11:27 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 11:11:29 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 11:11:32 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_10:Controller] Pipeline 2 completed shard 0 (1 batches, 779.23s)
+2026-05-01 11:11:32 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_10:Controller] Scheduling pipeline 9 (Pipeline 9) on actor 1 for shard 0 (1 batches)
+2026-05-01 11:11:33 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Reusing existing inference engine (config hash: fe7d698e)
+2026-05-01 11:11:33 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 11:11:33 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 11:11:33 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 11:11:33 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 11:11:33 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Recreated retriever with search_type=mmr
+2026-05-01 11:11:33 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 11:11:34 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [exp1-sourcedocs-full-evaluation3_10:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 11:14:03 | ExperimentUtils | INFO | experiment_utils.py:180 | [exp1-sourcedocs-full-evaluation3_10:ExperimentUtils] Reset experiment states - marked ongoing pipelines, contexts, and tasks as failed
+2026-05-01 11:14:03 | ExperimentUtils | INFO | experiment_utils.py:188 | [exp1-sourcedocs-full-evaluation3_10:ExperimentUtils] Experiment marked as cancelled. Ongoing pipelines, contexts, and tasks have been marked as failed.
+2026-05-01 11:14:03 | ExperimentUtils | INFO | experiment_utils.py:154 | [exp1-sourcedocs-full-evaluation3_10:ExperimentUtils] Experiment exp1-sourcedocs-full-evaluation3_10 ended
+2026-05-01 11:14:03 | Experiment | INFO | experiment.py:165 | [exp1-sourcedocs-full-evaluation3_11:Experiment] The previously running experiment exp1-sourcedocs-full-evaluation3_10 was forcibly ended. Created a new experiment 'exp1-sourcedocs-full-evaluation3_11' with Experiment ID: 19 at /home/ostran/rapidfireai/rapidfire_experiments/exp1-sourcedocs-full-evaluation3_11
+2026-05-01 11:14:23 | Experiment | INFO | metric_rfmetric_manager.py:55 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-01 11:14:23 | Experiment | INFO | metric_rfmetric_manager.py:119 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Creating MLflow experiment: exp1-sourcedocs-full-evaluation3_11
+2026-05-01 11:14:23 | Experiment | INFO | experiment.py:210 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Initialized MetricLogger experiment: 17
+2026-05-01 11:14:23 | Experiment | INFO | experiment.py:226 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-01 11:14:24 | Experiment | WARNING | experiment.py:381 | [exp1-sourcedocs-full-evaluation3_11:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-01 11:14:24 | Experiment | INFO | experiment.py:383 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-01 11:14:24 | Experiment | INFO | experiment.py:392 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-01 11:14:24 | Controller | INFO | controller.py:895 | [exp1-sourcedocs-full-evaluation3_11:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-01 11:14:24 | Controller | INFO | controller.py:900 | [exp1-sourcedocs-full-evaluation3_11:Controller] Received 12 pipeline configuration(s)
+2026-05-01 11:14:24 | Controller | INFO | controller.py:309 | [exp1-sourcedocs-full-evaluation3_11:Controller] Found 2 unique RAG context(s)
+2026-05-01 11:14:24 | Controller | INFO | controller.py:320 | [exp1-sourcedocs-full-evaluation3_11:Controller] Will build new context 98964f52...
+2026-05-01 11:14:24 | Controller | INFO | controller.py:320 | [exp1-sourcedocs-full-evaluation3_11:Controller] Will build new context fef235e8...
+2026-05-01 11:14:24 | Controller | INFO | controller.py:346 | [exp1-sourcedocs-full-evaluation3_11:Controller] Building 2 context(s) in parallel...
+2026-05-01 11:14:24 | Controller | INFO | controller.py:373 | [exp1-sourcedocs-full-evaluation3_11:Controller] Creating 2 DocProcessingActor(s) for parallel processing
+2026-05-01 11:14:25 | Controller | INFO | controller.py:461 | [exp1-sourcedocs-full-evaluation3_11:Controller] Submitted 2 build task(s) in parallel
+2026-05-01 11:15:09 | Controller | INFO | controller.py:482 | [exp1-sourcedocs-full-evaluation3_11:Controller] Built context 1 (98964f52...) successfully in 44.58s
+2026-05-01 11:15:09 | Controller | INFO | controller.py:482 | [exp1-sourcedocs-full-evaluation3_11:Controller] Built context 2 (fef235e8...) successfully in 44.59s
+2026-05-01 11:15:09 | Controller | INFO | controller.py:523 | [exp1-sourcedocs-full-evaluation3_11:Controller] Completed parallel context building for 2 context(s)
+2026-05-01 11:15:09 | Controller | INFO | controller.py:920 | [exp1-sourcedocs-full-evaluation3_11:Controller] Created 4 query processing actors (generic pool)
+2026-05-01 11:15:09 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Created MLflow run: 407af94115b44a2ba69e06cc29065959, 1
+2026-05-01 11:15:09 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Created MLflow run: 3ffcae09c0f44a52b139d50290d88361, 2
+2026-05-01 11:15:09 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Created MLflow run: 0a7373bfeacf4aee9acefe2acf382d33, 3
+2026-05-01 11:15:09 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Created MLflow run: 4ede084f5cd14026ba0de85f068cef22, 4
+2026-05-01 11:15:09 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Created MLflow run: e5f075f267b046988a2e81083c5803d0, 5
+2026-05-01 11:15:09 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Created MLflow run: de0966d691fc45ae961b6618c6f90aab, 6
+2026-05-01 11:15:09 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Created MLflow run: eeb6caa4782e42d48fc9da9095d11890, 7
+2026-05-01 11:15:09 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Created MLflow run: 6a2d96d357f844db9c63e20381a2791c, 8
+2026-05-01 11:15:09 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Created MLflow run: cf7367ced4454e9a9cf1cef0c1ad2307, 9
+2026-05-01 11:15:09 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Created MLflow run: c56d2f09b6be4068be3c4e2c0d8be8bf, 10
+2026-05-01 11:15:09 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Created MLflow run: b99443bcd59a41b6ac896385ab2662ef, 11
+2026-05-01 11:15:09 | Experiment | INFO | metric_rfmetric_manager.py:141 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Created MLflow run: 3df2bd46fb62479699600479fb1b9755, 12
+2026-05-01 11:15:09 | Controller | INFO | controller.py:931 | [exp1-sourcedocs-full-evaluation3_11:Controller] Initialized scheduler with 12 pipelines, 4 actors, 4 shards
+2026-05-01 11:15:09 | Controller | INFO | controller.py:1118 | [exp1-sourcedocs-full-evaluation3_11:Controller] Created experiment-wide rate limiter actor for 12 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-01 11:15:09 | Controller | INFO | controller.py:1124 | [exp1-sourcedocs-full-evaluation3_11:Controller] Starting multi-pipeline inference scheduling...
+2026-05-01 11:15:09 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 0 (1 batches)
+2026-05-01 11:15:37 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 0 (1 batches)
+2026-05-01 11:15:42 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 2 for shard 0 (1 batches)
+2026-05-01 11:15:45 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 3 for shard 0 (1 batches)
+2026-05-01 11:18:57 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 1 completed shard 0 (1 batches, 199.26s)
+2026-05-01 11:18:57 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 5 (Pipeline 5) on actor 0 for shard 0 (1 batches)
+2026-05-01 11:23:22 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 3 completed shard 0 (1 batches, 456.90s)
+2026-05-01 11:23:22 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 6 (Pipeline 6) on actor 2 for shard 0 (1 batches)
+2026-05-01 11:25:17 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 2 completed shard 0 (1 batches, 575.61s)
+2026-05-01 11:25:17 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 7 (Pipeline 7) on actor 1 for shard 0 (1 batches)
+2026-05-01 11:27:01 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 4 completed shard 0 (1 batches, 671.41s)
+2026-05-01 11:27:01 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 8 (Pipeline 8) on actor 3 for shard 0 (1 batches)
+2026-05-01 11:27:58 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 5 completed shard 0 (1 batches, 537.95s)
+2026-05-01 11:27:58 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 9 (Pipeline 9) on actor 0 for shard 0 (1 batches)
+2026-05-01 11:32:09 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 6 completed shard 0 (1 batches, 521.81s)
+2026-05-01 11:32:09 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 10 (Pipeline 10) on actor 2 for shard 0 (1 batches)
+2026-05-01 11:33:53 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 7 completed shard 0 (1 batches, 513.68s)
+2026-05-01 11:33:53 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 11 (Pipeline 11) on actor 1 for shard 0 (1 batches)
+2026-05-01 11:36:23 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 9 completed shard 0 (1 batches, 502.53s)
+2026-05-01 11:36:23 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 12 (Pipeline 12) on actor 0 for shard 0 (1 batches)
+2026-05-01 11:37:59 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 8 completed shard 0 (1 batches, 655.50s)
+2026-05-01 11:37:59 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 3 for shard 1 (1 batches)
+2026-05-01 11:41:10 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 11 completed shard 0 (1 batches, 435.36s)
+2026-05-01 11:41:10 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 1 (1 batches)
+2026-05-01 11:42:50 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 10 completed shard 0 (1 batches, 639.07s)
+2026-05-01 11:42:50 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 2 for shard 1 (1 batches)
+2026-05-01 11:45:19 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 1 completed shard 1 (1 batches, 435.31s)
+2026-05-01 11:45:19 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 3 for shard 1 (1 batches)
+2026-05-01 11:47:01 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 12 completed shard 0 (1 batches, 635.22s)
+2026-05-01 11:47:01 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 5 (Pipeline 5) on actor 0 for shard 1 (1 batches)
+2026-05-01 11:50:19 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 3 completed shard 1 (1 batches, 445.67s)
+2026-05-01 11:50:19 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 6 (Pipeline 6) on actor 2 for shard 1 (1 batches)
+2026-05-01 11:52:38 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 2 completed shard 1 (1 batches, 682.96s)
+2026-05-01 11:52:38 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 7 (Pipeline 7) on actor 1 for shard 1 (1 batches)
+2026-05-01 11:54:14 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 4 completed shard 1 (1 batches, 530.25s)
+2026-05-01 11:54:14 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 8 (Pipeline 8) on actor 3 for shard 1 (1 batches)
+2026-05-01 11:54:27 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 5 completed shard 1 (1 batches, 442.81s)
+2026-05-01 11:54:27 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 9 (Pipeline 9) on actor 0 for shard 1 (1 batches)
+2026-05-01 11:58:06 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 6 completed shard 1 (1 batches, 461.88s)
+2026-05-01 11:58:06 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 10 (Pipeline 10) on actor 2 for shard 1 (1 batches)
+2026-05-01 12:00:00 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 7 completed shard 1 (1 batches, 440.09s)
+2026-05-01 12:00:00 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 11 (Pipeline 11) on actor 1 for shard 1 (1 batches)
+2026-05-01 12:02:06 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 9 completed shard 1 (1 batches, 457.39s)
+2026-05-01 12:02:06 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 12 (Pipeline 12) on actor 0 for shard 1 (1 batches)
+2026-05-01 12:04:11 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 8 completed shard 1 (1 batches, 594.38s)
+2026-05-01 12:04:11 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 3 for shard 2 (1 batches)
+2026-05-01 12:08:26 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 11 completed shard 1 (1 batches, 503.88s)
+2026-05-01 12:08:26 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 2 (1 batches)
+2026-05-01 12:09:17 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 10 completed shard 1 (1 batches, 667.99s)
+2026-05-01 12:09:17 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 2 for shard 2 (1 batches)
+2026-05-01 12:12:09 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 12 completed shard 1 (1 batches, 600.72s)
+2026-05-01 12:12:09 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 0 for shard 2 (1 batches)
+2026-05-01 12:12:16 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 1 completed shard 2 (1 batches, 481.02s)
+2026-05-01 12:12:16 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 5 (Pipeline 5) on actor 3 for shard 2 (1 batches)
+2026-05-01 12:16:34 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 3 completed shard 2 (1 batches, 430.98s)
+2026-05-01 12:16:34 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 6 (Pipeline 6) on actor 2 for shard 2 (1 batches)
+2026-05-01 12:16:53 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 2 completed shard 2 (1 batches, 502.87s)
+2026-05-01 12:16:53 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 7 (Pipeline 7) on actor 1 for shard 2 (1 batches)
+2026-05-01 12:20:24 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 5 completed shard 2 (1 batches, 484.21s)
+2026-05-01 12:20:24 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 8 (Pipeline 8) on actor 3 for shard 2 (1 batches)
+2026-05-01 12:21:50 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 4 completed shard 2 (1 batches, 574.60s)
+2026-05-01 12:21:50 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 9 (Pipeline 9) on actor 0 for shard 2 (1 batches)
+2026-05-01 12:24:59 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 7 completed shard 2 (1 batches, 484.40s)
+2026-05-01 12:24:59 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 10 (Pipeline 10) on actor 1 for shard 2 (1 batches)
+2026-05-01 12:25:31 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 6 completed shard 2 (1 batches, 532.61s)
+2026-05-01 12:25:31 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 11 (Pipeline 11) on actor 2 for shard 2 (1 batches)
+2026-05-01 12:28:55 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 9 completed shard 2 (1 batches, 423.33s)
+2026-05-01 12:28:55 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 12 (Pipeline 12) on actor 0 for shard 2 (1 batches)
+2026-05-01 12:29:59 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 8 completed shard 2 (1 batches, 572.22s)
+2026-05-01 12:29:59 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 3 for shard 3 (1 batches)
+2026-05-01 12:33:49 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 11 completed shard 2 (1 batches, 496.25s)
+2026-05-01 12:33:49 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 2 for shard 3 (1 batches)
+2026-05-01 12:35:41 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 10 completed shard 2 (1 batches, 637.43s)
+2026-05-01 12:35:41 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 1 for shard 3 (1 batches)
+2026-05-01 12:38:18 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 12 completed shard 2 (1 batches, 560.51s)
+2026-05-01 12:38:18 | Controller | INFO | controller.py:1192 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 1 completed all 4 shards
+2026-05-01 12:38:19 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 1 completed shard 3 (1 batches, 496.69s)
+2026-05-01 12:38:19 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 0 for shard 3 (1 batches)
+2026-05-01 12:38:23 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 5 (Pipeline 5) on actor 3 for shard 3 (1 batches)
+2026-05-01 12:44:11 | Controller | INFO | controller.py:1192 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 2 completed all 4 shards
+2026-05-01 12:44:11 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 2 completed shard 3 (1 batches, 617.57s)
+2026-05-01 12:44:11 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 6 (Pipeline 6) on actor 2 for shard 3 (1 batches)
+2026-05-01 12:44:35 | Controller | INFO | controller.py:1192 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 3 completed all 4 shards
+2026-05-01 12:44:35 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 3 completed shard 3 (1 batches, 530.57s)
+2026-05-01 12:44:35 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 7 (Pipeline 7) on actor 1 for shard 3 (1 batches)
+2026-05-01 12:46:15 | Controller | INFO | controller.py:1192 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 5 completed all 4 shards
+2026-05-01 12:46:15 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 5 completed shard 3 (1 batches, 468.70s)
+2026-05-01 12:46:15 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 8 (Pipeline 8) on actor 3 for shard 3 (1 batches)
+2026-05-01 12:48:19 | Controller | INFO | controller.py:1192 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 4 completed all 4 shards
+2026-05-01 12:48:19 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 4 completed shard 3 (1 batches, 595.90s)
+2026-05-01 12:48:19 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 9 (Pipeline 9) on actor 0 for shard 3 (1 batches)
+2026-05-01 12:52:21 | Controller | INFO | controller.py:1192 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 6 completed all 4 shards
+2026-05-01 12:52:21 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 6 completed shard 3 (1 batches, 485.43s)
+2026-05-01 12:52:21 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 10 (Pipeline 10) on actor 2 for shard 3 (1 batches)
+2026-05-01 12:52:55 | Controller | INFO | controller.py:1192 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 7 completed all 4 shards
+2026-05-01 12:52:56 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 7 completed shard 3 (1 batches, 498.32s)
+2026-05-01 12:52:56 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 11 (Pipeline 11) on actor 1 for shard 3 (1 batches)
+2026-05-01 12:54:57 | Controller | INFO | controller.py:1192 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 9 completed all 4 shards
+2026-05-01 12:54:57 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 9 completed shard 3 (1 batches, 395.95s)
+2026-05-01 12:54:57 | Controller | INFO | controller.py:1422 | [exp1-sourcedocs-full-evaluation3_11:Controller] Scheduling pipeline 12 (Pipeline 12) on actor 0 for shard 3 (1 batches)
+2026-05-01 12:56:41 | Controller | INFO | controller.py:1192 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 8 completed all 4 shards
+2026-05-01 12:56:41 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 8 completed shard 3 (1 batches, 623.46s)
+2026-05-01 13:01:08 | Controller | INFO | controller.py:1192 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 11 completed all 4 shards
+2026-05-01 13:01:08 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 11 completed shard 3 (1 batches, 490.26s)
+2026-05-01 13:01:51 | Controller | INFO | controller.py:1192 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 10 completed all 4 shards
+2026-05-01 13:01:51 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 10 completed shard 3 (1 batches, 567.70s)
+2026-05-01 13:02:37 | Controller | INFO | controller.py:1192 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 12 completed all 4 shards
+2026-05-01 13:02:38 | Controller | INFO | controller.py:1299 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 12 completed shard 3 (1 batches, 457.92s)
+2026-05-01 13:02:38 | Controller | INFO | controller.py:1386 | [exp1-sourcedocs-full-evaluation3_11:Controller] All pipelines completed all shards!
+2026-05-01 13:02:38 | Controller | INFO | controller.py:695 | [exp1-sourcedocs-full-evaluation3_11:Controller] Computing final metrics for all pipelines...
+2026-05-01 13:02:38 | Experiment | INFO | metric_rfmetric_manager.py:190 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Ending run: 407af94115b44a2ba69e06cc29065959, 1 in rf_mlflow
+2026-05-01 13:02:38 | Experiment | WARNING | metric_mlflow_manager.py:101 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Run 407af94115b44a2ba69e06cc29065959 is not the active run, no local context to clear
+2026-05-01 13:02:38 | Controller | INFO | controller.py:853 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 1 (Pipeline 1) completed successfully
+2026-05-01 13:02:39 | Experiment | INFO | metric_rfmetric_manager.py:190 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Ending run: 3ffcae09c0f44a52b139d50290d88361, 2 in rf_mlflow
+2026-05-01 13:02:39 | Experiment | WARNING | metric_mlflow_manager.py:101 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Run 3ffcae09c0f44a52b139d50290d88361 is not the active run, no local context to clear
+2026-05-01 13:02:39 | Controller | INFO | controller.py:853 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 2 (Pipeline 2) completed successfully
+2026-05-01 13:02:39 | Experiment | INFO | metric_rfmetric_manager.py:190 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Ending run: 0a7373bfeacf4aee9acefe2acf382d33, 3 in rf_mlflow
+2026-05-01 13:02:39 | Experiment | WARNING | metric_mlflow_manager.py:101 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Run 0a7373bfeacf4aee9acefe2acf382d33 is not the active run, no local context to clear
+2026-05-01 13:02:39 | Controller | INFO | controller.py:853 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 3 (Pipeline 3) completed successfully
+2026-05-01 13:02:39 | Experiment | INFO | metric_rfmetric_manager.py:190 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Ending run: 4ede084f5cd14026ba0de85f068cef22, 4 in rf_mlflow
+2026-05-01 13:02:39 | Experiment | WARNING | metric_mlflow_manager.py:101 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Run 4ede084f5cd14026ba0de85f068cef22 is not the active run, no local context to clear
+2026-05-01 13:02:39 | Controller | INFO | controller.py:853 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 4 (Pipeline 4) completed successfully
+2026-05-01 13:02:40 | Experiment | INFO | metric_rfmetric_manager.py:190 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Ending run: e5f075f267b046988a2e81083c5803d0, 5 in rf_mlflow
+2026-05-01 13:02:40 | Experiment | WARNING | metric_mlflow_manager.py:101 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Run e5f075f267b046988a2e81083c5803d0 is not the active run, no local context to clear
+2026-05-01 13:02:40 | Controller | INFO | controller.py:853 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 5 (Pipeline 5) completed successfully
+2026-05-01 13:02:40 | Experiment | INFO | metric_rfmetric_manager.py:190 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Ending run: de0966d691fc45ae961b6618c6f90aab, 6 in rf_mlflow
+2026-05-01 13:02:40 | Experiment | WARNING | metric_mlflow_manager.py:101 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Run de0966d691fc45ae961b6618c6f90aab is not the active run, no local context to clear
+2026-05-01 13:02:40 | Controller | INFO | controller.py:853 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 6 (Pipeline 6) completed successfully
+2026-05-01 13:02:40 | Experiment | INFO | metric_rfmetric_manager.py:190 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Ending run: eeb6caa4782e42d48fc9da9095d11890, 7 in rf_mlflow
+2026-05-01 13:02:40 | Experiment | WARNING | metric_mlflow_manager.py:101 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Run eeb6caa4782e42d48fc9da9095d11890 is not the active run, no local context to clear
+2026-05-01 13:02:40 | Controller | INFO | controller.py:853 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 7 (Pipeline 7) completed successfully
+2026-05-01 13:02:40 | Experiment | INFO | metric_rfmetric_manager.py:190 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Ending run: 6a2d96d357f844db9c63e20381a2791c, 8 in rf_mlflow
+2026-05-01 13:02:40 | Experiment | WARNING | metric_mlflow_manager.py:101 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Run 6a2d96d357f844db9c63e20381a2791c is not the active run, no local context to clear
+2026-05-01 13:02:40 | Controller | INFO | controller.py:853 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 8 (Pipeline 8) completed successfully
+2026-05-01 13:02:41 | Experiment | INFO | metric_rfmetric_manager.py:190 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Ending run: cf7367ced4454e9a9cf1cef0c1ad2307, 9 in rf_mlflow
+2026-05-01 13:02:41 | Experiment | WARNING | metric_mlflow_manager.py:101 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Run cf7367ced4454e9a9cf1cef0c1ad2307 is not the active run, no local context to clear
+2026-05-01 13:02:41 | Controller | INFO | controller.py:853 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 9 (Pipeline 9) completed successfully
+2026-05-01 13:02:41 | Experiment | INFO | metric_rfmetric_manager.py:190 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Ending run: c56d2f09b6be4068be3c4e2c0d8be8bf, 10 in rf_mlflow
+2026-05-01 13:02:41 | Experiment | WARNING | metric_mlflow_manager.py:101 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Run c56d2f09b6be4068be3c4e2c0d8be8bf is not the active run, no local context to clear
+2026-05-01 13:02:41 | Controller | INFO | controller.py:853 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 10 (Pipeline 10) completed successfully
+2026-05-01 13:02:41 | Experiment | INFO | metric_rfmetric_manager.py:190 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Ending run: b99443bcd59a41b6ac896385ab2662ef, 11 in rf_mlflow
+2026-05-01 13:02:41 | Experiment | WARNING | metric_mlflow_manager.py:101 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Run b99443bcd59a41b6ac896385ab2662ef is not the active run, no local context to clear
+2026-05-01 13:02:41 | Controller | INFO | controller.py:853 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 11 (Pipeline 11) completed successfully
+2026-05-01 13:02:42 | Experiment | INFO | metric_rfmetric_manager.py:190 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Ending run: 3df2bd46fb62479699600479fb1b9755, 12 in rf_mlflow
+2026-05-01 13:02:42 | Experiment | WARNING | metric_mlflow_manager.py:101 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Run 3df2bd46fb62479699600479fb1b9755 is not the active run, no local context to clear
+2026-05-01 13:02:42 | Controller | INFO | controller.py:853 | [exp1-sourcedocs-full-evaluation3_11:Controller] Pipeline 12 (Pipeline 12) completed successfully
+2026-05-01 13:02:42 | ExperimentUtils | INFO | experiment_utils.py:180 | [exp1-sourcedocs-full-evaluation3_11:ExperimentUtils] Reset experiment states - marked ongoing pipelines, contexts, and tasks as failed
+2026-05-01 13:02:42 | ExperimentUtils | INFO | experiment_utils.py:188 | [exp1-sourcedocs-full-evaluation3_11:ExperimentUtils] Experiment marked as cancelled. Ongoing pipelines, contexts, and tasks have been marked as failed.
+2026-05-01 13:02:42 | ExperimentUtils | INFO | experiment_utils.py:154 | [exp1-sourcedocs-full-evaluation3_11:ExperimentUtils] Experiment exp1-sourcedocs-full-evaluation3_11 ended
+2026-05-01 13:02:45 | Experiment | INFO | experiment.py:574 | [exp1-sourcedocs-full-evaluation3_11:Experiment] All actors shut down
+2026-05-01 13:02:45 | Experiment | INFO | experiment.py:575 | [exp1-sourcedocs-full-evaluation3_11:Experiment] Dispatcher will automatically shut down (daemon thread)
