@@ -5,3 +5,11 @@ discussion1-rag-scifact.ipynb
 main2.py
 __pycache__/
 testing.json*
+
+# Large RAG experiment outputs (do not push)
+*_output.json
+experiment_output.json
+*.rows.jsonl
+
+# Core dumps (can be multi-GB; never commit)
+core
