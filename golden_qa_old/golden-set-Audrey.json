@@ -79,13 +79,10 @@
   },
   {
     "question_id": 9,
-    "question": "What four main tabs does the RapidFire AI dashboard's Experiments page include, and what does each tab show?",
-    "reference_answer": "The four main tabs are: Table (one row per run with its config and metadata), Chart (metrics plots across runs, including loss and any user-defined metrics), Experiment Log (continuously appended log of all RapidFire AI API operations), and Interactive Control (IC) Log (continuously appended log of IC Ops performed via the IC panels).",
+    "question": "Why are manually triggered Interactive Control (IC) operations limiting for scripted workflows, and what future Experiment API capability does RapidFire AI plan to offer instead?",
+    "reference_answer": "Triggering IC Ops manually from the dashboard only works when a human is in the loop, yet IC Ops are still useful in offline scripted settings (for example, stopping most runs with poor eval metrics and clone-modifying the best few). RapidFire AI plans to extend the Experiment API so users can supply custom semi-automation logic in code, driven by each run's metrics and progress.",
     "source_evidence": [
-      {"file": "dashboard.rst", "lines": [37, 45]},
-      {"file": "dashboard.rst", "lines": [48, 49]},
-      {"file": "dashboard.rst", "lines": [61, 63]},
-      {"file": "dashboard.rst", "lines": [92, 96]}
+      {"file": "issues.rst", "lines": [56, 65]}
     ]
   },
   {
