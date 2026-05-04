@@ -1,0 +1,10 @@
+Due to the fact that for some reason all our metrics files are being outputted to the same db, the db became too large to fit in a github update.
+As a result, me and my group have been keeping track of it in a google drive link, deleting/uploading the db as we progress since the experiment
+path doesn't seem to work properly and the metrics still output to the db file as per piazza post 197 (professor's) response notes may be a result
+of some env variables (which we weren't able to figure out the cause of).
+
+Drive link with the db file of all our results:
+(Note the larger one is mainly failed experiments or grid searches we did to narrow parameters, the smaller one is closer aligned to the 8 meaningful
+configurations and our final pipeline)
+
+https://drive.google.com/drive/folders/1V2Hm8LzGE3TGH7odWv8vz0WDVRysJDvp?usp=sharing
