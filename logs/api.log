@@ -1,37 +1,7 @@
-INFO 05-03 18:59:20 [importing.py:44] Triton is installed but 0 active driver(s) found (expected 1). Disabling Triton to prevent runtime errors.
-INFO 05-03 18:59:20 [importing.py:68] Triton not installed or not compatible; certain GPU-related functions will not be available.
-[2026-05-03 18:59:23 -0700] [1860] [INFO] Starting gunicorn 25.3.0
-[2026-05-03 18:59:23 -0700] [1860] [INFO] Listening at: http://127.0.0.1:8851 (1860)
-[2026-05-03 18:59:23 -0700] [1860] [INFO] Using worker: sync
-[2026-05-03 18:59:23 -0700] [2687] [INFO] Booting worker with pid: 2687
-[2026-05-03 18:59:23 -0700] [1860] [INFO] Control socket listening at /home/ostran/.gunicorn/gunicorn.ctl
-[2026-05-03 19:09:41 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:09:41 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:09:41 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:09:41 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:09:41 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:09:41 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:09:41 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:09:41 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:09:41 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:09:41 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:09:42 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:09:42 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:09:42 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:09:42 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:22:55 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:22:55 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:22:55 -0700] [1860] [INFO] Handling signal: winch
-[2026-05-03 19:43:53 -0700] [1860] [INFO] Handling signal: hup
-[2026-05-03 19:43:53 -0700] [1860] [INFO] Hang up: Master
-[2026-05-03 19:43:53 -0700] [1860] [INFO] Control socket listening at /home/ostran/.gunicorn/gunicorn.ctl
-[2026-05-03 19:43:53 -0700] [4540] [INFO] Booting worker with pid: 4540
-[2026-05-03 19:43:54 -0700] [1860] [WARNING] Worker (pid:2687) was sent SIGHUP!
-[2026-05-03 19:43:54 -0700] [1860] [INFO] Handling signal: ttou
-[2026-05-03 19:43:54 -0700] [1860] [INFO] Handling signal: hup
-[2026-05-03 19:43:54 -0700] [1860] [INFO] Hang up: Master
-[2026-05-03 19:43:54 -0700] [4540] [INFO] Worker exiting (pid: 4540)
-Initializing database tables...
-Database tables initialized successfully
-[2026-05-03 19:43:54 -0700] [1860] [INFO] Control socket listening at /home/ostran/.gunicorn/gunicorn.ctl
-[2026-05-03 19:43:54 -0700] [4542] [INFO] Booting worker with pid: 4542
+INFO 05-04 19:50:35 [importing.py:44] Triton is installed but 0 active driver(s) found (expected 1). Disabling Triton to prevent runtime errors.
+INFO 05-04 19:50:35 [importing.py:68] Triton not installed or not compatible; certain GPU-related functions will not be available.
+[2026-05-04 19:50:38 -0700] [18996] [INFO] Starting gunicorn 25.3.0
+[2026-05-04 19:50:38 -0700] [18996] [INFO] Listening at: http://127.0.0.1:8851 (18996)
+[2026-05-04 19:50:38 -0700] [18996] [INFO] Using worker: sync
+[2026-05-04 19:50:38 -0700] [19876] [INFO] Booting worker with pid: 19876
+[2026-05-04 19:50:38 -0700] [18996] [INFO] Control socket listening at /home/ayliang/.gunicorn/gunicorn.ctl
