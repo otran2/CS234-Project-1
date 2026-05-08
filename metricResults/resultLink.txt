@@ -4,7 +4,4 @@ path doesn't seem to work properly and the metrics still output to the db file a
 of some env variables (which we weren't able to figure out the cause of).
 
 Drive link with the db file of all our results:
-(Note the larger one is mainly failed experiments or grid searches we did to narrow parameters, the smaller one is closer aligned to the 8 meaningful
-configurations and our final pipeline)
-
 https://drive.google.com/drive/folders/1V2Hm8LzGE3TGH7odWv8vz0WDVRysJDvp?usp=sharing

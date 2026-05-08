@@ -1,0 +1,9 @@
+Due to the fact that we had so many logs, we elected to upload all the logs to the same drive our metricResults.
+This is due to the fact that gradescope would not allow us to upload too mnay files, preventing us from submitting. 
+Thus for ease and convenience we uploaded it to the same place as our metric results in a logs folder.
+In the logs folder are folders corresponding to the logs of each member of team 42.
+
+Additionally, the log of the 8 configs and the final run have been added as well to the logs folder in the repo for convenience.
+
+Drive link with the log files of all our results:
+https://drive.google.com/drive/folders/1V2Hm8LzGE3TGH7odWv8vz0WDVRysJDvp?usp=sharing
