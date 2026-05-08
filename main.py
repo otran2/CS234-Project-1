@@ -95,7 +95,7 @@ rag_cpu = RFLangChainRagSpec(
         "class": CrossEncoderReranker,
         "model_name": "BAAI/bge-reranker-v2-m3",
         "model_kwargs": {"device": "cpu"},
-        "top_n": 2,
+        "top_n": 1,
     },
     enable_gpu_search=False,
 )
