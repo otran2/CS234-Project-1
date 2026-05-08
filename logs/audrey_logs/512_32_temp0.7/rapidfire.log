@@ -1,0 +1,128 @@
+2026-05-06 14:23:36 | Experiment | INFO | experiment.py:165 | [512_32_temp0.7:Experiment] Experiment 512_32_temp0.7 created with Experiment ID: 36 at /home/ayliang/rapidfireai/rapidfire_experiments/512_32_temp0.7
+2026-05-06 14:23:54 | Experiment | INFO | metric_rfmetric_manager.py:55 | [512_32_temp0.7:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-06 14:23:54 | Experiment | INFO | metric_rfmetric_manager.py:119 | [512_32_temp0.7:Experiment] Creating MLflow experiment: 512_32_temp0.7
+2026-05-06 14:23:54 | Experiment | INFO | experiment.py:210 | [512_32_temp0.7:Experiment] Initialized MetricLogger experiment: 32
+2026-05-06 14:23:54 | Experiment | INFO | experiment.py:226 | [512_32_temp0.7:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-06 14:25:09 | ExperimentUtils | INFO | experiment_utils.py:180 | [512_32_temp0.7:ExperimentUtils] Reset experiment states - marked ongoing pipelines, contexts, and tasks as failed
+2026-05-06 14:25:09 | ExperimentUtils | INFO | experiment_utils.py:188 | [512_32_temp0.7:ExperimentUtils] Experiment marked as cancelled. Ongoing pipelines, contexts, and tasks have been marked as failed.
+2026-05-06 14:25:09 | Experiment | INFO | experiment.py:165 | [512_32_temp0.7:Experiment] Experiment 512_32_temp0.7 is currently running. Returning the same experiment object.
+2026-05-06 14:25:09 | Experiment | INFO | experiment.py:165 | [512_32_temp0.7:Experiment] Any running tasks have been cancelled.
+2026-05-06 14:25:28 | Experiment | INFO | metric_rfmetric_manager.py:55 | [512_32_temp0.7:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-06 14:25:28 | Experiment | INFO | metric_rfmetric_manager.py:119 | [512_32_temp0.7:Experiment] Creating MLflow experiment: 512_32_temp0.7
+2026-05-06 14:25:28 | Experiment | WARNING | experiment.py:212 | [512_32_temp0.7:Experiment] Failed to initialize MetricLogger: RESOURCE_ALREADY_EXISTS: Experiment(name=512_32_temp0.7) already exists. Error: (sqlite3.IntegrityError) UNIQUE constraint failed: experiments.workspace, experiments.name
+[SQL: INSERT INTO experiments (name, workspace, artifact_location, lifecycle_stage, creation_time, last_update_time) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('512_32_temp0.7', 'default', '', 'active', 1778102728916, 1778102728916)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj). MetricLogger logging will be disabled.
+2026-05-06 14:25:28 | Experiment | INFO | experiment.py:226 | [512_32_temp0.7:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-06 14:25:29 | Experiment | WARNING | experiment.py:381 | [512_32_temp0.7:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-06 14:25:29 | Experiment | INFO | experiment.py:383 | [512_32_temp0.7:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-06 14:25:29 | Experiment | INFO | experiment.py:392 | [512_32_temp0.7:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-06 14:25:29 | Controller | INFO | controller.py:895 | [512_32_temp0.7:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-06 14:25:29 | Controller | INFO | controller.py:900 | [512_32_temp0.7:Controller] Received 2 pipeline configuration(s)
+2026-05-06 14:25:29 | Controller | INFO | controller.py:309 | [512_32_temp0.7:Controller] Found 1 unique RAG context(s)
+2026-05-06 14:25:29 | Controller | INFO | controller.py:320 | [512_32_temp0.7:Controller] Will build new context df253207...
+2026-05-06 14:25:29 | Controller | INFO | controller.py:346 | [512_32_temp0.7:Controller] Building 1 context(s) in parallel...
+2026-05-06 14:25:29 | Controller | INFO | controller.py:373 | [512_32_temp0.7:Controller] Creating 1 DocProcessingActor(s) for parallel processing
+2026-05-06 14:25:31 | Controller | INFO | controller.py:461 | [512_32_temp0.7:Controller] Submitted 1 build task(s) in parallel
+2026-05-06 14:25:53 | DocProcessingActor | INFO | doc_actor.py:59 | [512_32_temp0.7:DocProcessingActor] DocProcessingActor initialized
+2026-05-06 14:25:55 | DocProcessingActor | INFO | doc_actor.py:96 | [512_32_temp0.7:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-06 14:25:55 | DocProcessingActor | INFO | doc_actor.py:107 | [512_32_temp0.7:DocProcessingActor] Building document index...
+2026-05-06 14:25:55 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 14:26:00 | DocProcessingActor | INFO | doc_actor.py:109 | [512_32_temp0.7:DocProcessingActor] Document index built successfully
+2026-05-06 14:26:00 | DocProcessingActor | INFO | doc_actor.py:134 | [512_32_temp0.7:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-06 14:26:00 | DocProcessingActor | INFO | doc_actor.py:144 | [512_32_temp0.7:DocProcessingActor] FAISS index serialized: 606720 bytes
+2026-05-06 14:26:00 | DocProcessingActor | INFO | doc_actor.py:189 | [512_32_temp0.7:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-06 14:26:00 | Controller | INFO | controller.py:482 | [512_32_temp0.7:Controller] Built context 1 (df253207...) successfully in 30.92s
+2026-05-06 14:26:00 | Controller | INFO | controller.py:523 | [512_32_temp0.7:Controller] Completed parallel context building for 1 context(s)
+2026-05-06 14:26:00 | Controller | INFO | controller.py:920 | [512_32_temp0.7:Controller] Created 4 query processing actors (generic pool)
+2026-05-06 14:26:00 | Controller | INFO | controller.py:931 | [512_32_temp0.7:Controller] Initialized scheduler with 2 pipelines, 4 actors, 4 shards
+2026-05-06 14:26:00 | Controller | INFO | controller.py:1118 | [512_32_temp0.7:Controller] Created experiment-wide rate limiter actor for 2 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-06 14:26:00 | Controller | INFO | controller.py:1124 | [512_32_temp0.7:Controller] Starting multi-pipeline inference scheduling...
+2026-05-06 14:26:00 | Controller | INFO | controller.py:1422 | [512_32_temp0.7:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 0 (1 batches)
+2026-05-06 14:26:25 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [512_32_temp0.7:QueryProcessingActor-0] Initializing new inference engine (config hash: e2a5a31f)
+2026-05-06 14:26:25 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [512_32_temp0.7:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 14:26:25 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [512_32_temp0.7:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 14:26:25 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [512_32_temp0.7:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-06 14:26:25 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [512_32_temp0.7:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-06 14:26:25 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [512_32_temp0.7:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-06 14:26:25 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 14:26:27 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [512_32_temp0.7:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-06 14:26:27 | Controller | INFO | controller.py:1422 | [512_32_temp0.7:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 0 (1 batches)
+2026-05-06 14:26:28 | QueryProcessingActor-1 | INFO | query_actor.py:165 | [512_32_temp0.7:QueryProcessingActor-1] Initializing new inference engine (config hash: e2a5a31f)
+2026-05-06 14:26:28 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [512_32_temp0.7:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 14:26:28 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [512_32_temp0.7:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 14:26:28 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [512_32_temp0.7:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-06 14:26:28 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [512_32_temp0.7:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-06 14:26:28 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [512_32_temp0.7:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-06 14:26:28 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 14:26:30 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [512_32_temp0.7:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-06 14:37:21 | Controller | INFO | controller.py:1299 | [512_32_temp0.7:Controller] Pipeline 1 completed shard 0 (1 batches, 653.25s)
+2026-05-06 14:37:21 | Controller | INFO | controller.py:1422 | [512_32_temp0.7:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 1 (1 batches)
+2026-05-06 14:37:21 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [512_32_temp0.7:QueryProcessingActor-0] Reusing existing inference engine (config hash: e2a5a31f)
+2026-05-06 14:37:21 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [512_32_temp0.7:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 14:37:21 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [512_32_temp0.7:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 14:37:21 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [512_32_temp0.7:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-06 14:37:21 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [512_32_temp0.7:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-06 14:37:21 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [512_32_temp0.7:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-06 14:37:21 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 14:37:23 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [512_32_temp0.7:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-06 14:43:12 | Controller | INFO | controller.py:1299 | [512_32_temp0.7:Controller] Pipeline 2 completed shard 0 (1 batches, 1002.50s)
+2026-05-06 14:43:12 | Controller | INFO | controller.py:1422 | [512_32_temp0.7:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 1 (1 batches)
+2026-05-06 14:43:12 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [512_32_temp0.7:QueryProcessingActor-1] Reusing existing inference engine (config hash: e2a5a31f)
+2026-05-06 14:43:13 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [512_32_temp0.7:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 14:43:13 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [512_32_temp0.7:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 14:43:13 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [512_32_temp0.7:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-06 14:43:13 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [512_32_temp0.7:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-06 14:43:13 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [512_32_temp0.7:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-06 14:43:13 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 14:43:15 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [512_32_temp0.7:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-06 14:47:08 | Controller | INFO | controller.py:1299 | [512_32_temp0.7:Controller] Pipeline 1 completed shard 1 (1 batches, 584.81s)
+2026-05-06 14:47:08 | Controller | INFO | controller.py:1422 | [512_32_temp0.7:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 2 (1 batches)
+2026-05-06 14:47:08 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [512_32_temp0.7:QueryProcessingActor-0] Reusing existing inference engine (config hash: e2a5a31f)
+2026-05-06 14:47:08 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [512_32_temp0.7:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 14:47:08 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [512_32_temp0.7:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 14:47:08 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [512_32_temp0.7:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-06 14:47:08 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [512_32_temp0.7:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-06 14:47:08 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [512_32_temp0.7:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-06 14:47:08 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 14:47:10 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [512_32_temp0.7:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-06 14:56:11 | Controller | INFO | controller.py:1299 | [512_32_temp0.7:Controller] Pipeline 1 completed shard 2 (1 batches, 540.79s)
+2026-05-06 14:56:11 | Controller | INFO | controller.py:1422 | [512_32_temp0.7:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 3 (1 batches)
+2026-05-06 14:56:11 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [512_32_temp0.7:QueryProcessingActor-0] Reusing existing inference engine (config hash: e2a5a31f)
+2026-05-06 14:56:11 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [512_32_temp0.7:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 14:56:11 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [512_32_temp0.7:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 14:56:11 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [512_32_temp0.7:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-06 14:56:11 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [512_32_temp0.7:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-06 14:56:11 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [512_32_temp0.7:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-06 14:56:11 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 14:56:13 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [512_32_temp0.7:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-06 14:58:02 | Controller | INFO | controller.py:1299 | [512_32_temp0.7:Controller] Pipeline 2 completed shard 1 (1 batches, 887.23s)
+2026-05-06 14:58:02 | Controller | INFO | controller.py:1422 | [512_32_temp0.7:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 2 (1 batches)
+2026-05-06 14:58:02 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [512_32_temp0.7:QueryProcessingActor-1] Reusing existing inference engine (config hash: e2a5a31f)
+2026-05-06 14:58:02 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [512_32_temp0.7:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 14:58:02 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [512_32_temp0.7:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 14:58:02 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [512_32_temp0.7:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-06 14:58:02 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [512_32_temp0.7:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-06 14:58:02 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [512_32_temp0.7:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-06 14:58:02 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 14:58:04 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [512_32_temp0.7:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-06 15:05:01 | Controller | INFO | controller.py:1192 | [512_32_temp0.7:Controller] Pipeline 1 completed all 4 shards
+2026-05-06 15:05:01 | Controller | INFO | controller.py:1299 | [512_32_temp0.7:Controller] Pipeline 1 completed shard 3 (1 batches, 528.19s)
+2026-05-06 15:12:19 | Controller | INFO | controller.py:1299 | [512_32_temp0.7:Controller] Pipeline 2 completed shard 2 (1 batches, 855.07s)
+2026-05-06 15:12:19 | Controller | INFO | controller.py:1422 | [512_32_temp0.7:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 0 for shard 3 (1 batches)
+2026-05-06 15:12:19 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [512_32_temp0.7:QueryProcessingActor-0] Reusing existing inference engine (config hash: e2a5a31f)
+2026-05-06 15:12:19 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [512_32_temp0.7:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 15:12:19 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [512_32_temp0.7:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 15:12:19 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [512_32_temp0.7:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-06 15:12:19 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [512_32_temp0.7:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-06 15:12:19 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [512_32_temp0.7:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-06 15:12:19 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 15:12:22 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [512_32_temp0.7:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-06 15:27:10 | Controller | INFO | controller.py:1192 | [512_32_temp0.7:Controller] Pipeline 2 completed all 4 shards
+2026-05-06 15:27:10 | Controller | INFO | controller.py:1299 | [512_32_temp0.7:Controller] Pipeline 2 completed shard 3 (1 batches, 888.65s)
+2026-05-06 15:27:10 | Controller | INFO | controller.py:1386 | [512_32_temp0.7:Controller] All pipelines completed all shards!
+2026-05-06 15:27:10 | Controller | INFO | controller.py:695 | [512_32_temp0.7:Controller] Computing final metrics for all pipelines...
+2026-05-06 15:27:10 | Controller | INFO | controller.py:853 | [512_32_temp0.7:Controller] Pipeline 1 (Pipeline 1) completed successfully
+2026-05-06 15:27:10 | Controller | INFO | controller.py:853 | [512_32_temp0.7:Controller] Pipeline 2 (Pipeline 2) completed successfully
+2026-05-06 15:27:13 | Experiment | INFO | experiment.py:574 | [512_32_temp0.7:Experiment] All actors shut down
+2026-05-06 15:27:13 | Experiment | INFO | experiment.py:575 | [512_32_temp0.7:Experiment] Dispatcher will automatically shut down (daemon thread)

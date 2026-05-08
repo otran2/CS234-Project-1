@@ -1,0 +1,133 @@
+2026-05-07 21:05:50 | Experiment | INFO | experiment.py:165 | [validcompare_1:Experiment] An experiment with the same name already exists. Created a new experiment 'validcompare_1' with Experiment ID: 49 at /home/ayliang/rapidfireai/rapidfire_experiments/validcompare_1
+2026-05-07 21:06:13 | Experiment | INFO | metric_rfmetric_manager.py:55 | [validcompare_1:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-07 21:06:13 | Experiment | INFO | metric_rfmetric_manager.py:119 | [validcompare_1:Experiment] Creating MLflow experiment: validcompare_1
+2026-05-07 21:06:13 | Experiment | INFO | experiment.py:210 | [validcompare_1:Experiment] Initialized MetricLogger experiment: 44
+2026-05-07 21:06:13 | Experiment | INFO | experiment.py:226 | [validcompare_1:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-07 21:06:13 | Experiment | WARNING | experiment.py:381 | [validcompare_1:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-07 21:06:13 | Experiment | INFO | experiment.py:383 | [validcompare_1:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-07 21:06:13 | Experiment | INFO | experiment.py:392 | [validcompare_1:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-07 21:06:14 | Controller | INFO | controller.py:895 | [validcompare_1:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-07 21:06:14 | Controller | INFO | controller.py:900 | [validcompare_1:Controller] Received 1 pipeline configuration(s)
+2026-05-07 21:06:14 | Controller | INFO | controller.py:309 | [validcompare_1:Controller] Found 1 unique RAG context(s)
+2026-05-07 21:06:14 | Controller | INFO | controller.py:320 | [validcompare_1:Controller] Will build new context 2d05101d...
+2026-05-07 21:06:14 | Controller | INFO | controller.py:346 | [validcompare_1:Controller] Building 1 context(s) in parallel...
+2026-05-07 21:06:14 | Controller | INFO | controller.py:373 | [validcompare_1:Controller] Creating 1 DocProcessingActor(s) for parallel processing
+2026-05-07 21:06:16 | Controller | INFO | controller.py:461 | [validcompare_1:Controller] Submitted 1 build task(s) in parallel
+2026-05-07 21:06:44 | DocProcessingActor | INFO | doc_actor.py:59 | [validcompare_1:DocProcessingActor] DocProcessingActor initialized
+2026-05-07 21:06:47 | DocProcessingActor | INFO | doc_actor.py:96 | [validcompare_1:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-07 21:06:47 | DocProcessingActor | INFO | doc_actor.py:107 | [validcompare_1:DocProcessingActor] Building document index...
+2026-05-07 21:06:48 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 21:06:50 | DocProcessingActor | ERROR | doc_actor.py:198 | [validcompare_1:DocProcessingActor] Failed to build RAG components: BadRequestError: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 25.38238097999996, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}
+Traceback (most recent call last):
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/actors/doc_actor.py", line 108, in build_rag_components
+    rag_spec.build_pipeline()
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/rag/rag_pipeline.py", line 415, in build_pipeline
+    self.vector_store = self._create_vector_store(type=self.vector_store_cfg.get("type", "faiss"))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/rag/rag_pipeline.py", line 254, in _create_vector_store
+    hnsw_index = faiss.IndexHNSWFlat(len(self.embedding.embed_query("RapidFire AI is awesome!")), M)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 801, in embed_query
+    return self.embed_documents([text], **kwargs)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 740, in embed_documents
+    response = self.client.create(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/openai/resources/embeddings.py", line 136, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 25.38238097999996, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}
+2026-05-07 21:06:50 | Controller | ERROR | controller.py:496 | [validcompare_1:Controller] Failed to build context 1 (2d05101d...)
+Traceback (most recent call last):
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/scheduling/controller.py", line 472, in build_rag_components
+    components = ray.get(task["future"])
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 22, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 107, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/worker.py", line 2980, in get
+    values, debugger_breakpoint = worker.get_objects(
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/worker.py", line 1023, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(RuntimeError): [36mray::DocProcessingActor.build_rag_components()[39m (pid=33782, ip=10.39.38.167, actor_id=082d32ce2a6a014e337c40b001000000, repr=<rapidfireai.evals.actors.doc_actor.DocProcessingActor object at 0x7f74ed6d14c0>)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/actors/doc_actor.py", line 202, in build_rag_components
+    raise RuntimeError(
+RuntimeError: Failed to build RAG components: BadRequestError: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 25.38238097999996, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}
+2026-05-07 21:06:50 | Controller | ERROR | controller.py:350 | [validcompare_1:Controller] Failed to build contexts in parallel
+Traceback (most recent call last):
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/scheduling/controller.py", line 472, in build_rag_components
+    components = ray.get(task["future"])
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 22, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 107, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/worker.py", line 2980, in get
+    values, debugger_breakpoint = worker.get_objects(
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/worker.py", line 1023, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(RuntimeError): [36mray::DocProcessingActor.build_rag_components()[39m (pid=33782, ip=10.39.38.167, actor_id=082d32ce2a6a014e337c40b001000000, repr=<rapidfireai.evals.actors.doc_actor.DocProcessingActor object at 0x7f74ed6d14c0>)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/actors/doc_actor.py", line 202, in build_rag_components
+    raise RuntimeError(
+RuntimeError: Failed to build RAG components: BadRequestError: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 25.38238097999996, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/scheduling/controller.py", line 348, in _setup_context_generators
+    self.build_rag_components(contexts_to_build, db)
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/scheduling/controller.py", line 514, in build_rag_components
+    raise RuntimeError(f"Context creation failed for context {context_id}") from e
+RuntimeError: Context creation failed for context 1
+2026-05-07 21:06:50 | Experiment | ERROR | experiment.py:423 | [validcompare_1:Experiment] Error running multi-config experiment
+Traceback (most recent call last):
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/scheduling/controller.py", line 472, in build_rag_components
+    components = ray.get(task["future"])
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 22, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 107, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/worker.py", line 2980, in get
+    values, debugger_breakpoint = worker.get_objects(
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/worker.py", line 1023, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(RuntimeError): [36mray::DocProcessingActor.build_rag_components()[39m (pid=33782, ip=10.39.38.167, actor_id=082d32ce2a6a014e337c40b001000000, repr=<rapidfireai.evals.actors.doc_actor.DocProcessingActor object at 0x7f74ed6d14c0>)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/actors/doc_actor.py", line 202, in build_rag_components
+    raise RuntimeError(
+RuntimeError: Failed to build RAG components: BadRequestError: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 25.38238097999996, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/experiment.py", line 412, in run_evals
+    results = self.controller.run_multi_pipeline_inference(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/scheduling/controller.py", line 903, in run_multi_pipeline_inference
+    self._setup_context_generators(config_leaves, db)
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/scheduling/controller.py", line 348, in _setup_context_generators
+    self.build_rag_components(contexts_to_build, db)
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/scheduling/controller.py", line 514, in build_rag_components
+    raise RuntimeError(f"Context creation failed for context {context_id}") from e
+RuntimeError: Context creation failed for context 1

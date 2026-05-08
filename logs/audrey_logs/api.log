@@ -1,0 +1,17 @@
+INFO 05-07 20:16:21 [importing.py:44] Triton is installed but 0 active driver(s) found (expected 1). Disabling Triton to prevent runtime errors.
+INFO 05-07 20:16:21 [importing.py:68] Triton not installed or not compatible; certain GPU-related functions will not be available.
+[2026-05-07 20:16:25 -0700] [22162] [INFO] Starting gunicorn 25.3.0
+[2026-05-07 20:16:25 -0700] [22162] [INFO] Listening at: http://127.0.0.1:8851 (22162)
+[2026-05-07 20:16:25 -0700] [22162] [INFO] Using worker: sync
+[2026-05-07 20:16:25 -0700] [23072] [INFO] Booting worker with pid: 23072
+[2026-05-07 20:16:25 -0700] [22162] [INFO] Control socket listening at /home/ayliang/.gunicorn/gunicorn.ctl
+[2026-05-07 21:09:21 -0700] [22162] [INFO] Handling signal: winch
+[2026-05-07 21:09:21 -0700] [22162] [INFO] Handling signal: winch
+[2026-05-07 21:26:07 -0700] [22162] [INFO] Handling signal: winch
+[2026-05-07 21:26:09 -0700] [22162] [INFO] Handling signal: winch
+[2026-05-07 21:28:14 -0700] [22162] [INFO] Handling signal: winch
+[2026-05-07 22:41:15 -0700] [22162] [INFO] Handling signal: winch
+[2026-05-07 22:41:15 -0700] [22162] [INFO] Handling signal: winch
+[2026-05-07 22:52:21 -0700] [22162] [INFO] Handling signal: winch
+[2026-05-07 22:52:21 -0700] [22162] [INFO] Handling signal: winch
+[2026-05-07 22:52:21 -0700] [22162] [INFO] Handling signal: winch

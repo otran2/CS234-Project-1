@@ -1,0 +1,170 @@
+[
+  {
+    "question_id": 1,
+    "answer": "The two supported knob set generators are **`List()`** and **`Range()`**.",
+    "retrieved_context": "source: sourcedocs/sourcedocs/configs.rst; start_index: 0:\nAPI: Multi-Config Specification\n===============\n\nThe core value of RapidFire AI is in the ability to launch, compare, and dynamically \ncontrol multiple configurations (configs) in one go. \nIt is already common practice in AI to do hyperparameter sweeps via grid search, \nrandom search, or AutoML heuristics to generate knob values. \n\nRapidFire AI generalizes that notion to any type of config knobs, not just  \nregular hyperparameters, but also base model architectures, prompt schemes, \nLoRA adapters, and optimizers (for training), as well as data chunking, embedding, \nretrieval, reranking, generation, and prompt schemes (for RAG) and any other \nuser-defined knobs. \n\n\nKnob Set Generators\n-------\n\nTo create a multi-config specification, you need two things: **knob set generators** for \nknob values and **config group generators** that take a config with set-valued knobs \nto generate groups of full configs.\n\nWe currently support two common knob set generators: :func:`List()` for a discrete \nset of values and :func:`Range()` for sampling from a continuous value interval.\n\n\n.. py:function:: List(values: List[Any])\n\n\t:param values: List of discrete values for a knob; all values must be the same python data type.\n\t:type values: List[Any]\n\n\n.. py:function:: Range(start: int | float, end: int | float, dtype: str = \"int\" | \"float\")\n\n\t:param start: Lower bound of range interval.\n\t:type start: int | float\n\n\t:param end: Upper bound of range interval.\n\t:type end: int | float\n\n\t:param dtype: Data type of value to be sampled, either :code:`\"int\"` or :code:`\"float\"`.\n\t:type dtype: str\n\n\n**Notes:**\n\nAs of this writing, :func:`Range()` performs uniform sampling within the given interval. \nWe plan to continue expanding this API and add more functionality on this front based on feedback.",
+    "sources": [
+      {
+        "file": "configs.rst",
+        "lines": [
+          1,
+          48
+        ]
+      }
+    ]
+  },
+  {
+    "question_id": 2,
+    "answer": "RapidFire\u202fAI\u2019s adaptive execution engine breaks a multi\u2011config run into many random \u201cchunks\u201d (shards) of the training or evaluation data and processes **one shard at a time across all configurations**, cycling through the shards repeatedly. This lets the engine:\n\n* **Swap adapters and base models on\u2011the\u2011fly** (using shared\u2011memory caching that can spill to disk), so multiple configs share a single GPU/CPU rather than waiting for a whole\u2011dataset pass.\n* Run the configs **concurrently** on each shard, giving early visibility of learning behavior for every config after only a few shards.\n* Provide **real\u2011time metric estimates** for evals via online aggregation, converging to exact results as more shards are processed.\n* Keep the swapping overhead very low (under\u202f5\u202f% of total runtime).\n\nIn contrast, traditional sequential execution runs each configuration **to completion on the full dataset** before starting the next one, resulting in strictly one\u2011config\u2011at\u2011a\u2011time processing, delayed metric feedback, and no interruptible or concurrent handling of multiple configs.",
+    "retrieved_context": "source: sourcedocs/sourcedocs/difference.rst; start_index: 0:\nWhat Makes RapidFire AI Different?\n==============\n\nThe crux of RapidFire AI's difference is in its *adaptive execution engine*: it enables \"interruptible\"\nexecution of configurations across GPUs/CPUs. To do so, it first shards the training and/or evaluation \ndataset randomly into \"chunks\" (also called \"shards\").\nThen instead of waiting for a run to see the whole dataset for all epochs (for SFT/RFT) or for full \neval metrics calculation (for RAG evals), RapidFire AI schedules all runs on *one shard at a time*, \nand then cycles through all shards.\n\nSuppose you have only 1 GPU, say an A100 or H100, and you want to run SFT on a Llama model. \nCurrent tools force you to run one config after another *sequentially* as shown in the (simplified) illustration below. \nIn contrast, by operating on shards, RapidFire AI offers a far more concurrent learning experience by \nautomatically *swapping* adapters (and base models, if needed) across GPU(s) and DRAM. \nIt does this via efficient shared memory-based caching mechanisms that can spill to disk when needed.\n\n.. image:: /images/gantt-1gpu.png\n   :width: 800px\n\nIn the above figure, all 3 model configs are shown for 1 epoch. RapidFire AI is set to use 4 chunks.\nSo, before model config 3 (M3) even starts in the sequential approach, RapidFire AI already shows you \nthe learning behaviors of all 3 configs on the first 2-3 chunks. \nThe overhead of swapping, represented by the thin gray box, is minimal, less than 5% of the runtime,\nas per our measurements--thanks to our new efficient memory management techniques.\n\nFor inference evals for RAG/context engineering, such sharded execution means RapidFire AI surfaces eval metrics \nsooner based on a statistical technique known as *online aggregation* from the database systems literature.\nBasically, see estimated values and confidence intervals for all eval metrics in real time as the shards \nget processed, ultimately converging to the exact metrics on the full dataset.\n\n\nThe Power of Dynamic Real-Time Control\n------------",
+    "sources": [
+      {
+        "file": "difference.rst",
+        "lines": [
+          1,
+          33
+        ]
+      }
+    ]
+  },
+  {
+    "question_id": 3,
+    "answer": "The Experiment constructor accepts these parameters:\n\n- **experiment_name** (`str`) \u2013 required; the unique name for the experiment.  \n- **mode** (`str`, default\u202f`\"fit\"`) \u2013 the experiment mode, either `\"fit\"` or `\"eval\"`.  \n- **experiments_path** (`str`, default\u202f`\"./rapidfire_experiments\"`) \u2013 optional path to the folder where the experiment\u2019s artifacts are stored.",
+    "retrieved_context": "source: sourcedocs/sourcedocs/experiment.rst; start_index: 0:\nAPI: Experiment \n================\n\nOverview\n--------\n\nAn \"Experiment\" is the central concept in RapidFire AI to organize and streamline your multi-config AI experimentation. \n\nEvery experiment must have a unique user-given name that is used to collate plots on the ML metrics dashboard and for saving its artifacts. \nIf you (mistakenly) reuse a previous experiment name, RapidFire AI will append a suffix akin to what filesystems do.\n\nThe Experiment class has the functions and semantics detailed below. \nAs of this writing, an experiment can operate in either :code:`\"fit\"` mode or :code:`\"eval\"` mode but not both. \nWe plan to allow both modes in the same experiment very soon.\n\n.. note::\n  Only one function in this class can be run at a time. If you interrupt a long-running function, \n  say, :func:`run_fit()` or :func:`run_evals()`, wait for up to 2min for the Python threads to be \n  cleaned up before running another function.\n\n\nExperiment Constructor \n------\n\nConstructor to instantiate a new experiment. \n\n.. py:function:: __init__(self, experiment_name: str, mode: str = \"fit\", experiments_path: str = \"./rapidfire_experiments\") -> None\n\n\t:param experiment_name: Unique name for this experiment\n\t:type experiment_name: str\n\t\n\t:param mode: Mode of this experiment, either :code:`\"fit\"` or :code:`\"eval\"`; default is :code:`\"fit\"`\n\t:type mode: str\n\t\n\t:param experiments_path: Path to a folder to store this experiment's artifacts. Default is ``\"./rapidfire_experiments\"``)\n\t:type experiments_path: str, optional \n\n\t:return: None\n\t:rtype: None\n\n**Example:**\n\n.. code-block:: python\n\n\t# Based on SFT chatbot tutorial notebook\n\t>>> experiment = Experiment(experiment_name=\"exp1-chatqa\", mode=\"fit\")\n\tExperiment exp1-chatqa created ...",
+    "sources": [
+      {
+        "file": "experiment.rst",
+        "lines": [
+          1,
+          47
+        ]
+      }
+    ]
+  },
+  {
+    "question_id": 4,
+    "answer": "ERROR: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 25.38079712999996, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}",
+    "retrieved_context": "source: sourcedocs/sourcedocs/configs.rst; start_index: 1795:\nNote that the return types of the knob set generators are internal to RapidFire AI and \nthey are usable only within the context of the config group generators below.\n\n\n\nConfig Group Generators\n-----\n\nWe currently support two common config group generators: :func:`RFGridSearch()` for grid search \nand :func:`RFRandomSearch()` for random search. \n\nMore support for AutoML heuristics such as SHA, HyperOpt, as well as an integration with \nthe popular AutoML library Optuna are coming soon. \nLikewise for RAG/context engineering, we also plan to support the AutoML heuristic syftr.\n\n\n.. py:function:: RFGridSearch(configs: Dict[str, Any] | List[Dict[str, Any]], trainer_type: str = \"SFT\" | \"DPO\" | \"GRPO\" | None)\n\n\t:param configs: A config dictionary with :func:`List()` for at least one knob; can be a list of such config dictionaries too.\n\t:type configs: Dict[str, Any] | List[Dict[str, Any]]\n\n\t:param trainer_type: The fine-tuning/post-training control flow to use: \"SFT\", \"DPO\", or \"GRPO\". Skip this argument for :func:`run_evals()`.\n\t:type trainer_type: str, optional \n\n\n.. py:function:: RFRandomSearch(configs: Dict[str, Any], trainer_type: str = \"SFT\" | \"DPO\" | \"GRPO\" | None, num_runs: int, seed: int = 42)\n\n\t:param configs: A config dictionary with :func:`List()` or :func:`Range()` for at least one knob.\n\t:type configs: Dict[str, Any]\n\n\t:param trainer_type: The fine-tuning/post-training control flow to use: \"SFT\", \"DPO\", or \"GRPO\". Skip this argument for :func:`run_evals()`.\n\t:type trainer_type: str, optional",
+    "sources": [
+      {
+        "file": "configs.rst",
+        "lines": [
+          50,
+          81
+        ]
+      }
+    ]
+  },
+  {
+    "question_id": 5,
+    "answer": "1. **Ensure you have Python\u202f3.12+** on the machine (verify with `python3 --version`).  \n2. **Create and activate a virtual environment**:  \n   ```bash\n   python3 -m venv .venv\n   source .venv/bin/activate\n   ```  \n3. **Install RapidFire\u202fAI** (the OSS package from PyPI includes all dependencies):  \n   ```bash\n   pip install rapidfireai\n   ```  \n4. **Verify the installation**:  \n   ```bash\n   rapidfireai --version\n   # should print something like: RapidFire AI 0.14.0\n   ```  \n5. **Configure an OpenAI API key** (since you\u2019ll be using only OpenAI APIs, no self\u2011hosted models are needed). Pass the key via the appropriate config argument in your notebook or script (as shown in the GSM8K and SciFact tutorials).  \n\nBecause you are using only OpenAI APIs, **no GPU is required** on the machine. After these steps you can run RapidFire\u202fAI RAG evaluation normally.",
+    "retrieved_context": "source: sourcedocs/sourcedocs/walkthroughrag.rst; start_index: 0:\nInstall and Get Started: RAG and Context Engineering\n===============================\n\nThere are two ways to get started with RapidFire AI for RAG/Context Engineering:\n\n1. **Google Colab** - Zero local setup, takes under 2 minutes to get started. However, this option has limitations due to the free T4 GPU instance, viz., it works only for smaller models and small datasets.\n\n2. **Full Installation** - Complete setup with full functionality for any environment (local machine or cloud machine), supporting models and datasets of any size, as well as your own OpenAI keys.\n\nChoose the option that best fits your needs below.\n\n\nGoogle Colab\n-----------------------\n\nTry RapidFire AI RAG instantly in your browser with our pre-configured Google Colab notebook. No installation required.\n\n**Launch the notebook:** `RapidFire AI RAG on Google Colab <https://tinyurl.com/rapidfireai-rag-colab>`_\n\n.. note::\n  The Google Colab environment is limited to small models and datasets due to their free resource constraints.\n\n\nFull Installation\n-----------------------\n\nTo install RapidFire AI for RAG/context engineering on your local machine or remote/cloud instance for complete functionality without limitations, follow the steps below.\n\nNote that if you plan to use only OpenAI APIs and not self-hosted models (for embedding or generation), you do NOT need GPUs on your machine. \nBut you must provide a valid OpenAI API key via a config argument as shown in the GSM8K and SciFact tutorial notebooks.\n\n\nStep 1: Install dependencies and package\n-----------------------\n\nObtain the RapidFire AI OSS package from pypi (includes all dependencies) and ensure it is installed correctly.\n\n.. important::\n\n  Requires Python 3.12+. Ensure that ``python3`` resolves to Python 3.12 before creating the venv.\n\n.. code-block:: bash\n\n   python3 --version  # must be 3.12.x\n   python3 -m venv .venv\n   source .venv/bin/activate\n\n   pip install rapidfireai\n\n   rapidfireai --version\n   # Verify it prints the following:\n   # RapidFire AI 0..14.0",
+    "sources": [
+      {
+        "file": "walkthroughrag.rst",
+        "lines": [
+          1,
+          52
+        ]
+      }
+    ]
+  },
+  {
+    "question_id": 6,
+    "answer": "ERROR: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 25.38079712999996, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}",
+    "retrieved_context": "source: sourcedocs/sourcedocs/glossary.rst; start_index: -1:\nRead more here: :doc:`API: Multi-Config Specification</configs>`.\n\n\n\nExperiment\n------\n\nA core concept in the RapidFire AI API that defines a collection of training and evaluation \noperations performed. Each experiment is assigned a unique name that is used for both display \nof plots on the ML metrics dashboard and for artifact tracking. \nAt any point in time, only one experiment can be alive. \n\nRead more here: :doc:`API: Experiment</experiment>`.\n\n\nExperiment Ops\n------\n\nComputation methods associated with the :class:`Experiment` class of RapidFire AI: \n:func:`run_fit()`, :func:`end()`, and the constructor. \nAlso includes two informational methods: :func:`get_runs_info()` and :func:`get_results()`. \nWe will expand this API with more operations based on feedback, e.g., for batch testing \nand inference/generation.\n\nRead more here: :doc:`API: Experiment</experiment>`.\n\n\nInteractive Control Ops (IC Ops)\n------\n\nOperations to control runs in flight during a :func:`run_fit()`.  \nRapidFire AI automatically reapportions GPU resources across runs under the hood. \nWe currently support 4 IC Ops: Stop, Resume, Clone-Modify, and Delete.\n\nRead more here: :doc:`Dashboard: Interactive Control (IC) Ops</icops>`.\n\n\nKnob\n-----\n\nA single entry in the config dictionary given for experimentation. \nA knob's value can be a singleton or set-valued (:class:`List` or :class:`Range`). \n\nRead more here: :doc:`API: Multi-Config Specification</configs>`.\n\n\nLogs\n-----\n\nFiles with entries about all operations run by RapidFire AI, including IC Ops, to aid \nmonitoring of debugging of experiment behaviors. \nThe whole experiment log is displayed on the app under the \"Experiment Log\" tab. \nLikewise, all IC Ops are displayed under their own tab next to it.\n\nRead more here: :doc:`ML Metrics Dashboard</dashboard>`.\n\n\nML Metrics Dashboard\n-----",
+    "sources": [
+      {
+        "file": "glossary.rst",
+        "lines": [
+          133,
+          191
+        ]
+      }
+    ]
+  },
+  {
+    "question_id": 7,
+    "answer": "ERROR: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 25.38079712999996, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}",
+    "retrieved_context": "source: sourcedocs/sourcedocs/evalsfunctions.rst; start_index: 0:\nAPI: User-Provided Functions for Run Evals\n===============\n\nUsers can provide the following custom functions as part of their eval config to be used in :func:`run_evals()`.\nNote that each leaf config can have its own set of functions for all of these.\n\n\nPreprocess Function\n-------------------\n\nMandatory user-provided function to prepare the inputs to be given to the generator model. \nIt is invoked for each batch during the evaluation process before generation.\nPass it directly to the :code:`preprocess_fn` key in your eval config dictionary.\n\nThe system injects into this function the batch data, as well as the RAG spec and \nthe prompt manager of an individual leaf config.\n\n\n.. py:function:: preprocess_fn(batch: dict[str, list], rag: RFLangChainRagSpec, prompt_manager: RFPromptManager) -> dict[str, list]\n\n   :param batch: Dictionary with a batch of examples with dataset field names as keys and lists as values\n   :type batch: dict[str, list]\n\n   :param rag: RAG specification object for document chunk retrieval and context serialization\n   :type rag: RFLangChainRagSpec\n\n   :param prompt_manager: Prompt manager object for handling instructions and few-shot examples\n   :type prompt_manager: RFPromptManager\n\n   :return: Dictionary with the preprocessed batch. It must have a reserved key :code:`\"prompts\"` for the fully formatted prompts for the generator. Other key-value pairs from the original batch can also be copied over if you want.\n   :rtype: dict[str, list]\n\n\n**Examples:**\n\n.. code-block:: python",
+    "sources": [
+      {
+        "file": "evalsfunctions.rst",
+        "lines": [
+          1,
+          36
+        ]
+      }
+    ]
+  },
+  {
+    "question_id": 8,
+    "answer": "RapidFire AI supports three vector\u2011store backends:\n\n* **FAISS** (in\u2011memory default)\n* **Pinecone** (hosted serverless or pod\u2011based)\n* **PostgreSQL\u202fPGVector** (self\u2011hosted or managed)\n\nEach of these stores can be used in three modes of operation:\n\n1. **Create mode** \u2013 build a new index from base documents within RapidFire AI.  \n2. **Read mode** \u2013 query a pre\u2011existing index.  \n3. **Update mode** \u2013 add new content to an existing index from additional base documents.",
+    "retrieved_context": "source: sourcedocs/sourcedocs/rag_fiqa.rst; start_index: 1499:\nThe RAG pipeline uses:\n\n- **Embeddings**: sentence-transformers/all-MiniLM-L6-v2 with GPU acceleration.\n- **Vector Store**: FAISS with GPU-based exact search, i.e., no ANN approximation.\n- **Retrieval**: Top-15 similarity search.\n- **Reranking**: cross-encoder/ms-marco-MiniLM-L6-v2 with 2 different top-n values: 2 and 5.\n\nAll other knobs are fixed across all configs. Thus, there are a total of 8 combinations launched \nwith a simple grid search: 2 generator models x 2 chunk sizes x 2 reranking top-n values.\n\n\nExternal Vector Stores: Pinecone and PGVector\n-------\n\nRapidFire AI also supports external persistent vector stores beyond the default in-memory FAISS.\nThis allows you to scale to larger corpora, persist indexes across runs and experiments, and leverage managed vector DBMS services.\nAs of this writing, **Pinecone** (hosted serverless or pod-based) and **PostgreSQL PGVector** (self-hosted or managed) are supported.\n\nEach external store supports three modes of operation:\n\n- **Create mode:** Build a new index from base documents from within RapidFire AI itself and use it for RAG.\n- **Read mode:** Retrieve from a pre-existing index and use it for RAG. \n- **Update mode:** Add new content to an existing index from additional base documents from within RapidFire AI itself and use it for RAG. \n\nSee the :doc:`API: LangChain RAG Spec page</ragspecs>` for more details on how to specify these external vector stores.\n\nThe FiQA RAG tutorial notebooks have also been extended to showcase the external stores as below:",
+    "sources": [
+      {
+        "file": "rag_fiqa.rst",
+        "lines": [
+          35,
+          61
+        ]
+      }
+    ]
+  },
+  {
+    "question_id": 9,
+    "answer": "ERROR: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 25.38079712999996, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}",
+    "retrieved_context": "source: sourcedocs/sourcedocs/experiment.rst; start_index: 8608:\nThe :code:`num_shards` argument is identical to the :code:`num_chunks` argument of :func:`run_fit()` above. \nThat is, it let you balance the degree of concurrency for cross-config comparisons against the (minor) \nextra swapping overhead incurred. Again, we recommend at least 4, which means you will see results being \nupdated for all runs on 1/4th of the data at a time.\n\nUnlike :func:`run_fit()`, this function does have a return value. In particular, it will return a dictionary \nwith the run/config ID as the key. The value is a 2-tuple with a dictionary each for all aggregated metrics \nand all cumulative metrics.\n\n\n\nEnd\n-------\n\nEnd the current experiment to clear out relevant system state and allow you to move on to a new experiment. \nPlease do *not* run this when a :func:`run_fit()` is still running. \n\n.. py:function:: end(self) -> None\n\n\t:return: None\n\t:rtype: None\n\n\n\nGet Runs Information\n-------\n\nReturns metadata about all the runs from across all :func:`run_fit()` invocations in the current experiment. \n\n.. py:function:: get_runs_info(self) -> pd.DataFrame:\n\n\t:return: A DataFrame with the following columns: run_id, status, mlflow_run_id, completed_steps, total_steps, start_chunk_id, num_chunks_visited_curr_epoch, num_epochs_completed, error, source, ended_by, warm_started_from, config (full config dictionary)\n\n\t:rtype: pandas.DataFrame\n\n**Examples:**\n\n.. code-block:: python\n\n\t# Get metadata of all runs from this experiments so far; based on SFT notebook\n\tall_runs_info = experiment.get_runs_info()\n\tall_runs_info # Screenshot of output below\n\n.. raw:: html",
+    "sources": [
+      {
+        "file": "experiment.rst",
+        "lines": [
+          186,
+          229
+        ]
+      }
+    ]
+  },
+  {
+    "question_id": 10,
+    "answer": "ERROR: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 25.38079712999996, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}",
+    "retrieved_context": "source: sourcedocs/sourcedocs/ragspecs.rst; start_index: 10129:\nThe store is built from the documents provided via :code:`document_loader`. If this entire config is skipped, a default FAISS flat vector store will be created automatically.\n    :type vector_store_cfg: dict[str, Any], optional\n\n    :param retriever: The retriever for chunk retrieval. If not provided, a default FAISS vector store will be created automatically using the specified search configuration below. Must be a LangChain BaseRetriever implementation.\n    :type retriever: BaseRetriever, optional\n\n    :param search_cfg: The search algorithm type and its kwargs to use for retrieval of vectors/chunks, provided as a single dictionary. Must include a key :code:`\"type\"` with one of the following three options listed as value; default is :code:`\"similarity\"`.\n\n      * :code:`\"similarity\"`: Standard cosine similarity search.\n      * :code:`\"similarity_score_threshold\"`: Similarity search with minimum score threshold (SST).\n      * :code:`\"mmr\"`: Maximum Marginal Relevance (MMR) search for diversity.\n\n      Additional parameters for search configuration depend on the type; the keys can include the following:\n\n      * :code:`\"k\"`: Number of documents to retrieve. Default is 5.\n      * :code:`\"filter\"`: Optional filter criteria function for search results.\n      * :code:`\"score_threshold\"`: Only for SST. Minimum similarity score threshold. \n      * :code:`\"fetch_k\"`: Only for MMR. Number of documents to fetch before MMR reranking. Default is 20.\n      * :code:`\"lambda_mult\"`: Only for MMR. Diversity parameter for MMR balancing relevance vs. diversity. Default is 0.5.\n    :type search_cfg: dict, optional",
+    "sources": [
+      {
+        "file": "ragspecs.rst",
+        "lines": [
+          97,
+          116
+        ]
+      }
+    ]
+  },
+  {
+    "question_id": 11,
+    "answer": "ERROR: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 25.38079712999996, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}",
+    "retrieved_context": "source: sourcedocs/sourcedocs/onlineagg.rst; start_index: 3939:\n.. code-block:: python\n\n    # Based on GSM8K tutorial use case\n    metrics = {\n        \"Total\": {\"value\": total},\n        \"Correct\": {\n            \"value\": correct,\n            \"is_distributive\": True,\n            \"value_range\": (0, 1),\n        },\n        \"Accuracy\": {\n            \"value\": accuracy,\n            \"is_algebraic\": True,\n            \"value_range\": (0, 1),\n        },\n    }\n\nConfidence Intervals\n--------------------\n\nThe data points in the evals dataset are **assigned to shards uniformly randomly**, i.e., \nRapidFire AI performs sampling without replacement. \nBased on that, it supports 3 strategies to calculate confidence intervals for projected estimates of metrics. \nYou can indicate the confidence level (we recommend 95%) and whether to perform \"finite population correction\" (FPC) or not. \nThese values can be specified under the key :code:`\"online_strategy_kwargs\"` in your config dictionary as illustrated below.\n\n.. code-block:: python\n\n    # Based on FiQA RAG tutorial use case\n    \"online_strategy_kwargs\": {\n        \"strategy_name\": \"normal\",\n        \"confidence_level\": 0.95,\n        \"use_fpc\": True,\n    },\n\nNotation \n^^^^^^^",
+    "sources": [
+      {
+        "file": "onlineagg.rst",
+        "lines": [
+          76,
+          112
+        ]
+      }
+    ]
+  },
+  {
+    "question_id": 12,
+    "answer": "To warm\u2011start a clone created with the **Clone\u2011Modify** IC Op, edit the clone\u2019s configuration in the IC Op panel and enable warm\u2011starting so that the clone uses the parent run\u2019s saved weights. When you submit the IC Op, the new clone will begin training from those weights instead of from scratch.\n\n**Constraint:** Warm\u2011starting is permitted only when the clone\u2019s neural architecture (including any LoRA adapters) is **identical** to the parent\u2019s architecture; otherwise the operation will error out.",
+    "retrieved_context": "source: sourcedocs/sourcedocs/icops.rst; start_index: 5117:\nResume\n-----\n\nThis IC Op is applicable only to a previously stopped run. \nIt earmarks this run to be resumed from the next chunk onward, when it will be added to the mix of \nongoing runs and assigned GPU(s) automatically. \nYou cannot resume an already resumed or deleted run.\n\n\n\nClone-Modify\n----\n\nThis is a powerful IC Op that is applicable to any ongoing, stopped, or resumed run. \nIt allows you to add \"clones\" of a chosen run, called the \"parent\" run, during a :func:`run_fit()`. \nThe IC Op panel displays an editable text box with the full knob config dictionary of the parent. \n\nEdit any knobs, e.g., learning rate, LoRA rank, or even base model as if you are injecting \nthat new run config from code, except this is done conveniently from the metrics dashboard itself. \nAs of this writing, we only support providing a single config for this IC Op.\nSoon we will support providing a config-group generator such as :code:`RFGridSearch()` or\n:code:`RFRandomSearch()` as well in the IC Op panel itself akin to the launching code.\n\nYou can also **warm-start** a clone using its parent's weights if you'd like. \nWarm-started clones inherit their parent's learning behavior so far and thus, they can reach better \neval metrics faster. \nNote that warm starting is only allowed if the clones have *identical* neural architecture as the \nparent, including LoRA adapters; otherwise, it will error out.\n\nWhen you are ready with your clone's config, click \"Submit\" to execute this IC Op.\n\n\n.. raw:: html\n\n    <img src=\"_static/icop-clone2.png\" alt=\"IC Op Clone-Modify\" \n         style=\"cursor: zoom-in; max-width: 100%;\" onclick=\"this.requestFullscreen()\">",
+    "sources": [
+      {
+        "file": "icops.rst",
+        "lines": [
+          113,
+          148
+        ]
+      }
+    ]
+  }
+]

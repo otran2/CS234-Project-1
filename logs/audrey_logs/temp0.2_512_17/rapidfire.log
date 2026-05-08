@@ -1,0 +1,82 @@
+2026-05-05 13:41:48 | Experiment | INFO | experiment.py:165 | [temp0.2_512_17:Experiment] An experiment with the same name already exists. Created a new experiment 'temp0.2_512_17' with Experiment ID: 21 at /home/ayliang/rapidfireai/rapidfire_experiments/temp0.2_512_17
+2026-05-05 13:42:17 | Experiment | INFO | metric_rfmetric_manager.py:55 | [temp0.2_512_17:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-05 13:42:17 | Experiment | INFO | metric_rfmetric_manager.py:119 | [temp0.2_512_17:Experiment] Creating MLflow experiment: temp0.2_512_17
+2026-05-05 13:42:17 | Experiment | INFO | experiment.py:210 | [temp0.2_512_17:Experiment] Initialized MetricLogger experiment: 19
+2026-05-05 13:42:17 | Experiment | INFO | experiment.py:226 | [temp0.2_512_17:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-05 13:42:19 | Experiment | WARNING | experiment.py:381 | [temp0.2_512_17:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-05 13:42:19 | Experiment | INFO | experiment.py:383 | [temp0.2_512_17:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-05 13:42:19 | Experiment | INFO | experiment.py:392 | [temp0.2_512_17:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-05 13:42:20 | Controller | INFO | controller.py:895 | [temp0.2_512_17:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-05 13:42:20 | Controller | INFO | controller.py:900 | [temp0.2_512_17:Controller] Received 1 pipeline configuration(s)
+2026-05-05 13:42:20 | Controller | INFO | controller.py:309 | [temp0.2_512_17:Controller] Found 1 unique RAG context(s)
+2026-05-05 13:42:20 | Controller | INFO | controller.py:320 | [temp0.2_512_17:Controller] Will build new context 58a0e49a...
+2026-05-05 13:42:20 | Controller | INFO | controller.py:346 | [temp0.2_512_17:Controller] Building 1 context(s) in parallel...
+2026-05-05 13:42:20 | Controller | INFO | controller.py:373 | [temp0.2_512_17:Controller] Creating 1 DocProcessingActor(s) for parallel processing
+2026-05-05 13:42:23 | matplotlib.font_manager | INFO | font_manager.py:1639 | generated new fontManager
+2026-05-05 13:42:24 | Controller | INFO | controller.py:461 | [temp0.2_512_17:Controller] Submitted 1 build task(s) in parallel
+2026-05-05 13:42:58 | DocProcessingActor | INFO | doc_actor.py:59 | [temp0.2_512_17:DocProcessingActor] DocProcessingActor initialized
+2026-05-05 13:43:02 | DocProcessingActor | INFO | doc_actor.py:96 | [temp0.2_512_17:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-05 13:43:02 | DocProcessingActor | INFO | doc_actor.py:107 | [temp0.2_512_17:DocProcessingActor] Building document index...
+2026-05-05 13:43:02 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-05 13:43:19 | DocProcessingActor | INFO | doc_actor.py:109 | [temp0.2_512_17:DocProcessingActor] Document index built successfully
+2026-05-05 13:43:19 | DocProcessingActor | INFO | doc_actor.py:134 | [temp0.2_512_17:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-05 13:43:19 | DocProcessingActor | INFO | doc_actor.py:144 | [temp0.2_512_17:DocProcessingActor] FAISS index serialized: 602484 bytes
+2026-05-05 13:43:19 | DocProcessingActor | INFO | doc_actor.py:189 | [temp0.2_512_17:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-05 13:43:19 | Controller | INFO | controller.py:482 | [temp0.2_512_17:Controller] Built context 1 (58a0e49a...) successfully in 59.19s
+2026-05-05 13:43:19 | Controller | INFO | controller.py:523 | [temp0.2_512_17:Controller] Completed parallel context building for 1 context(s)
+2026-05-05 13:43:19 | Controller | INFO | controller.py:920 | [temp0.2_512_17:Controller] Created 4 query processing actors (generic pool)
+2026-05-05 13:43:19 | Experiment | INFO | metric_rfmetric_manager.py:141 | [temp0.2_512_17:Experiment] Created MLflow run: 12404f40724a443294992352eb740307, 1
+2026-05-05 13:43:19 | Controller | INFO | controller.py:931 | [temp0.2_512_17:Controller] Initialized scheduler with 1 pipelines, 4 actors, 4 shards
+2026-05-05 13:43:19 | Controller | INFO | controller.py:1118 | [temp0.2_512_17:Controller] Created experiment-wide rate limiter actor for 1 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-05 13:43:19 | Controller | INFO | controller.py:1124 | [temp0.2_512_17:Controller] Starting multi-pipeline inference scheduling...
+2026-05-05 13:43:19 | Controller | INFO | controller.py:1422 | [temp0.2_512_17:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 0 (1 batches)
+2026-05-05 13:43:57 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [temp0.2_512_17:QueryProcessingActor-0] Initializing new inference engine (config hash: 93d13131)
+2026-05-05 13:43:57 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [temp0.2_512_17:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-05 13:43:57 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [temp0.2_512_17:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-05 13:43:57 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [temp0.2_512_17:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-05 13:43:57 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [temp0.2_512_17:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-05 13:43:57 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [temp0.2_512_17:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-05 13:43:57 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-05 13:44:00 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [temp0.2_512_17:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-05 13:50:07 | Controller | INFO | controller.py:1299 | [temp0.2_512_17:Controller] Pipeline 1 completed shard 0 (1 batches, 366.85s)
+2026-05-05 13:50:07 | Controller | INFO | controller.py:1422 | [temp0.2_512_17:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 1 (1 batches)
+2026-05-05 13:50:07 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [temp0.2_512_17:QueryProcessingActor-0] Reusing existing inference engine (config hash: 93d13131)
+2026-05-05 13:50:07 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [temp0.2_512_17:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-05 13:50:07 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [temp0.2_512_17:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-05 13:50:07 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [temp0.2_512_17:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-05 13:50:07 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [temp0.2_512_17:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-05 13:50:07 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [temp0.2_512_17:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-05 13:50:07 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-05 13:50:10 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [temp0.2_512_17:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-05 13:55:48 | Controller | INFO | controller.py:1299 | [temp0.2_512_17:Controller] Pipeline 1 completed shard 1 (1 batches, 337.53s)
+2026-05-05 13:55:48 | Controller | INFO | controller.py:1422 | [temp0.2_512_17:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 2 (1 batches)
+2026-05-05 13:55:48 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [temp0.2_512_17:QueryProcessingActor-0] Reusing existing inference engine (config hash: 93d13131)
+2026-05-05 13:55:48 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [temp0.2_512_17:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-05 13:55:48 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [temp0.2_512_17:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-05 13:55:48 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [temp0.2_512_17:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-05 13:55:48 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [temp0.2_512_17:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-05 13:55:48 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [temp0.2_512_17:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-05 13:55:48 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-05 13:55:50 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [temp0.2_512_17:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-05 14:01:13 | Controller | INFO | controller.py:1299 | [temp0.2_512_17:Controller] Pipeline 1 completed shard 2 (1 batches, 322.22s)
+2026-05-05 14:01:13 | Controller | INFO | controller.py:1422 | [temp0.2_512_17:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 3 (1 batches)
+2026-05-05 14:01:13 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [temp0.2_512_17:QueryProcessingActor-0] Reusing existing inference engine (config hash: 93d13131)
+2026-05-05 14:01:13 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [temp0.2_512_17:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-05 14:01:13 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [temp0.2_512_17:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-05 14:01:13 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [temp0.2_512_17:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-05 14:01:13 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [temp0.2_512_17:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-05 14:01:13 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [temp0.2_512_17:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-05 14:01:13 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-05 14:01:16 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [temp0.2_512_17:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-05 14:06:45 | Controller | INFO | controller.py:1192 | [temp0.2_512_17:Controller] Pipeline 1 completed all 4 shards
+2026-05-05 14:06:46 | Controller | INFO | controller.py:1299 | [temp0.2_512_17:Controller] Pipeline 1 completed shard 3 (1 batches, 329.26s)
+2026-05-05 14:06:46 | Controller | INFO | controller.py:1386 | [temp0.2_512_17:Controller] All pipelines completed all shards!
+2026-05-05 14:06:46 | Controller | INFO | controller.py:695 | [temp0.2_512_17:Controller] Computing final metrics for all pipelines...
+2026-05-05 14:06:46 | Experiment | INFO | metric_rfmetric_manager.py:190 | [temp0.2_512_17:Experiment] Ending run: 12404f40724a443294992352eb740307, 1 in rf_mlflow
+2026-05-05 14:06:46 | Experiment | WARNING | metric_mlflow_manager.py:101 | [temp0.2_512_17:Experiment] Run 12404f40724a443294992352eb740307 is not the active run, no local context to clear
+2026-05-05 14:06:46 | Controller | INFO | controller.py:853 | [temp0.2_512_17:Controller] Pipeline 1 (Pipeline 1) completed successfully
+2026-05-05 14:06:46 | ExperimentUtils | INFO | experiment_utils.py:180 | [temp0.2_512_17:ExperimentUtils] Reset experiment states - marked ongoing pipelines, contexts, and tasks as failed
+2026-05-05 14:06:46 | ExperimentUtils | INFO | experiment_utils.py:188 | [temp0.2_512_17:ExperimentUtils] Experiment marked as cancelled. Ongoing pipelines, contexts, and tasks have been marked as failed.
+2026-05-05 14:06:47 | ExperimentUtils | INFO | experiment_utils.py:154 | [temp0.2_512_17:ExperimentUtils] Experiment temp0.2_512_17 ended
+2026-05-05 14:06:49 | Experiment | INFO | experiment.py:574 | [temp0.2_512_17:Experiment] All actors shut down
+2026-05-05 14:06:49 | Experiment | INFO | experiment.py:575 | [temp0.2_512_17:Experiment] Dispatcher will automatically shut down (daemon thread)

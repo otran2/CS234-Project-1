@@ -1,0 +1,105 @@
+2026-05-05 14:16:39 | Experiment | INFO | experiment.py:165 | [temp0.2_512_18:Experiment] An experiment with the same name already exists. Created a new experiment 'temp0.2_512_18' with Experiment ID: 22 at /home/ayliang/rapidfireai/rapidfire_experiments/temp0.2_512_18
+2026-05-05 14:17:05 | Experiment | INFO | metric_rfmetric_manager.py:55 | [temp0.2_512_18:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-05 14:17:05 | Experiment | INFO | metric_rfmetric_manager.py:119 | [temp0.2_512_18:Experiment] Creating MLflow experiment: temp0.2_512_18
+2026-05-05 14:17:05 | Experiment | INFO | experiment.py:210 | [temp0.2_512_18:Experiment] Initialized MetricLogger experiment: 20
+2026-05-05 14:17:05 | Experiment | INFO | experiment.py:226 | [temp0.2_512_18:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-05 14:17:05 | Experiment | WARNING | experiment.py:381 | [temp0.2_512_18:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-05 14:17:05 | Experiment | INFO | experiment.py:383 | [temp0.2_512_18:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-05 14:17:05 | Experiment | INFO | experiment.py:392 | [temp0.2_512_18:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-05 14:17:06 | Controller | INFO | controller.py:895 | [temp0.2_512_18:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-05 14:17:06 | Controller | INFO | controller.py:900 | [temp0.2_512_18:Controller] Received 2 pipeline configuration(s)
+2026-05-05 14:17:06 | Controller | INFO | controller.py:309 | [temp0.2_512_18:Controller] Found 1 unique RAG context(s)
+2026-05-05 14:17:06 | Controller | INFO | controller.py:320 | [temp0.2_512_18:Controller] Will build new context caf40346...
+2026-05-05 14:17:06 | Controller | INFO | controller.py:346 | [temp0.2_512_18:Controller] Building 1 context(s) in parallel...
+2026-05-05 14:17:06 | Controller | INFO | controller.py:373 | [temp0.2_512_18:Controller] Creating 1 DocProcessingActor(s) for parallel processing
+2026-05-05 14:17:08 | Controller | INFO | controller.py:461 | [temp0.2_512_18:Controller] Submitted 1 build task(s) in parallel
+2026-05-05 14:17:38 | DocProcessingActor | INFO | doc_actor.py:59 | [temp0.2_512_18:DocProcessingActor] DocProcessingActor initialized
+2026-05-05 14:17:41 | DocProcessingActor | INFO | doc_actor.py:96 | [temp0.2_512_18:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-05 14:17:41 | DocProcessingActor | INFO | doc_actor.py:107 | [temp0.2_512_18:DocProcessingActor] Building document index...
+2026-05-05 14:17:41 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-05 14:17:46 | DocProcessingActor | INFO | doc_actor.py:109 | [temp0.2_512_18:DocProcessingActor] Document index built successfully
+2026-05-05 14:17:46 | DocProcessingActor | INFO | doc_actor.py:134 | [temp0.2_512_18:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-05 14:17:46 | DocProcessingActor | INFO | doc_actor.py:144 | [temp0.2_512_18:DocProcessingActor] FAISS index serialized: 602484 bytes
+2026-05-05 14:17:46 | DocProcessingActor | INFO | doc_actor.py:189 | [temp0.2_512_18:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-05 14:17:46 | Controller | INFO | controller.py:482 | [temp0.2_512_18:Controller] Built context 1 (caf40346...) successfully in 40.51s
+2026-05-05 14:17:46 | Controller | INFO | controller.py:523 | [temp0.2_512_18:Controller] Completed parallel context building for 1 context(s)
+2026-05-05 14:17:46 | Controller | INFO | controller.py:920 | [temp0.2_512_18:Controller] Created 4 query processing actors (generic pool)
+2026-05-05 14:17:46 | Experiment | INFO | metric_rfmetric_manager.py:141 | [temp0.2_512_18:Experiment] Created MLflow run: 946473d614ce432fb54f880e044b8cb1, 1
+2026-05-05 14:17:46 | Experiment | INFO | metric_rfmetric_manager.py:141 | [temp0.2_512_18:Experiment] Created MLflow run: fc3ccddc789c4768b7f0267aaa3b1b25, 2
+2026-05-05 14:17:47 | Controller | INFO | controller.py:931 | [temp0.2_512_18:Controller] Initialized scheduler with 2 pipelines, 4 actors, 4 shards
+2026-05-05 14:17:47 | Controller | INFO | controller.py:1118 | [temp0.2_512_18:Controller] Created experiment-wide rate limiter actor for 2 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-05 14:17:47 | Controller | INFO | controller.py:1124 | [temp0.2_512_18:Controller] Starting multi-pipeline inference scheduling...
+2026-05-05 14:17:47 | Controller | INFO | controller.py:1422 | [temp0.2_512_18:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 0 (1 batches)
+2026-05-05 14:18:17 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [temp0.2_512_18:QueryProcessingActor-0] Initializing new inference engine (config hash: 5828261c)
+2026-05-05 14:18:18 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [temp0.2_512_18:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-05 14:18:18 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [temp0.2_512_18:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-05 14:18:18 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [temp0.2_512_18:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-05 14:18:18 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [temp0.2_512_18:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-05 14:18:18 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [temp0.2_512_18:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-05 14:18:18 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-05 14:18:20 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [temp0.2_512_18:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-05 14:18:20 | Controller | INFO | controller.py:1422 | [temp0.2_512_18:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 0 (1 batches)
+2026-05-05 14:18:20 | QueryProcessingActor-1 | INFO | query_actor.py:165 | [temp0.2_512_18:QueryProcessingActor-1] Initializing new inference engine (config hash: 5828261c)
+2026-05-05 14:18:20 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [temp0.2_512_18:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-05 14:18:20 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [temp0.2_512_18:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-05 14:18:20 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [temp0.2_512_18:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-05 14:18:20 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [temp0.2_512_18:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-05 14:18:20 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [temp0.2_512_18:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-05 14:18:20 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-05 14:18:23 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [temp0.2_512_18:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-05 14:30:32 | ExperimentUtils | INFO | experiment_utils.py:180 | [temp0.2_512_18:ExperimentUtils] Reset experiment states - marked ongoing pipelines, contexts, and tasks as failed
+2026-05-05 14:30:32 | ExperimentUtils | INFO | experiment_utils.py:188 | [temp0.2_512_18:ExperimentUtils] Experiment marked as cancelled. Ongoing pipelines, contexts, and tasks have been marked as failed.
+2026-05-05 14:30:32 | ExperimentUtils | INFO | experiment_utils.py:154 | [temp0.2_512_18:ExperimentUtils] Experiment temp0.2_512_18 ended
+2026-05-05 14:30:32 | Experiment | INFO | experiment.py:165 | [temp0.2_512_19:Experiment] The previously running experiment temp0.2_512_18 was forcibly ended. Created a new experiment 'temp0.2_512_19' with Experiment ID: 23 at /home/ayliang/rapidfireai/rapidfire_experiments/temp0.2_512_19
+2026-05-05 14:31:00 | Experiment | INFO | metric_rfmetric_manager.py:55 | [temp0.2_512_19:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-05 14:31:00 | Experiment | INFO | metric_rfmetric_manager.py:119 | [temp0.2_512_19:Experiment] Creating MLflow experiment: temp0.2_512_19
+2026-05-05 14:31:00 | Experiment | INFO | experiment.py:210 | [temp0.2_512_19:Experiment] Initialized MetricLogger experiment: 21
+2026-05-05 14:31:00 | Experiment | INFO | experiment.py:226 | [temp0.2_512_19:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-05 14:31:01 | Experiment | WARNING | experiment.py:381 | [temp0.2_512_19:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-05 14:31:01 | Experiment | INFO | experiment.py:383 | [temp0.2_512_19:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-05 14:31:01 | Experiment | INFO | experiment.py:392 | [temp0.2_512_19:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-05 14:31:01 | Controller | INFO | controller.py:895 | [temp0.2_512_19:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-05 14:31:01 | Controller | INFO | controller.py:900 | [temp0.2_512_19:Controller] Received 4 pipeline configuration(s)
+2026-05-05 14:31:01 | Controller | INFO | controller.py:309 | [temp0.2_512_19:Controller] Found 1 unique RAG context(s)
+2026-05-05 14:31:01 | Controller | INFO | controller.py:320 | [temp0.2_512_19:Controller] Will build new context b772ef2d...
+2026-05-05 14:31:01 | Controller | INFO | controller.py:346 | [temp0.2_512_19:Controller] Building 1 context(s) in parallel...
+2026-05-05 14:31:01 | Controller | INFO | controller.py:373 | [temp0.2_512_19:Controller] Creating 1 DocProcessingActor(s) for parallel processing
+2026-05-05 14:31:04 | Controller | INFO | controller.py:461 | [temp0.2_512_19:Controller] Submitted 1 build task(s) in parallel
+2026-05-05 14:31:49 | Controller | INFO | controller.py:482 | [temp0.2_512_19:Controller] Built context 1 (b772ef2d...) successfully in 47.79s
+2026-05-05 14:31:49 | Controller | INFO | controller.py:523 | [temp0.2_512_19:Controller] Completed parallel context building for 1 context(s)
+2026-05-05 14:31:49 | Controller | INFO | controller.py:920 | [temp0.2_512_19:Controller] Created 4 query processing actors (generic pool)
+2026-05-05 14:31:49 | Experiment | INFO | metric_rfmetric_manager.py:141 | [temp0.2_512_19:Experiment] Created MLflow run: 919dfe4fa5774eb1b291cd72398f2c15, 1
+2026-05-05 14:31:49 | Experiment | INFO | metric_rfmetric_manager.py:141 | [temp0.2_512_19:Experiment] Created MLflow run: b45f5047bbae4e268d7c4f5050d7da44, 2
+2026-05-05 14:31:50 | Experiment | INFO | metric_rfmetric_manager.py:141 | [temp0.2_512_19:Experiment] Created MLflow run: 79a4e911af9e4deb91fef3db0264ea4c, 3
+2026-05-05 14:31:50 | Experiment | INFO | metric_rfmetric_manager.py:141 | [temp0.2_512_19:Experiment] Created MLflow run: 9dc47d48ab28466e9ee6711e3eb7bbe2, 4
+2026-05-05 14:31:50 | Controller | INFO | controller.py:931 | [temp0.2_512_19:Controller] Initialized scheduler with 4 pipelines, 4 actors, 4 shards
+2026-05-05 14:31:50 | Controller | INFO | controller.py:1118 | [temp0.2_512_19:Controller] Created experiment-wide rate limiter actor for 4 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-05 14:31:50 | Controller | INFO | controller.py:1124 | [temp0.2_512_19:Controller] Starting multi-pipeline inference scheduling...
+2026-05-05 14:31:50 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 0 (1 batches)
+2026-05-05 14:32:30 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 0 (1 batches)
+2026-05-05 14:32:35 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 2 for shard 0 (1 batches)
+2026-05-05 14:32:38 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 3 for shard 0 (1 batches)
+2026-05-05 14:39:21 | Controller | INFO | controller.py:1299 | [temp0.2_512_19:Controller] Pipeline 1 completed shard 0 (1 batches, 411.27s)
+2026-05-05 14:39:21 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 1 (1 batches)
+2026-05-05 14:40:15 | Controller | INFO | controller.py:1299 | [temp0.2_512_19:Controller] Pipeline 2 completed shard 0 (1 batches, 459.13s)
+2026-05-05 14:40:15 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 1 (1 batches)
+2026-05-05 14:47:23 | Controller | INFO | controller.py:1299 | [temp0.2_512_19:Controller] Pipeline 1 completed shard 1 (1 batches, 477.65s)
+2026-05-05 14:47:23 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 2 (1 batches)
+2026-05-05 14:48:01 | Controller | INFO | controller.py:1299 | [temp0.2_512_19:Controller] Pipeline 2 completed shard 1 (1 batches, 463.36s)
+2026-05-05 14:48:02 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 2 (1 batches)
+2026-05-05 14:48:11 | Controller | INFO | controller.py:1299 | [temp0.2_512_19:Controller] Pipeline 4 completed shard 0 (1 batches, 929.43s)
+2026-05-05 14:48:11 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 3 for shard 1 (1 batches)
+2026-05-05 14:48:26 | Controller | INFO | controller.py:1299 | [temp0.2_512_19:Controller] Pipeline 3 completed shard 0 (1 batches, 946.84s)
+2026-05-05 14:48:26 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 2 for shard 1 (1 batches)
+2026-05-05 14:55:08 | Controller | INFO | controller.py:1299 | [temp0.2_512_19:Controller] Pipeline 1 completed shard 2 (1 batches, 462.22s)
+2026-05-05 14:55:08 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 3 (1 batches)
+2026-05-05 14:55:32 | Controller | INFO | controller.py:1299 | [temp0.2_512_19:Controller] Pipeline 2 completed shard 2 (1 batches, 447.10s)
+2026-05-05 14:55:32 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 3 (1 batches)
+2026-05-05 15:03:00 | Controller | INFO | controller.py:1192 | [temp0.2_512_19:Controller] Pipeline 1 completed all 4 shards
+2026-05-05 15:03:01 | Controller | INFO | controller.py:1299 | [temp0.2_512_19:Controller] Pipeline 1 completed shard 3 (1 batches, 469.64s)
+2026-05-05 15:03:02 | Controller | INFO | controller.py:1299 | [temp0.2_512_19:Controller] Pipeline 4 completed shard 1 (1 batches, 887.37s)
+2026-05-05 15:03:02 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 0 for shard 2 (1 batches)
+2026-05-05 15:03:07 | Controller | INFO | controller.py:1192 | [temp0.2_512_19:Controller] Pipeline 2 completed all 4 shards
+2026-05-05 15:03:07 | Controller | INFO | controller.py:1299 | [temp0.2_512_19:Controller] Pipeline 2 completed shard 3 (1 batches, 452.08s)
+2026-05-05 15:03:38 | Controller | INFO | controller.py:1299 | [temp0.2_512_19:Controller] Pipeline 3 completed shard 1 (1 batches, 908.69s)
+2026-05-05 15:03:38 | Controller | INFO | controller.py:1422 | [temp0.2_512_19:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 1 for shard 2 (1 batches)
