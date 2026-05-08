@@ -1,0 +1,172 @@
+2026-05-07 17:05:20 | Experiment | INFO | experiment.py:165 | [goldentest:Experiment] Experiment goldentest created with Experiment ID: 47 at /home/ayliang/rapidfireai/rapidfire_experiments/goldentest
+2026-05-07 17:05:44 | Experiment | INFO | metric_rfmetric_manager.py:55 | [goldentest:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-07 17:05:44 | Experiment | INFO | metric_rfmetric_manager.py:119 | [goldentest:Experiment] Creating MLflow experiment: goldentest
+2026-05-07 17:05:44 | Experiment | INFO | experiment.py:210 | [goldentest:Experiment] Initialized MetricLogger experiment: 42
+2026-05-07 17:05:44 | Experiment | INFO | experiment.py:226 | [goldentest:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-07 17:05:46 | Experiment | WARNING | experiment.py:381 | [goldentest:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-07 17:05:46 | Experiment | INFO | experiment.py:383 | [goldentest:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-07 17:05:46 | Experiment | INFO | experiment.py:392 | [goldentest:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-07 17:05:47 | Controller | INFO | controller.py:895 | [goldentest:Controller] Dataset sharded into 4 shard(s). Shard sizes: [5, 5, 5, 5]
+2026-05-07 17:05:47 | Controller | INFO | controller.py:900 | [goldentest:Controller] Received 3 pipeline configuration(s)
+2026-05-07 17:05:47 | Controller | INFO | controller.py:309 | [goldentest:Controller] Found 1 unique RAG context(s)
+2026-05-07 17:05:47 | Controller | INFO | controller.py:320 | [goldentest:Controller] Will build new context 9722ccf1...
+2026-05-07 17:05:47 | Controller | INFO | controller.py:346 | [goldentest:Controller] Building 1 context(s) in parallel...
+2026-05-07 17:05:47 | Controller | INFO | controller.py:373 | [goldentest:Controller] Creating 1 DocProcessingActor(s) for parallel processing
+2026-05-07 17:05:49 | matplotlib.font_manager | INFO | font_manager.py:1639 | generated new fontManager
+2026-05-07 17:05:49 | Controller | INFO | controller.py:461 | [goldentest:Controller] Submitted 1 build task(s) in parallel
+2026-05-07 17:06:20 | DocProcessingActor | INFO | doc_actor.py:59 | [goldentest:DocProcessingActor] DocProcessingActor initialized
+2026-05-07 17:06:23 | DocProcessingActor | INFO | doc_actor.py:96 | [goldentest:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-07 17:06:23 | DocProcessingActor | INFO | doc_actor.py:107 | [goldentest:DocProcessingActor] Building document index...
+2026-05-07 17:06:23 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 17:06:35 | DocProcessingActor | INFO | doc_actor.py:109 | [goldentest:DocProcessingActor] Document index built successfully
+2026-05-07 17:06:35 | DocProcessingActor | INFO | doc_actor.py:134 | [goldentest:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-07 17:06:35 | DocProcessingActor | INFO | doc_actor.py:144 | [goldentest:DocProcessingActor] FAISS index serialized: 606720 bytes
+2026-05-07 17:06:35 | DocProcessingActor | INFO | doc_actor.py:189 | [goldentest:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-07 17:06:35 | Controller | INFO | controller.py:482 | [goldentest:Controller] Built context 1 (9722ccf1...) successfully in 47.87s
+2026-05-07 17:06:35 | Controller | INFO | controller.py:523 | [goldentest:Controller] Completed parallel context building for 1 context(s)
+2026-05-07 17:06:35 | Controller | INFO | controller.py:920 | [goldentest:Controller] Created 4 query processing actors (generic pool)
+2026-05-07 17:06:35 | Experiment | INFO | metric_rfmetric_manager.py:141 | [goldentest:Experiment] Created MLflow run: 9f53eec17e014e27a39d6ec93c646bca, 1
+2026-05-07 17:06:35 | Experiment | INFO | metric_rfmetric_manager.py:141 | [goldentest:Experiment] Created MLflow run: 9fac98ef810d49d7ba7e7127a4bc35ae, 2
+2026-05-07 17:06:35 | Experiment | INFO | metric_rfmetric_manager.py:141 | [goldentest:Experiment] Created MLflow run: 2a112da7021b427db69fdfcf4446ba2a, 3
+2026-05-07 17:06:35 | Controller | INFO | controller.py:931 | [goldentest:Controller] Initialized scheduler with 3 pipelines, 4 actors, 4 shards
+2026-05-07 17:06:35 | Controller | INFO | controller.py:1118 | [goldentest:Controller] Created experiment-wide rate limiter actor for 3 OpenAI pipeline(s) with per-model limits (api-gpt-oss-120b: 120 RPM, 1000000 TPM)
+2026-05-07 17:06:35 | Controller | INFO | controller.py:1124 | [goldentest:Controller] Starting multi-pipeline inference scheduling...
+2026-05-07 17:06:36 | Controller | INFO | controller.py:1422 | [goldentest:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 0 (1 batches)
+2026-05-07 17:07:09 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [goldentest:QueryProcessingActor-0] Initializing new inference engine (config hash: adec4f70)
+2026-05-07 17:07:09 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [goldentest:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 17:07:09 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [goldentest:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 17:07:09 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [goldentest:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 17:07:09 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [goldentest:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 17:07:09 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [goldentest:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 17:07:09 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 17:07:11 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [goldentest:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 17:07:11 | Controller | INFO | controller.py:1422 | [goldentest:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 0 (1 batches)
+2026-05-07 17:07:11 | QueryProcessingActor-1 | INFO | query_actor.py:165 | [goldentest:QueryProcessingActor-1] Initializing new inference engine (config hash: adec4f70)
+2026-05-07 17:07:11 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [goldentest:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 17:07:11 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [goldentest:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 17:07:11 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [goldentest:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-07 17:07:11 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [goldentest:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-07 17:07:11 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [goldentest:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-07 17:07:11 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 17:07:14 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [goldentest:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-07 17:07:14 | Controller | INFO | controller.py:1422 | [goldentest:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 2 for shard 0 (1 batches)
+2026-05-07 17:07:14 | QueryProcessingActor-2 | INFO | query_actor.py:165 | [goldentest:QueryProcessingActor-2] Initializing new inference engine (config hash: adec4f70)
+2026-05-07 17:07:14 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [goldentest:QueryProcessingActor-2] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 17:07:14 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [goldentest:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 17:07:14 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [goldentest:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-07 17:07:14 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [goldentest:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-07 17:07:14 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [goldentest:QueryProcessingActor-2] Recreated retriever with search_type=similarity
+2026-05-07 17:07:14 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 17:07:17 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [goldentest:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-07 17:14:59 | Controller | INFO | controller.py:1299 | [goldentest:Controller] Pipeline 1 completed shard 0 (1 batches, 467.53s)
+2026-05-07 17:14:59 | Controller | INFO | controller.py:1422 | [goldentest:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 1 (1 batches)
+2026-05-07 17:14:59 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [goldentest:QueryProcessingActor-0] Reusing existing inference engine (config hash: adec4f70)
+2026-05-07 17:14:59 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [goldentest:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 17:14:59 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [goldentest:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 17:14:59 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [goldentest:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 17:14:59 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [goldentest:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 17:14:59 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [goldentest:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 17:14:59 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 17:15:01 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [goldentest:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 17:15:12 | Controller | INFO | controller.py:1299 | [goldentest:Controller] Pipeline 2 completed shard 0 (1 batches, 477.66s)
+2026-05-07 17:15:12 | Controller | INFO | controller.py:1422 | [goldentest:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 1 (1 batches)
+2026-05-07 17:15:12 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [goldentest:QueryProcessingActor-1] Reusing existing inference engine (config hash: adec4f70)
+2026-05-07 17:15:12 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [goldentest:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 17:15:12 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [goldentest:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 17:15:12 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [goldentest:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-07 17:15:12 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [goldentest:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-07 17:15:12 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [goldentest:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-07 17:15:12 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 17:15:14 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [goldentest:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-07 17:15:31 | Controller | INFO | controller.py:1299 | [goldentest:Controller] Pipeline 3 completed shard 0 (1 batches, 493.72s)
+2026-05-07 17:15:31 | Controller | INFO | controller.py:1422 | [goldentest:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 2 for shard 1 (1 batches)
+2026-05-07 17:15:31 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [goldentest:QueryProcessingActor-2] Reusing existing inference engine (config hash: adec4f70)
+2026-05-07 17:15:31 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [goldentest:QueryProcessingActor-2] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 17:15:31 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [goldentest:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 17:15:31 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [goldentest:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-07 17:15:31 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [goldentest:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-07 17:15:31 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [goldentest:QueryProcessingActor-2] Recreated retriever with search_type=similarity
+2026-05-07 17:15:31 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 17:15:33 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [goldentest:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-07 17:22:30 | Controller | INFO | controller.py:1299 | [goldentest:Controller] Pipeline 1 completed shard 1 (1 batches, 447.97s)
+2026-05-07 17:22:30 | Controller | INFO | controller.py:1422 | [goldentest:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 2 (1 batches)
+2026-05-07 17:22:30 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [goldentest:QueryProcessingActor-0] Reusing existing inference engine (config hash: adec4f70)
+2026-05-07 17:22:30 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [goldentest:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 17:22:30 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [goldentest:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 17:22:30 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [goldentest:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 17:22:30 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [goldentest:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 17:22:30 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [goldentest:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 17:22:30 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 17:22:32 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [goldentest:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 17:22:54 | Controller | INFO | controller.py:1299 | [goldentest:Controller] Pipeline 2 completed shard 1 (1 batches, 459.05s)
+2026-05-07 17:22:54 | Controller | INFO | controller.py:1422 | [goldentest:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 2 (1 batches)
+2026-05-07 17:22:54 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [goldentest:QueryProcessingActor-1] Reusing existing inference engine (config hash: adec4f70)
+2026-05-07 17:22:54 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [goldentest:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 17:22:54 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [goldentest:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 17:22:54 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [goldentest:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-07 17:22:54 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [goldentest:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-07 17:22:54 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [goldentest:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-07 17:22:54 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 17:22:56 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [goldentest:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-07 17:23:13 | Controller | INFO | controller.py:1299 | [goldentest:Controller] Pipeline 3 completed shard 1 (1 batches, 458.84s)
+2026-05-07 17:23:13 | Controller | INFO | controller.py:1422 | [goldentest:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 2 for shard 2 (1 batches)
+2026-05-07 17:23:13 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [goldentest:QueryProcessingActor-2] Reusing existing inference engine (config hash: adec4f70)
+2026-05-07 17:23:13 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [goldentest:QueryProcessingActor-2] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 17:23:13 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [goldentest:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 17:23:13 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [goldentest:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-07 17:23:13 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [goldentest:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-07 17:23:13 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [goldentest:QueryProcessingActor-2] Recreated retriever with search_type=similarity
+2026-05-07 17:23:13 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 17:23:15 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [goldentest:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-07 17:30:49 | Controller | INFO | controller.py:1299 | [goldentest:Controller] Pipeline 1 completed shard 2 (1 batches, 495.66s)
+2026-05-07 17:30:49 | Controller | INFO | controller.py:1422 | [goldentest:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 3 (1 batches)
+2026-05-07 17:30:49 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [goldentest:QueryProcessingActor-0] Reusing existing inference engine (config hash: adec4f70)
+2026-05-07 17:30:49 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [goldentest:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 17:30:49 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [goldentest:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 17:30:49 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [goldentest:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 17:30:49 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [goldentest:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 17:30:49 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [goldentest:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 17:30:49 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 17:30:51 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [goldentest:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 17:31:19 | Controller | INFO | controller.py:1299 | [goldentest:Controller] Pipeline 2 completed shard 2 (1 batches, 502.39s)
+2026-05-07 17:31:19 | Controller | INFO | controller.py:1422 | [goldentest:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 3 (1 batches)
+2026-05-07 17:31:19 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [goldentest:QueryProcessingActor-1] Reusing existing inference engine (config hash: adec4f70)
+2026-05-07 17:31:19 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [goldentest:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 17:31:19 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [goldentest:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 17:31:19 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [goldentest:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-07 17:31:19 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [goldentest:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-07 17:31:19 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [goldentest:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-07 17:31:19 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 17:31:22 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [goldentest:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-07 17:32:07 | Controller | INFO | controller.py:1299 | [goldentest:Controller] Pipeline 3 completed shard 2 (1 batches, 531.19s)
+2026-05-07 17:32:07 | Controller | INFO | controller.py:1422 | [goldentest:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 2 for shard 3 (1 batches)
+2026-05-07 17:32:07 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [goldentest:QueryProcessingActor-2] Reusing existing inference engine (config hash: adec4f70)
+2026-05-07 17:32:07 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [goldentest:QueryProcessingActor-2] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 17:32:07 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [goldentest:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 17:32:07 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [goldentest:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-07 17:32:07 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [goldentest:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-07 17:32:07 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [goldentest:QueryProcessingActor-2] Recreated retriever with search_type=similarity
+2026-05-07 17:32:07 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 17:32:10 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [goldentest:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-07 17:38:59 | Controller | INFO | controller.py:1192 | [goldentest:Controller] Pipeline 1 completed all 4 shards
+2026-05-07 17:38:59 | Controller | INFO | controller.py:1299 | [goldentest:Controller] Pipeline 1 completed shard 3 (1 batches, 487.56s)
+2026-05-07 17:39:47 | Controller | INFO | controller.py:1192 | [goldentest:Controller] Pipeline 2 completed all 4 shards
+2026-05-07 17:39:47 | Controller | INFO | controller.py:1299 | [goldentest:Controller] Pipeline 2 completed shard 3 (1 batches, 505.21s)
+2026-05-07 17:40:27 | Controller | INFO | controller.py:1192 | [goldentest:Controller] Pipeline 3 completed all 4 shards
+2026-05-07 17:40:28 | Controller | INFO | controller.py:1299 | [goldentest:Controller] Pipeline 3 completed shard 3 (1 batches, 497.19s)
+2026-05-07 17:40:28 | Controller | INFO | controller.py:1386 | [goldentest:Controller] All pipelines completed all shards!
+2026-05-07 17:40:28 | Controller | INFO | controller.py:695 | [goldentest:Controller] Computing final metrics for all pipelines...
+2026-05-07 17:40:28 | Experiment | INFO | metric_rfmetric_manager.py:190 | [goldentest:Experiment] Ending run: 9f53eec17e014e27a39d6ec93c646bca, 1 in rf_mlflow
+2026-05-07 17:40:28 | Experiment | WARNING | metric_mlflow_manager.py:101 | [goldentest:Experiment] Run 9f53eec17e014e27a39d6ec93c646bca is not the active run, no local context to clear
+2026-05-07 17:40:28 | Controller | INFO | controller.py:853 | [goldentest:Controller] Pipeline 1 (Pipeline 1) completed successfully
+2026-05-07 17:40:29 | Experiment | INFO | metric_rfmetric_manager.py:190 | [goldentest:Experiment] Ending run: 9fac98ef810d49d7ba7e7127a4bc35ae, 2 in rf_mlflow
+2026-05-07 17:40:29 | Experiment | WARNING | metric_mlflow_manager.py:101 | [goldentest:Experiment] Run 9fac98ef810d49d7ba7e7127a4bc35ae is not the active run, no local context to clear
+2026-05-07 17:40:29 | Controller | INFO | controller.py:853 | [goldentest:Controller] Pipeline 2 (Pipeline 2) completed successfully
+2026-05-07 17:40:29 | Experiment | INFO | metric_rfmetric_manager.py:190 | [goldentest:Experiment] Ending run: 2a112da7021b427db69fdfcf4446ba2a, 3 in rf_mlflow
+2026-05-07 17:40:29 | Experiment | WARNING | metric_mlflow_manager.py:101 | [goldentest:Experiment] Run 2a112da7021b427db69fdfcf4446ba2a is not the active run, no local context to clear
+2026-05-07 17:40:29 | Controller | INFO | controller.py:853 | [goldentest:Controller] Pipeline 3 (Pipeline 3) completed successfully
+2026-05-07 17:40:29 | ExperimentUtils | INFO | experiment_utils.py:180 | [goldentest:ExperimentUtils] Reset experiment states - marked ongoing pipelines, contexts, and tasks as failed
+2026-05-07 17:40:29 | ExperimentUtils | INFO | experiment_utils.py:188 | [goldentest:ExperimentUtils] Experiment marked as cancelled. Ongoing pipelines, contexts, and tasks have been marked as failed.
+2026-05-07 17:40:29 | ExperimentUtils | INFO | experiment_utils.py:154 | [goldentest:ExperimentUtils] Experiment goldentest ended
+2026-05-07 17:40:32 | Experiment | INFO | experiment.py:574 | [goldentest:Experiment] All actors shut down
+2026-05-07 17:40:32 | Experiment | INFO | experiment.py:575 | [goldentest:Experiment] Dispatcher will automatically shut down (daemon thread)
