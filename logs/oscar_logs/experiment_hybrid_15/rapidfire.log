@@ -1,0 +1,452 @@
+2026-05-06 23:42:48 | Experiment | INFO | experiment.py:165 | [experiment_hybrid_15:Experiment] Experiment experiment_hybrid_15 created with Experiment ID: 47 at /home/ostran/rapidfireai/rapidfire_experiments/experiment_hybrid_15
+2026-05-06 23:43:06 | Experiment | INFO | metric_rfmetric_manager.py:55 | [experiment_hybrid_15:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-06 23:43:06 | Experiment | INFO | metric_rfmetric_manager.py:119 | [experiment_hybrid_15:Experiment] Creating MLflow experiment: experiment_hybrid_15
+2026-05-06 23:43:06 | Experiment | INFO | experiment.py:210 | [experiment_hybrid_15:Experiment] Initialized MetricLogger experiment: 44
+2026-05-06 23:43:06 | Experiment | INFO | experiment.py:226 | [experiment_hybrid_15:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-06 23:43:07 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 23:43:09 | Experiment | WARNING | experiment.py:381 | [experiment_hybrid_15:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-06 23:43:09 | Experiment | INFO | experiment.py:383 | [experiment_hybrid_15:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-06 23:43:09 | Experiment | INFO | experiment.py:392 | [experiment_hybrid_15:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-06 23:43:09 | Controller | INFO | controller.py:895 | [experiment_hybrid_15:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-06 23:43:09 | Controller | INFO | controller.py:900 | [experiment_hybrid_15:Controller] Received 1 pipeline configuration(s)
+2026-05-06 23:43:09 | Controller | INFO | controller.py:309 | [experiment_hybrid_15:Controller] Found 1 unique RAG context(s)
+2026-05-06 23:43:09 | Controller | INFO | controller.py:320 | [experiment_hybrid_15:Controller] Will build new context e1594d39...
+2026-05-06 23:43:09 | Controller | INFO | controller.py:346 | [experiment_hybrid_15:Controller] Building 1 context(s) in parallel...
+2026-05-06 23:43:09 | Controller | INFO | controller.py:373 | [experiment_hybrid_15:Controller] Creating 1 DocProcessingActor(s) for parallel processing
+2026-05-06 23:43:11 | Controller | INFO | controller.py:461 | [experiment_hybrid_15:Controller] Submitted 1 build task(s) in parallel
+2026-05-06 23:43:32 | DocProcessingActor | INFO | doc_actor.py:59 | [experiment_hybrid_15:DocProcessingActor] DocProcessingActor initialized
+2026-05-06 23:43:34 | DocProcessingActor | INFO | doc_actor.py:96 | [experiment_hybrid_15:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-06 23:43:34 | DocProcessingActor | INFO | doc_actor.py:107 | [experiment_hybrid_15:DocProcessingActor] Building document index...
+2026-05-06 23:43:37 | DocProcessingActor | INFO | doc_actor.py:109 | [experiment_hybrid_15:DocProcessingActor] Document index built successfully
+2026-05-06 23:43:37 | DocProcessingActor | INFO | doc_actor.py:134 | [experiment_hybrid_15:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-06 23:43:37 | DocProcessingActor | INFO | doc_actor.py:144 | [experiment_hybrid_15:DocProcessingActor] FAISS index serialized: 1276456 bytes
+2026-05-06 23:43:37 | DocProcessingActor | INFO | doc_actor.py:189 | [experiment_hybrid_15:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-06 23:43:37 | Controller | INFO | controller.py:482 | [experiment_hybrid_15:Controller] Built context 1 (e1594d39...) successfully in 27.27s
+2026-05-06 23:43:37 | Controller | INFO | controller.py:523 | [experiment_hybrid_15:Controller] Completed parallel context building for 1 context(s)
+2026-05-06 23:43:37 | Controller | INFO | controller.py:920 | [experiment_hybrid_15:Controller] Created 4 query processing actors (generic pool)
+2026-05-06 23:43:37 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experiment_hybrid_15:Experiment] Created MLflow run: 4e154d31c459484a9720e7b6f8d486f9, 1
+2026-05-06 23:43:37 | Controller | INFO | controller.py:931 | [experiment_hybrid_15:Controller] Initialized scheduler with 1 pipelines, 4 actors, 4 shards
+2026-05-06 23:43:37 | Controller | INFO | controller.py:1118 | [experiment_hybrid_15:Controller] Created experiment-wide rate limiter actor for 1 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-06 23:43:37 | Controller | INFO | controller.py:1124 | [experiment_hybrid_15:Controller] Starting multi-pipeline inference scheduling...
+2026-05-06 23:43:37 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 0 (1 batches)
+2026-05-06 23:44:00 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [experiment_hybrid_15:QueryProcessingActor-0] Initializing new inference engine (config hash: a142cb15)
+2026-05-06 23:44:00 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 23:44:00 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 23:44:00 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-06 23:44:00 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-06 23:44:00 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-06 23:44:00 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-06 23:51:36 | Controller | INFO | controller.py:1299 | [experiment_hybrid_15:Controller] Pipeline 1 completed shard 0 (1 batches, 450.83s)
+2026-05-06 23:51:36 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 1 (1 batches)
+2026-05-06 23:51:36 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_15:QueryProcessingActor-0] Reusing existing inference engine (config hash: a142cb15)
+2026-05-06 23:51:36 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 23:51:36 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 23:51:36 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-06 23:51:36 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-06 23:51:36 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-06 23:51:36 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 00:00:32 | Controller | INFO | controller.py:1299 | [experiment_hybrid_15:Controller] Pipeline 1 completed shard 1 (1 batches, 534.97s)
+2026-05-07 00:00:32 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 2 (1 batches)
+2026-05-07 00:00:33 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_15:QueryProcessingActor-0] Reusing existing inference engine (config hash: a142cb15)
+2026-05-07 00:00:33 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 00:00:33 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 00:00:33 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 00:00:33 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 00:00:33 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 00:00:33 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 00:07:24 | Controller | INFO | controller.py:1299 | [experiment_hybrid_15:Controller] Pipeline 1 completed shard 2 (1 batches, 409.65s)
+2026-05-07 00:07:24 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 3 (1 batches)
+2026-05-07 00:07:24 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_15:QueryProcessingActor-0] Reusing existing inference engine (config hash: a142cb15)
+2026-05-07 00:07:24 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 00:07:24 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 00:07:24 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 00:07:24 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 00:07:24 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 00:07:24 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 00:14:20 | Controller | INFO | controller.py:1192 | [experiment_hybrid_15:Controller] Pipeline 1 completed all 4 shards
+2026-05-07 00:14:20 | Controller | INFO | controller.py:1299 | [experiment_hybrid_15:Controller] Pipeline 1 completed shard 3 (1 batches, 413.60s)
+2026-05-07 00:14:20 | Controller | INFO | controller.py:1386 | [experiment_hybrid_15:Controller] All pipelines completed all shards!
+2026-05-07 00:14:20 | Controller | INFO | controller.py:695 | [experiment_hybrid_15:Controller] Computing final metrics for all pipelines...
+2026-05-07 00:14:20 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experiment_hybrid_15:Experiment] Ending run: 4e154d31c459484a9720e7b6f8d486f9, 1 in rf_mlflow
+2026-05-07 00:14:20 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experiment_hybrid_15:Experiment] Run 4e154d31c459484a9720e7b6f8d486f9 is not the active run, no local context to clear
+2026-05-07 00:14:20 | Controller | INFO | controller.py:853 | [experiment_hybrid_15:Controller] Pipeline 1 (Pipeline 1) completed successfully
+2026-05-07 00:14:20 | Experiment | WARNING | experiment.py:381 | [experiment_hybrid_15:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-07 00:14:20 | Experiment | INFO | experiment.py:383 | [experiment_hybrid_15:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-07 00:14:20 | Experiment | INFO | experiment.py:392 | [experiment_hybrid_15:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-07 00:14:21 | Controller | INFO | controller.py:895 | [experiment_hybrid_15:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-07 00:14:21 | Controller | INFO | controller.py:900 | [experiment_hybrid_15:Controller] Received 1 pipeline configuration(s)
+2026-05-07 00:14:21 | Controller | INFO | controller.py:309 | [experiment_hybrid_15:Controller] Found 1 unique RAG context(s)
+2026-05-07 00:14:21 | Controller | INFO | controller.py:316 | [experiment_hybrid_15:Controller] Context e1594d39... already in cache (session), reusing
+2026-05-07 00:14:21 | Controller | INFO | controller.py:342 | [experiment_hybrid_15:Controller] All contexts already in cache, no building needed
+2026-05-07 00:14:21 | Controller | INFO | controller.py:920 | [experiment_hybrid_15:Controller] Created 4 query processing actors (generic pool)
+2026-05-07 00:14:21 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experiment_hybrid_15:Experiment] Created MLflow run: 717ac74a40414ddca531174febe430d7, 2
+2026-05-07 00:14:21 | Controller | INFO | controller.py:931 | [experiment_hybrid_15:Controller] Initialized scheduler with 1 pipelines, 4 actors, 4 shards
+2026-05-07 00:14:21 | Controller | INFO | controller.py:1118 | [experiment_hybrid_15:Controller] Created experiment-wide rate limiter actor for 1 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-07 00:14:21 | Controller | INFO | controller.py:1124 | [experiment_hybrid_15:Controller] Starting multi-pipeline inference scheduling...
+2026-05-07 00:14:21 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 0 for shard 0 (1 batches)
+2026-05-07 00:14:44 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [experiment_hybrid_15:QueryProcessingActor-0] Initializing new inference engine (config hash: 4e5943f1)
+2026-05-07 00:14:44 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 00:14:44 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 00:14:44 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 00:14:44 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 00:14:44 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 00:14:44 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 00:22:01 | Controller | INFO | controller.py:1299 | [experiment_hybrid_15:Controller] Pipeline 2 completed shard 0 (1 batches, 435.17s)
+2026-05-07 00:22:01 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 0 for shard 1 (1 batches)
+2026-05-07 00:22:01 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_15:QueryProcessingActor-0] Reusing existing inference engine (config hash: 4e5943f1)
+2026-05-07 00:22:01 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 00:22:01 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 00:22:01 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 00:22:01 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 00:22:01 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 00:22:01 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 00:29:12 | Controller | INFO | controller.py:1299 | [experiment_hybrid_15:Controller] Pipeline 2 completed shard 1 (1 batches, 429.13s)
+2026-05-07 00:29:12 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 0 for shard 2 (1 batches)
+2026-05-07 00:29:12 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_15:QueryProcessingActor-0] Reusing existing inference engine (config hash: 4e5943f1)
+2026-05-07 00:29:12 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 00:29:12 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 00:29:12 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 00:29:12 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 00:29:12 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 00:29:12 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 00:36:16 | Controller | INFO | controller.py:1299 | [experiment_hybrid_15:Controller] Pipeline 2 completed shard 2 (1 batches, 422.18s)
+2026-05-07 00:36:16 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 0 for shard 3 (1 batches)
+2026-05-07 00:36:16 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_15:QueryProcessingActor-0] Reusing existing inference engine (config hash: 4e5943f1)
+2026-05-07 00:36:16 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 00:36:16 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 00:36:16 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 00:36:16 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 00:36:16 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 00:36:16 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 01:27:51 | ExperimentUtils | INFO | experiment_utils.py:180 | [experiment_hybrid_15:ExperimentUtils] Reset experiment states - marked ongoing pipelines, contexts, and tasks as failed
+2026-05-07 01:27:51 | ExperimentUtils | INFO | experiment_utils.py:188 | [experiment_hybrid_15:ExperimentUtils] Experiment marked as cancelled. Ongoing pipelines, contexts, and tasks have been marked as failed.
+2026-05-07 01:27:51 | Experiment | INFO | experiment.py:165 | [experiment_hybrid_15:Experiment] Experiment experiment_hybrid_15 is currently running. Returning the same experiment object.
+2026-05-07 01:27:51 | Experiment | INFO | experiment.py:165 | [experiment_hybrid_15:Experiment] Any running tasks have been cancelled.
+2026-05-07 01:28:14 | Experiment | INFO | metric_rfmetric_manager.py:55 | [experiment_hybrid_15:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-07 01:28:14 | Experiment | INFO | metric_rfmetric_manager.py:119 | [experiment_hybrid_15:Experiment] Creating MLflow experiment: experiment_hybrid_15
+2026-05-07 01:28:14 | Experiment | WARNING | experiment.py:212 | [experiment_hybrid_15:Experiment] Failed to initialize MetricLogger: RESOURCE_ALREADY_EXISTS: Experiment(name=experiment_hybrid_15) already exists. Error: (sqlite3.IntegrityError) UNIQUE constraint failed: experiments.workspace, experiments.name
+[SQL: INSERT INTO experiments (name, workspace, artifact_location, lifecycle_stage, creation_time, last_update_time) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('experiment_hybrid_15', 'default', '', 'active', 1778142494708, 1778142494708)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj). MetricLogger logging will be disabled.
+2026-05-07 01:28:14 | Experiment | INFO | experiment.py:226 | [experiment_hybrid_15:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-07 01:28:16 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 01:28:26 | Experiment | WARNING | experiment.py:381 | [experiment_hybrid_15:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-07 01:28:26 | Experiment | INFO | experiment.py:383 | [experiment_hybrid_15:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-07 01:28:26 | Experiment | INFO | experiment.py:392 | [experiment_hybrid_15:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-07 01:28:27 | Controller | INFO | controller.py:895 | [experiment_hybrid_15:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-07 01:28:27 | Controller | INFO | controller.py:900 | [experiment_hybrid_15:Controller] Received 1 pipeline configuration(s)
+2026-05-07 01:28:27 | Controller | INFO | controller.py:309 | [experiment_hybrid_15:Controller] Found 1 unique RAG context(s)
+2026-05-07 01:28:27 | Controller | INFO | controller.py:320 | [experiment_hybrid_15:Controller] Will build new context e1594d39...
+2026-05-07 01:28:27 | Controller | INFO | controller.py:346 | [experiment_hybrid_15:Controller] Building 1 context(s) in parallel...
+2026-05-07 01:28:27 | Controller | INFO | controller.py:373 | [experiment_hybrid_15:Controller] Creating 1 DocProcessingActor(s) for parallel processing
+2026-05-07 01:28:28 | matplotlib.font_manager | INFO | font_manager.py:1639 | generated new fontManager
+2026-05-07 01:28:29 | Controller | INFO | controller.py:461 | [experiment_hybrid_15:Controller] Submitted 1 build task(s) in parallel
+2026-05-07 01:28:59 | DocProcessingActor | INFO | doc_actor.py:59 | [experiment_hybrid_15:DocProcessingActor] DocProcessingActor initialized
+2026-05-07 01:29:02 | DocProcessingActor | INFO | doc_actor.py:96 | [experiment_hybrid_15:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-07 01:29:02 | DocProcessingActor | INFO | doc_actor.py:107 | [experiment_hybrid_15:DocProcessingActor] Building document index...
+2026-05-07 01:29:06 | DocProcessingActor | INFO | doc_actor.py:109 | [experiment_hybrid_15:DocProcessingActor] Document index built successfully
+2026-05-07 01:29:06 | DocProcessingActor | INFO | doc_actor.py:134 | [experiment_hybrid_15:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-07 01:29:06 | DocProcessingActor | INFO | doc_actor.py:144 | [experiment_hybrid_15:DocProcessingActor] FAISS index serialized: 1276456 bytes
+2026-05-07 01:29:06 | DocProcessingActor | INFO | doc_actor.py:189 | [experiment_hybrid_15:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-07 01:29:06 | Controller | INFO | controller.py:482 | [experiment_hybrid_15:Controller] Built context 1 (e1594d39...) successfully in 39.28s
+2026-05-07 01:29:06 | Controller | INFO | controller.py:523 | [experiment_hybrid_15:Controller] Completed parallel context building for 1 context(s)
+2026-05-07 01:29:06 | Controller | INFO | controller.py:920 | [experiment_hybrid_15:Controller] Created 4 query processing actors (generic pool)
+2026-05-07 01:29:06 | Controller | INFO | controller.py:931 | [experiment_hybrid_15:Controller] Initialized scheduler with 1 pipelines, 4 actors, 4 shards
+2026-05-07 01:29:06 | Controller | INFO | controller.py:1118 | [experiment_hybrid_15:Controller] Created experiment-wide rate limiter actor for 1 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-07 01:29:06 | Controller | INFO | controller.py:1124 | [experiment_hybrid_15:Controller] Starting multi-pipeline inference scheduling...
+2026-05-07 01:29:06 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 0 for shard 0 (1 batches)
+2026-05-07 01:29:38 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [experiment_hybrid_15:QueryProcessingActor-0] Initializing new inference engine (config hash: 735f7be5)
+2026-05-07 01:29:38 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 01:29:38 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 01:29:38 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 01:29:38 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 01:29:38 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 01:29:38 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 01:41:39 | Controller | INFO | controller.py:1299 | [experiment_hybrid_15:Controller] Pipeline 3 completed shard 0 (1 batches, 715.00s)
+2026-05-07 01:41:39 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 0 for shard 1 (1 batches)
+2026-05-07 01:41:39 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_15:QueryProcessingActor-0] Reusing existing inference engine (config hash: 735f7be5)
+2026-05-07 01:41:39 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 01:41:39 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 01:41:39 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 01:41:39 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 01:41:39 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 01:41:39 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 01:53:26 | Controller | INFO | controller.py:1299 | [experiment_hybrid_15:Controller] Pipeline 3 completed shard 1 (1 batches, 702.56s)
+2026-05-07 01:53:26 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 0 for shard 2 (1 batches)
+2026-05-07 01:53:26 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_15:QueryProcessingActor-0] Reusing existing inference engine (config hash: 735f7be5)
+2026-05-07 01:53:26 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 01:53:26 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 01:53:26 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 01:53:26 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 01:53:26 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 01:53:26 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 02:05:24 | Controller | INFO | controller.py:1299 | [experiment_hybrid_15:Controller] Pipeline 3 completed shard 2 (1 batches, 714.00s)
+2026-05-07 02:05:24 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 0 for shard 3 (1 batches)
+2026-05-07 02:05:24 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_15:QueryProcessingActor-0] Reusing existing inference engine (config hash: 735f7be5)
+2026-05-07 02:05:24 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 02:05:24 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 02:05:24 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 02:05:24 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 02:05:24 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 02:05:24 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 02:16:34 | Controller | INFO | controller.py:1192 | [experiment_hybrid_15:Controller] Pipeline 3 completed all 4 shards
+2026-05-07 02:16:34 | Controller | INFO | controller.py:1299 | [experiment_hybrid_15:Controller] Pipeline 3 completed shard 3 (1 batches, 666.88s)
+2026-05-07 02:16:34 | Controller | INFO | controller.py:1386 | [experiment_hybrid_15:Controller] All pipelines completed all shards!
+2026-05-07 02:16:34 | Controller | INFO | controller.py:695 | [experiment_hybrid_15:Controller] Computing final metrics for all pipelines...
+2026-05-07 02:16:34 | Controller | INFO | controller.py:853 | [experiment_hybrid_15:Controller] Pipeline 3 (Pipeline 3) completed successfully
+2026-05-07 02:16:34 | Experiment | WARNING | experiment.py:381 | [experiment_hybrid_15:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-07 02:16:34 | Experiment | INFO | experiment.py:383 | [experiment_hybrid_15:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-07 02:16:34 | Experiment | INFO | experiment.py:392 | [experiment_hybrid_15:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-07 02:16:35 | Controller | INFO | controller.py:895 | [experiment_hybrid_15:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-07 02:16:35 | Controller | INFO | controller.py:900 | [experiment_hybrid_15:Controller] Received 1 pipeline configuration(s)
+2026-05-07 02:16:35 | Controller | INFO | controller.py:309 | [experiment_hybrid_15:Controller] Found 1 unique RAG context(s)
+2026-05-07 02:16:35 | Controller | INFO | controller.py:316 | [experiment_hybrid_15:Controller] Context e1594d39... already in cache (session), reusing
+2026-05-07 02:16:35 | Controller | INFO | controller.py:342 | [experiment_hybrid_15:Controller] All contexts already in cache, no building needed
+2026-05-07 02:16:35 | Controller | INFO | controller.py:920 | [experiment_hybrid_15:Controller] Created 4 query processing actors (generic pool)
+2026-05-07 02:16:35 | Controller | INFO | controller.py:931 | [experiment_hybrid_15:Controller] Initialized scheduler with 1 pipelines, 4 actors, 4 shards
+2026-05-07 02:16:35 | Controller | INFO | controller.py:1118 | [experiment_hybrid_15:Controller] Created experiment-wide rate limiter actor for 1 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-07 02:16:35 | Controller | INFO | controller.py:1124 | [experiment_hybrid_15:Controller] Starting multi-pipeline inference scheduling...
+2026-05-07 02:16:35 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 0 for shard 0 (1 batches)
+2026-05-07 02:17:06 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [experiment_hybrid_15:QueryProcessingActor-0] Initializing new inference engine (config hash: 1471b8ad)
+2026-05-07 02:17:06 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 02:17:06 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 02:17:06 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 02:17:06 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 02:17:06 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 02:17:06 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 02:28:53 | Controller | INFO | controller.py:1299 | [experiment_hybrid_15:Controller] Pipeline 4 completed shard 0 (1 batches, 703.22s)
+2026-05-07 02:28:53 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 0 for shard 1 (1 batches)
+2026-05-07 02:28:53 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_15:QueryProcessingActor-0] Reusing existing inference engine (config hash: 1471b8ad)
+2026-05-07 02:28:53 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 02:28:53 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 02:28:53 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 02:28:53 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 02:28:53 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 02:28:53 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 02:39:34 | Controller | INFO | controller.py:1299 | [experiment_hybrid_15:Controller] Pipeline 4 completed shard 1 (1 batches, 638.09s)
+2026-05-07 02:39:34 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 0 for shard 2 (1 batches)
+2026-05-07 02:39:34 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_15:QueryProcessingActor-0] Reusing existing inference engine (config hash: 1471b8ad)
+2026-05-07 02:39:34 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 02:39:34 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 02:39:34 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 02:39:34 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 02:39:34 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 02:39:34 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 02:39:40 | QueryProcessingActor-0 | ERROR | query_actor.py:398 | [experiment_hybrid_15:QueryProcessingActor-0] Error processing batch in QueryProcessingActor: BadRequestError: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 47.15813130999978, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}
+Traceback (most recent call last):
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/actors/query_actor.py", line 366, in process_batch
+    batch_data = preprocess_fn(batch_data, self.rag_spec, self.prompt_manager)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_986/552815297.py", line 20, in openai_sample_preprocess_fn
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_core/retrievers.py", line 222, in invoke
+    result = self._get_relevant_documents(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_classic/retrievers/contextual_compression.py", line 34, in _get_relevant_documents
+    docs = self.base_retriever.invoke(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_classic/retrievers/ensemble.py", line 130, in invoke
+    result = self.rank_fusion(input, run_manager=run_manager, config=config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_classic/retrievers/ensemble.py", line 240, in rank_fusion
+    retriever.invoke(
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_core/retrievers.py", line 222, in invoke
+    result = self._get_relevant_documents(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 1045, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 801, in embed_query
+    return self.embed_documents([text], **kwargs)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 740, in embed_documents
+    response = self.client.create(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/mlflow/utils/autologging_utils/safety.py", line 484, in safe_patch_function
+    patch_function(call_original, *args, **kwargs)
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/mlflow/openai/autolog.py", line 249, in patched_call
+    raw_result = original(self, *args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/mlflow/utils/autologging_utils/safety.py", line 475, in call_original
+    return call_original_fn_with_event_logging(_original_fn, og_args, og_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/mlflow/utils/autologging_utils/safety.py", line 426, in call_original_fn_with_event_logging
+    original_fn_result = original_fn(*og_args, **og_kwargs)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/mlflow/utils/autologging_utils/safety.py", line 472, in _original_fn
+    original_result = original(*_og_args, **_og_kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/openai/resources/embeddings.py", line 136, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 47.15813130999978, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}
+2026-05-07 02:39:40 | Controller | ERROR | controller.py:1310 | [experiment_hybrid_15:Controller] Pipeline 4 failed on shard 2
+Traceback (most recent call last):
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/scheduling/controller.py", line 1157, in run_multi_pipeline_inference
+    shard_results, shard_metrics = aggregator.aggregate_with_progress(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/metrics/aggregator.py", line 192, in aggregate_with_progress
+    new_data = ray.get(ready)
+               ^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 22, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 107, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/worker.py", line 2980, in get
+    values, debugger_breakpoint = worker.get_objects(
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/worker.py", line 1023, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(RuntimeError): [36mray::QueryProcessingActor.process_batch()[39m (pid=9262, ip=10.41.35.67, actor_id=899f5654cec23e6cc45daecc01000000, repr=<rapidfireai.evals.actors.query_actor.QueryProcessingActor object at 0x7f69fd8e85c0>)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/actors/query_actor.py", line 401, in process_batch
+    raise RuntimeError(
+RuntimeError: Error processing batch: BadRequestError: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 47.15813130999978, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}
+2026-05-07 02:39:40 | Controller | INFO | controller.py:1386 | [experiment_hybrid_15:Controller] All pipelines completed all shards!
+2026-05-07 02:39:40 | Controller | INFO | controller.py:695 | [experiment_hybrid_15:Controller] Computing final metrics for all pipelines...
+2026-05-07 02:39:40 | Controller | WARNING | controller.py:708 | [experiment_hybrid_15:Controller] Pipeline 4 failed, skipping final metrics
+2026-05-07 02:39:40 | Experiment | WARNING | experiment.py:381 | [experiment_hybrid_15:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-07 02:39:40 | Experiment | INFO | experiment.py:383 | [experiment_hybrid_15:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-07 02:39:40 | Experiment | INFO | experiment.py:392 | [experiment_hybrid_15:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-07 02:39:41 | Controller | INFO | controller.py:895 | [experiment_hybrid_15:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-07 02:39:41 | Controller | INFO | controller.py:900 | [experiment_hybrid_15:Controller] Received 1 pipeline configuration(s)
+2026-05-07 02:39:41 | Controller | INFO | controller.py:309 | [experiment_hybrid_15:Controller] Found 1 unique RAG context(s)
+2026-05-07 02:39:41 | Controller | INFO | controller.py:316 | [experiment_hybrid_15:Controller] Context e1594d39... already in cache (session), reusing
+2026-05-07 02:39:41 | Controller | INFO | controller.py:342 | [experiment_hybrid_15:Controller] All contexts already in cache, no building needed
+2026-05-07 02:39:41 | Controller | INFO | controller.py:920 | [experiment_hybrid_15:Controller] Created 4 query processing actors (generic pool)
+2026-05-07 02:39:41 | Controller | INFO | controller.py:931 | [experiment_hybrid_15:Controller] Initialized scheduler with 1 pipelines, 4 actors, 4 shards
+2026-05-07 02:39:41 | Controller | INFO | controller.py:1118 | [experiment_hybrid_15:Controller] Created experiment-wide rate limiter actor for 1 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-07 02:39:41 | Controller | INFO | controller.py:1124 | [experiment_hybrid_15:Controller] Starting multi-pipeline inference scheduling...
+2026-05-07 02:39:41 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 5 (Pipeline 5) on actor 0 for shard 0 (1 batches)
+2026-05-07 02:40:10 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [experiment_hybrid_15:QueryProcessingActor-0] Initializing new inference engine (config hash: d20336ff)
+2026-05-07 02:40:10 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 02:40:10 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 02:40:10 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 02:40:10 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 02:40:10 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 02:40:10 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 02:40:17 | QueryProcessingActor-0 | ERROR | query_actor.py:398 | [experiment_hybrid_15:QueryProcessingActor-0] Error processing batch in QueryProcessingActor: BadRequestError: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 47.15813130999978, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}
+Traceback (most recent call last):
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/actors/query_actor.py", line 366, in process_batch
+    batch_data = preprocess_fn(batch_data, self.rag_spec, self.prompt_manager)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_986/552815297.py", line 20, in openai_sample_preprocess_fn
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_core/retrievers.py", line 222, in invoke
+    result = self._get_relevant_documents(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_classic/retrievers/contextual_compression.py", line 34, in _get_relevant_documents
+    docs = self.base_retriever.invoke(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_classic/retrievers/ensemble.py", line 130, in invoke
+    result = self.rank_fusion(input, run_manager=run_manager, config=config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_classic/retrievers/ensemble.py", line 240, in rank_fusion
+    retriever.invoke(
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_core/retrievers.py", line 222, in invoke
+    result = self._get_relevant_documents(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_core/vectorstores/base.py", line 1045, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 801, in embed_query
+    return self.embed_documents([text], **kwargs)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/langchain_openai/embeddings/base.py", line 740, in embed_documents
+    response = self.client.create(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/mlflow/utils/autologging_utils/safety.py", line 484, in safe_patch_function
+    patch_function(call_original, *args, **kwargs)
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/mlflow/openai/autolog.py", line 249, in patched_call
+    raw_result = original(self, *args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/mlflow/utils/autologging_utils/safety.py", line 475, in call_original
+    return call_original_fn_with_event_logging(_original_fn, og_args, og_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/mlflow/utils/autologging_utils/safety.py", line 426, in call_original_fn_with_event_logging
+    original_fn_result = original_fn(*og_args, **og_kwargs)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/mlflow/utils/autologging_utils/safety.py", line 472, in _original_fn
+    original_result = original(*_og_args, **_og_kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/openai/resources/embeddings.py", line 136, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 47.15813130999978, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}
+2026-05-07 02:40:17 | Controller | ERROR | controller.py:1310 | [experiment_hybrid_15:Controller] Pipeline 5 failed on shard 0
+Traceback (most recent call last):
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/scheduling/controller.py", line 1157, in run_multi_pipeline_inference
+    shard_results, shard_metrics = aggregator.aggregate_with_progress(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/metrics/aggregator.py", line 192, in aggregate_with_progress
+    new_data = ray.get(ready)
+               ^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 22, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 107, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/worker.py", line 2980, in get
+    values, debugger_breakpoint = worker.get_objects(
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/ray/_private/worker.py", line 1023, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(RuntimeError): [36mray::QueryProcessingActor.process_batch()[39m (pid=11309, ip=10.41.35.67, actor_id=95bb312fc11b4cfeddca097c01000000, repr=<rapidfireai.evals.actors.query_actor.QueryProcessingActor object at 0x7ffae2f85940>)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/actors/query_actor.py", line 401, in process_batch
+    raise RuntimeError(
+RuntimeError: Error processing batch: BadRequestError: Error code: 400 - {'error': {'message': 'Budget has been exceeded! Current cost: 47.15813130999978, Max budget: 25.0', 'type': 'budget_exceeded', 'param': None, 'code': '400'}}
+2026-05-07 02:40:17 | Controller | INFO | controller.py:1386 | [experiment_hybrid_15:Controller] All pipelines completed all shards!
+2026-05-07 02:40:17 | Controller | INFO | controller.py:695 | [experiment_hybrid_15:Controller] Computing final metrics for all pipelines...
+2026-05-07 02:40:17 | Controller | WARNING | controller.py:708 | [experiment_hybrid_15:Controller] Pipeline 5 failed, skipping final metrics
+2026-05-07 02:40:17 | Experiment | WARNING | experiment.py:381 | [experiment_hybrid_15:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-07 02:40:17 | Experiment | INFO | experiment.py:383 | [experiment_hybrid_15:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-07 02:40:17 | Experiment | INFO | experiment.py:392 | [experiment_hybrid_15:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-07 02:40:18 | Controller | INFO | controller.py:895 | [experiment_hybrid_15:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-07 02:40:18 | Controller | INFO | controller.py:900 | [experiment_hybrid_15:Controller] Received 1 pipeline configuration(s)
+2026-05-07 02:40:18 | Controller | INFO | controller.py:309 | [experiment_hybrid_15:Controller] Found 1 unique RAG context(s)
+2026-05-07 02:40:18 | Controller | INFO | controller.py:316 | [experiment_hybrid_15:Controller] Context e1594d39... already in cache (session), reusing
+2026-05-07 02:40:18 | Controller | INFO | controller.py:342 | [experiment_hybrid_15:Controller] All contexts already in cache, no building needed
+2026-05-07 02:40:18 | Controller | INFO | controller.py:920 | [experiment_hybrid_15:Controller] Created 4 query processing actors (generic pool)
+2026-05-07 02:40:18 | Controller | INFO | controller.py:931 | [experiment_hybrid_15:Controller] Initialized scheduler with 1 pipelines, 4 actors, 4 shards
+2026-05-07 02:40:18 | Controller | INFO | controller.py:1118 | [experiment_hybrid_15:Controller] Created experiment-wide rate limiter actor for 1 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-07 02:40:18 | Controller | INFO | controller.py:1124 | [experiment_hybrid_15:Controller] Starting multi-pipeline inference scheduling...
+2026-05-07 02:40:18 | Controller | INFO | controller.py:1422 | [experiment_hybrid_15:Controller] Scheduling pipeline 6 (Pipeline 6) on actor 0 for shard 0 (1 batches)
+2026-05-07 02:40:48 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [experiment_hybrid_15:QueryProcessingActor-0] Initializing new inference engine (config hash: 9cbded5e)
+2026-05-07 02:40:48 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 02:40:48 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_15:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 02:40:48 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_15:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 02:40:48 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_15:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 02:40:48 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 02:40:48 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_15:QueryProcessingActor-0] Recreated RAG spec with retrieval mode

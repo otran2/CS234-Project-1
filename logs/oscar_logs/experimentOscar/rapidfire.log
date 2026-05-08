@@ -1,0 +1,612 @@
+2026-05-01 16:40:38 | Experiment | INFO | experiment.py:165 | [experimentOscar:Experiment] Experiment experimentOscar created with Experiment ID: 20 at /home/ostran/rapidfireai/rapidfire_experiments/experimentOscar
+2026-05-01 16:40:56 | Experiment | INFO | metric_rfmetric_manager.py:55 | [experimentOscar:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-01 16:40:56 | Experiment | INFO | metric_rfmetric_manager.py:119 | [experimentOscar:Experiment] Creating MLflow experiment: experimentOscar
+2026-05-01 16:40:56 | Experiment | INFO | experiment.py:210 | [experimentOscar:Experiment] Initialized MetricLogger experiment: 18
+2026-05-01 16:40:56 | Experiment | INFO | experiment.py:226 | [experimentOscar:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-01 16:40:59 | Experiment | WARNING | experiment.py:381 | [experimentOscar:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-01 16:40:59 | Experiment | INFO | experiment.py:383 | [experimentOscar:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-01 16:40:59 | Experiment | INFO | experiment.py:392 | [experimentOscar:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-01 16:40:59 | Controller | INFO | controller.py:895 | [experimentOscar:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-01 16:40:59 | Controller | INFO | controller.py:900 | [experimentOscar:Controller] Received 12 pipeline configuration(s)
+2026-05-01 16:40:59 | Controller | INFO | controller.py:309 | [experimentOscar:Controller] Found 2 unique RAG context(s)
+2026-05-01 16:40:59 | Controller | INFO | controller.py:320 | [experimentOscar:Controller] Will build new context 1ae8bee2...
+2026-05-01 16:40:59 | Controller | INFO | controller.py:320 | [experimentOscar:Controller] Will build new context 25640186...
+2026-05-01 16:40:59 | Controller | INFO | controller.py:346 | [experimentOscar:Controller] Building 2 context(s) in parallel...
+2026-05-01 16:40:59 | Controller | INFO | controller.py:373 | [experimentOscar:Controller] Creating 2 DocProcessingActor(s) for parallel processing
+2026-05-01 16:41:00 | matplotlib.font_manager | INFO | font_manager.py:1639 | generated new fontManager
+2026-05-01 16:41:01 | Controller | INFO | controller.py:461 | [experimentOscar:Controller] Submitted 2 build task(s) in parallel
+2026-05-01 16:41:21 | DocProcessingActor | INFO | doc_actor.py:59 | [experimentOscar:DocProcessingActor] DocProcessingActor initialized
+2026-05-01 16:41:22 | DocProcessingActor | INFO | doc_actor.py:59 | [experimentOscar:DocProcessingActor] DocProcessingActor initialized
+2026-05-01 16:41:22 | DocProcessingActor | INFO | doc_actor.py:96 | [experimentOscar:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-01 16:41:22 | DocProcessingActor | INFO | doc_actor.py:107 | [experimentOscar:DocProcessingActor] Building document index...
+2026-05-01 16:41:23 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 16:41:24 | DocProcessingActor | INFO | doc_actor.py:96 | [experimentOscar:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-01 16:41:24 | DocProcessingActor | INFO | doc_actor.py:107 | [experimentOscar:DocProcessingActor] Building document index...
+2026-05-01 16:41:24 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 16:41:26 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 16:41:31 | DocProcessingActor | INFO | doc_actor.py:109 | [experimentOscar:DocProcessingActor] Document index built successfully
+2026-05-01 16:41:31 | DocProcessingActor | INFO | doc_actor.py:134 | [experimentOscar:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-01 16:41:31 | DocProcessingActor | INFO | doc_actor.py:144 | [experimentOscar:DocProcessingActor] FAISS index serialized: 2654116 bytes
+2026-05-01 16:41:31 | DocProcessingActor | INFO | doc_actor.py:189 | [experimentOscar:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-01 16:41:46 | DocProcessingActor | INFO | doc_actor.py:109 | [experimentOscar:DocProcessingActor] Document index built successfully
+2026-05-01 16:41:46 | DocProcessingActor | INFO | doc_actor.py:134 | [experimentOscar:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-01 16:41:46 | DocProcessingActor | INFO | doc_actor.py:144 | [experimentOscar:DocProcessingActor] FAISS index serialized: 1051556 bytes
+2026-05-01 16:41:46 | DocProcessingActor | INFO | doc_actor.py:189 | [experimentOscar:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-01 16:41:46 | Controller | INFO | controller.py:482 | [experimentOscar:Controller] Built context 1 (1ae8bee2...) successfully in 46.68s
+2026-05-01 16:41:46 | Controller | INFO | controller.py:482 | [experimentOscar:Controller] Built context 2 (25640186...) successfully in 46.69s
+2026-05-01 16:41:46 | Controller | INFO | controller.py:523 | [experimentOscar:Controller] Completed parallel context building for 2 context(s)
+2026-05-01 16:41:46 | Controller | INFO | controller.py:920 | [experimentOscar:Controller] Created 4 query processing actors (generic pool)
+2026-05-01 16:41:46 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experimentOscar:Experiment] Created MLflow run: 90eacd15448541ddade13f2a119546c3, 1
+2026-05-01 16:41:46 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experimentOscar:Experiment] Created MLflow run: d0f4ae82ccb946b6b8cfd35a549b0c22, 2
+2026-05-01 16:41:46 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experimentOscar:Experiment] Created MLflow run: 3003bcfa85e148afa35b1d8b0eb5771f, 3
+2026-05-01 16:41:46 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experimentOscar:Experiment] Created MLflow run: 53284b1cc3ea46c7bcd6177dee059421, 4
+2026-05-01 16:41:46 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experimentOscar:Experiment] Created MLflow run: eb732441ab0e491aa508e7e00c44c2cf, 5
+2026-05-01 16:41:46 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experimentOscar:Experiment] Created MLflow run: a1cbe46482d6451594a3bb4463fbeb95, 6
+2026-05-01 16:41:46 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experimentOscar:Experiment] Created MLflow run: 05fce3b060bf4c6b8a3459924b60d3e3, 7
+2026-05-01 16:41:46 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experimentOscar:Experiment] Created MLflow run: 043d6ec94f6441f8bb58e798a5925c16, 8
+2026-05-01 16:41:46 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experimentOscar:Experiment] Created MLflow run: ca227e3dfa524c1c9bb92bfa3b7ec6e3, 9
+2026-05-01 16:41:46 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experimentOscar:Experiment] Created MLflow run: e6e7f2b824b2470db347dead43d5997a, 10
+2026-05-01 16:41:47 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experimentOscar:Experiment] Created MLflow run: 16c9f09cf1e24082b0474db3bc8932b6, 11
+2026-05-01 16:41:47 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experimentOscar:Experiment] Created MLflow run: 07e3f97bcc4344b4bd73cfb0b47efa2a, 12
+2026-05-01 16:41:47 | Controller | INFO | controller.py:931 | [experimentOscar:Controller] Initialized scheduler with 12 pipelines, 4 actors, 4 shards
+2026-05-01 16:41:47 | Controller | INFO | controller.py:1118 | [experimentOscar:Controller] Created experiment-wide rate limiter actor for 12 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-01 16:41:47 | Controller | INFO | controller.py:1124 | [experimentOscar:Controller] Starting multi-pipeline inference scheduling...
+2026-05-01 16:41:47 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 0 (1 batches)
+2026-05-01 16:42:08 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [experimentOscar:QueryProcessingActor-0] Initializing new inference engine (config hash: 29bb82c2)
+2026-05-01 16:42:08 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 16:42:10 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 16:42:10 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 16:42:10 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 16:42:10 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 16:42:10 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-01 16:42:10 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 16:42:11 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 16:42:11 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 0 (1 batches)
+2026-05-01 16:42:12 | QueryProcessingActor-1 | INFO | query_actor.py:165 | [experimentOscar:QueryProcessingActor-1] Initializing new inference engine (config hash: 29bb82c2)
+2026-05-01 16:42:12 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 16:42:14 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-1] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 16:42:14 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 16:42:14 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 16:42:14 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 16:42:14 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-01 16:42:14 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 16:42:21 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 16:42:21 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 2 for shard 0 (1 batches)
+2026-05-01 16:42:21 | QueryProcessingActor-2 | INFO | query_actor.py:165 | [experimentOscar:QueryProcessingActor-2] Initializing new inference engine (config hash: 29bb82c2)
+2026-05-01 16:42:22 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 16:42:23 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-2] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 16:42:23 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 16:42:23 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 16:42:23 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 16:42:23 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-2] Recreated retriever with search_type=mmr
+2026-05-01 16:42:23 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 16:42:25 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 16:42:25 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 3 for shard 0 (1 batches)
+2026-05-01 16:42:25 | QueryProcessingActor-3 | INFO | query_actor.py:165 | [experimentOscar:QueryProcessingActor-3] Initializing new inference engine (config hash: 29bb82c2)
+2026-05-01 16:42:25 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 16:42:27 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-3] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 16:42:27 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 16:42:27 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 16:42:27 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 16:42:27 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-3] Recreated retriever with search_type=mmr
+2026-05-01 16:42:27 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 16:42:29 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 16:49:44 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 1 completed shard 0 (1 batches, 452.03s)
+2026-05-01 16:49:44 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 5 (Pipeline 5) on actor 0 for shard 0 (1 batches)
+2026-05-01 16:49:44 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-0] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 16:49:44 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 16:49:46 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 16:49:46 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 16:49:46 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 16:49:46 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 16:49:46 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-0] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 16:49:46 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 16:49:47 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 16:51:01 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 2 completed shard 0 (1 batches, 519.26s)
+2026-05-01 16:51:01 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 6 (Pipeline 6) on actor 1 for shard 0 (1 batches)
+2026-05-01 16:51:01 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-1] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 16:51:01 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 16:51:03 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-1] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 16:51:03 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 16:51:03 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 16:51:03 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 16:51:03 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-1] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 16:51:03 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 16:51:05 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 16:51:38 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 3 completed shard 0 (1 batches, 553.07s)
+2026-05-01 16:51:38 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 7 (Pipeline 7) on actor 2 for shard 0 (1 batches)
+2026-05-01 16:51:38 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-2] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 16:51:38 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-2] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 16:51:38 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 16:51:38 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 16:51:38 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 16:51:38 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-2] Recreated retriever with search_type=similarity
+2026-05-01 16:51:38 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 16:51:40 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 16:52:26 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 4 completed shard 0 (1 batches, 596.15s)
+2026-05-01 16:52:26 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 8 (Pipeline 8) on actor 3 for shard 0 (1 batches)
+2026-05-01 16:52:26 | QueryProcessingActor-3 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-3] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 16:52:26 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-3] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 16:52:26 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 16:52:26 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 16:52:26 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 16:52:26 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-3] Recreated retriever with search_type=similarity
+2026-05-01 16:52:26 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 16:52:28 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 16:56:13 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 5 completed shard 0 (1 batches, 385.82s)
+2026-05-01 16:56:13 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 9 (Pipeline 9) on actor 0 for shard 0 (1 batches)
+2026-05-01 16:56:13 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-0] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 16:56:13 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 16:56:13 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 16:56:13 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 16:56:13 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 16:56:13 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-0] Recreated retriever with search_type=mmr
+2026-05-01 16:56:13 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 16:56:15 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 16:58:50 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 7 completed shard 0 (1 batches, 430.02s)
+2026-05-01 16:58:50 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 10 (Pipeline 10) on actor 2 for shard 0 (1 batches)
+2026-05-01 16:58:50 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-2] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 16:58:50 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-2] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 16:58:50 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 16:58:50 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 16:58:50 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 16:58:50 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-2] Recreated retriever with search_type=mmr
+2026-05-01 16:58:50 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 16:58:52 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 16:59:54 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 6 completed shard 0 (1 batches, 528.89s)
+2026-05-01 16:59:54 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 11 (Pipeline 11) on actor 1 for shard 0 (1 batches)
+2026-05-01 16:59:54 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-1] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 16:59:54 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 16:59:54 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 16:59:54 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 16:59:54 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 16:59:54 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-1] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 16:59:54 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 16:59:55 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 17:01:48 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 8 completed shard 0 (1 batches, 559.40s)
+2026-05-01 17:01:48 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 12 (Pipeline 12) on actor 3 for shard 0 (1 batches)
+2026-05-01 17:01:48 | QueryProcessingActor-3 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-3] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:01:48 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-3] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 17:01:48 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:01:48 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 17:01:48 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 17:01:48 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-3] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 17:01:48 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:01:50 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 17:04:30 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 9 completed shard 0 (1 batches, 495.12s)
+2026-05-01 17:04:30 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 1 (1 batches)
+2026-05-01 17:04:30 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-0] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:04:30 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:04:32 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:04:32 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:04:32 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 17:04:32 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 17:04:32 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-01 17:04:32 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:04:34 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 17:07:04 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 11 completed shard 0 (1 batches, 428.71s)
+2026-05-01 17:07:04 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 1 (1 batches)
+2026-05-01 17:07:04 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-1] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:07:05 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:07:06 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-1] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:07:06 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:07:06 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 17:07:06 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 17:07:06 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-01 17:07:06 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:07:08 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 17:08:15 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 10 completed shard 0 (1 batches, 562.73s)
+2026-05-01 17:08:15 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 2 for shard 1 (1 batches)
+2026-05-01 17:08:15 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-2] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:08:16 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:08:18 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-2] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:08:18 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:08:18 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 17:08:18 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 17:08:18 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-2] Recreated retriever with search_type=mmr
+2026-05-01 17:08:18 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:08:19 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 17:11:34 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 1 completed shard 1 (1 batches, 420.05s)
+2026-05-01 17:11:34 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 0 for shard 1 (1 batches)
+2026-05-01 17:11:34 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-0] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:11:34 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:11:36 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:11:36 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:11:36 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 17:11:36 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 17:11:36 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-0] Recreated retriever with search_type=mmr
+2026-05-01 17:11:36 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:11:38 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 17:12:23 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 12 completed shard 0 (1 batches, 632.18s)
+2026-05-01 17:12:23 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 5 (Pipeline 5) on actor 3 for shard 1 (1 batches)
+2026-05-01 17:12:23 | QueryProcessingActor-3 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-3] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:12:23 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:12:25 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-3] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:12:25 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:12:25 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 17:12:25 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 17:12:25 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-3] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 17:12:25 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:12:26 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 17:15:28 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 3 completed shard 1 (1 batches, 428.42s)
+2026-05-01 17:15:28 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 6 (Pipeline 6) on actor 2 for shard 1 (1 batches)
+2026-05-01 17:15:28 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-2] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:15:28 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:15:30 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-2] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:15:30 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:15:30 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 17:15:30 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 17:15:30 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-2] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 17:15:30 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:15:32 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 17:15:40 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 2 completed shard 1 (1 batches, 507.72s)
+2026-05-01 17:15:40 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 7 (Pipeline 7) on actor 1 for shard 1 (1 batches)
+2026-05-01 17:15:40 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-1] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:15:40 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 17:15:40 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:15:40 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 17:15:40 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 17:15:40 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-01 17:15:40 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:15:41 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 17:19:52 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 5 completed shard 1 (1 batches, 445.72s)
+2026-05-01 17:19:52 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 8 (Pipeline 8) on actor 3 for shard 1 (1 batches)
+2026-05-01 17:19:52 | QueryProcessingActor-3 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-3] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:19:52 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-3] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 17:19:52 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:19:52 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 17:19:52 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 17:19:52 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-3] Recreated retriever with search_type=similarity
+2026-05-01 17:19:52 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:19:54 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 17:20:13 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 4 completed shard 1 (1 batches, 514.60s)
+2026-05-01 17:20:13 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 9 (Pipeline 9) on actor 0 for shard 1 (1 batches)
+2026-05-01 17:20:13 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-0] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:20:13 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 17:20:13 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:20:13 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 17:20:13 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 17:20:13 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-0] Recreated retriever with search_type=mmr
+2026-05-01 17:20:13 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:20:14 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 17:23:55 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 7 completed shard 1 (1 batches, 493.94s)
+2026-05-01 17:23:55 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 10 (Pipeline 10) on actor 1 for shard 1 (1 batches)
+2026-05-01 17:23:55 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-1] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:23:56 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 17:23:56 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:23:56 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 17:23:56 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 17:23:56 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-1] Recreated retriever with search_type=mmr
+2026-05-01 17:23:56 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:23:58 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 17:23:58 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 6 completed shard 1 (1 batches, 505.64s)
+2026-05-01 17:23:58 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 11 (Pipeline 11) on actor 2 for shard 1 (1 batches)
+2026-05-01 17:23:58 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-2] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:23:58 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-2] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 17:23:58 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:23:58 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 17:23:58 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 17:23:58 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-2] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 17:23:59 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:24:00 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 17:28:17 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 9 completed shard 1 (1 batches, 481.87s)
+2026-05-01 17:28:17 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 12 (Pipeline 12) on actor 0 for shard 1 (1 batches)
+2026-05-01 17:28:17 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-0] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:28:17 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 17:28:17 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:28:17 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 17:28:17 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 17:28:17 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-0] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 17:28:17 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:28:19 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 17:28:50 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 8 completed shard 1 (1 batches, 535.48s)
+2026-05-01 17:28:50 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 3 for shard 2 (1 batches)
+2026-05-01 17:28:50 | QueryProcessingActor-3 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-3] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:28:50 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:28:52 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-3] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:28:52 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:28:52 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 17:28:52 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 17:28:52 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-3] Recreated retriever with search_type=similarity
+2026-05-01 17:28:52 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:28:54 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 17:31:40 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 11 completed shard 1 (1 batches, 459.37s)
+2026-05-01 17:31:40 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 2 for shard 2 (1 batches)
+2026-05-01 17:31:40 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-2] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:31:40 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:31:42 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-2] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:31:42 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:31:42 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 17:31:42 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 17:31:42 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-2] Recreated retriever with search_type=similarity
+2026-05-01 17:31:42 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:31:46 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 17:32:47 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 10 completed shard 1 (1 batches, 528.49s)
+2026-05-01 17:32:47 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 1 for shard 2 (1 batches)
+2026-05-01 17:32:47 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-1] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:32:47 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:32:49 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-1] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:32:49 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:32:49 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 17:32:49 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 17:32:49 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-1] Recreated retriever with search_type=mmr
+2026-05-01 17:32:49 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:32:50 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 17:37:04 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 12 completed shard 1 (1 batches, 523.86s)
+2026-05-01 17:37:04 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 0 for shard 2 (1 batches)
+2026-05-01 17:37:04 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-0] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:37:04 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:37:06 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:37:06 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:37:06 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 17:37:06 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 17:37:06 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-0] Recreated retriever with search_type=mmr
+2026-05-01 17:37:06 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:37:08 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 17:37:14 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 1 completed shard 2 (1 batches, 498.81s)
+2026-05-01 17:37:14 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 5 (Pipeline 5) on actor 3 for shard 2 (1 batches)
+2026-05-01 17:37:14 | QueryProcessingActor-3 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-3] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:37:14 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:37:16 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-3] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:37:16 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:37:16 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 17:37:16 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 17:37:16 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-3] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 17:37:16 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:37:17 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 17:40:35 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 3 completed shard 2 (1 batches, 464.25s)
+2026-05-01 17:40:35 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 6 (Pipeline 6) on actor 1 for shard 2 (1 batches)
+2026-05-01 17:40:35 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-1] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:40:35 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:40:37 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-1] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:40:37 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:40:37 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 17:40:37 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 17:40:37 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-1] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 17:40:37 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:40:39 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 17:40:52 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 2 completed shard 2 (1 batches, 545.91s)
+2026-05-01 17:40:52 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 7 (Pipeline 7) on actor 2 for shard 2 (1 batches)
+2026-05-01 17:40:52 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-2] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:40:52 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-2] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 17:40:52 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:40:52 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 17:40:52 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 17:40:52 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-2] Recreated retriever with search_type=similarity
+2026-05-01 17:40:52 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:40:53 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 17:44:50 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 5 completed shard 2 (1 batches, 449.56s)
+2026-05-01 17:44:50 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 8 (Pipeline 8) on actor 3 for shard 2 (1 batches)
+2026-05-01 17:44:50 | QueryProcessingActor-3 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-3] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:44:50 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-3] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 17:44:50 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:44:50 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 17:44:50 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 17:44:50 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-3] Recreated retriever with search_type=similarity
+2026-05-01 17:44:50 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:44:52 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 17:47:59 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 4 completed shard 2 (1 batches, 650.51s)
+2026-05-01 17:47:59 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 9 (Pipeline 9) on actor 0 for shard 2 (1 batches)
+2026-05-01 17:47:59 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-0] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:47:59 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 17:47:59 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:47:59 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 17:47:59 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 17:47:59 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-0] Recreated retriever with search_type=mmr
+2026-05-01 17:47:59 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:48:00 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 17:49:09 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 7 completed shard 2 (1 batches, 495.27s)
+2026-05-01 17:49:09 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 10 (Pipeline 10) on actor 2 for shard 2 (1 batches)
+2026-05-01 17:49:09 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-2] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:49:09 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-2] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 17:49:09 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:49:09 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 17:49:09 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 17:49:09 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-2] Recreated retriever with search_type=mmr
+2026-05-01 17:49:09 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:49:11 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 17:50:14 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 6 completed shard 2 (1 batches, 575.31s)
+2026-05-01 17:50:14 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 11 (Pipeline 11) on actor 1 for shard 2 (1 batches)
+2026-05-01 17:50:14 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-1] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:50:14 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 17:50:14 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:50:14 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 17:50:14 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 17:50:14 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-1] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 17:50:15 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:50:16 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 17:54:02 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 8 completed shard 2 (1 batches, 549.68s)
+2026-05-01 17:54:02 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 12 (Pipeline 12) on actor 3 for shard 2 (1 batches)
+2026-05-01 17:54:02 | QueryProcessingActor-3 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-3] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:54:02 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-3] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 17:54:02 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:54:02 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 17:54:02 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 17:54:02 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-3] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 17:54:03 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:54:05 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 17:56:58 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 9 completed shard 2 (1 batches, 537.77s)
+2026-05-01 17:56:58 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 3 (1 batches)
+2026-05-01 17:56:58 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-0] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:56:58 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:57:00 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:57:00 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:57:00 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 17:57:00 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 17:57:00 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-01 17:57:00 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:57:01 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 17:58:41 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 10 completed shard 2 (1 batches, 569.20s)
+2026-05-01 17:58:41 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 11 completed shard 2 (1 batches, 505.03s)
+2026-05-01 17:58:41 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 2 (Pipeline 2) on actor 1 for shard 3 (1 batches)
+2026-05-01 17:58:41 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-1] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:58:41 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:58:43 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-1] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:58:43 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:58:43 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 17:58:43 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 17:58:43 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-01 17:58:43 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 17:58:45 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 17:58:45 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 3 (Pipeline 3) on actor 2 for shard 3 (1 batches)
+2026-05-01 17:58:45 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-2] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 17:58:46 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 17:58:47 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-2] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 17:58:47 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 17:58:47 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 17:58:47 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 17:58:47 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-2] Recreated retriever with search_type=mmr
+2026-05-01 17:58:47 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 17:58:49 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 18:02:46 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 12 completed shard 2 (1 batches, 521.06s)
+2026-05-01 18:02:46 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 4 (Pipeline 4) on actor 3 for shard 3 (1 batches)
+2026-05-01 18:02:46 | QueryProcessingActor-3 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-3] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 18:02:46 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 18:02:48 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-3] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 18:02:48 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 18:02:48 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 18:02:48 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 18:02:48 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-3] Recreated retriever with search_type=mmr
+2026-05-01 18:02:48 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 18:02:50 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 18:03:41 | Controller | INFO | controller.py:1192 | [experimentOscar:Controller] Pipeline 1 completed all 4 shards
+2026-05-01 18:03:41 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 1 completed shard 3 (1 batches, 400.00s)
+2026-05-01 18:03:41 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 5 (Pipeline 5) on actor 0 for shard 3 (1 batches)
+2026-05-01 18:03:41 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-0] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 18:03:42 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 18:03:43 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-0] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 18:03:43 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 18:03:43 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 18:03:43 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 18:03:43 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-0] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 18:03:43 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 18:03:45 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 18:08:29 | Controller | INFO | controller.py:1192 | [experimentOscar:Controller] Pipeline 3 completed all 4 shards
+2026-05-01 18:08:29 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 3 completed shard 3 (1 batches, 580.43s)
+2026-05-01 18:08:29 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 6 (Pipeline 6) on actor 2 for shard 3 (1 batches)
+2026-05-01 18:08:29 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-2] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 18:08:30 | sentence_transformers.base.model | INFO | model.py:973 | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-01 18:08:31 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-2] Recreated embedding function: HuggingFaceEmbeddings
+2026-05-01 18:08:31 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 18:08:31 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 18:08:31 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 18:08:31 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-2] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 18:08:31 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 18:08:33 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 18:08:46 | Controller | INFO | controller.py:1192 | [experimentOscar:Controller] Pipeline 2 completed all 4 shards
+2026-05-01 18:08:46 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 2 completed shard 3 (1 batches, 600.45s)
+2026-05-01 18:08:46 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 7 (Pipeline 7) on actor 1 for shard 3 (1 batches)
+2026-05-01 18:08:46 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-1] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 18:08:46 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 18:08:46 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 18:08:46 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 18:08:46 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 18:08:46 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-1] Recreated retriever with search_type=similarity
+2026-05-01 18:08:46 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 18:08:47 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 18:12:05 | Controller | INFO | controller.py:1192 | [experimentOscar:Controller] Pipeline 5 completed all 4 shards
+2026-05-01 18:12:06 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 5 completed shard 3 (1 batches, 500.75s)
+2026-05-01 18:12:06 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 8 (Pipeline 8) on actor 0 for shard 3 (1 batches)
+2026-05-01 18:12:06 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-0] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 18:12:06 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 18:12:06 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 18:12:06 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-01 18:12:06 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-01 18:12:06 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-01 18:12:06 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 18:12:08 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-01 18:13:14 | Controller | INFO | controller.py:1192 | [experimentOscar:Controller] Pipeline 6 completed all 4 shards
+2026-05-01 18:13:14 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 6 completed shard 3 (1 batches, 280.57s)
+2026-05-01 18:13:14 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 9 (Pipeline 9) on actor 2 for shard 3 (1 batches)
+2026-05-01 18:13:14 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-2] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 18:13:14 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-2] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 18:13:14 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 18:13:14 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 18:13:14 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 18:13:14 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-2] Recreated retriever with search_type=mmr
+2026-05-01 18:13:14 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 18:13:16 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 18:13:21 | Controller | INFO | controller.py:1192 | [experimentOscar:Controller] Pipeline 4 completed all 4 shards
+2026-05-01 18:13:21 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 4 completed shard 3 (1 batches, 630.23s)
+2026-05-01 18:13:21 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 10 (Pipeline 10) on actor 3 for shard 3 (1 batches)
+2026-05-01 18:13:21 | QueryProcessingActor-3 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-3] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 18:13:21 | QueryProcessingActor-3 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-3] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 18:13:21 | QueryProcessingActor-3 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-3] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 18:13:21 | QueryProcessingActor-3 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-3] Deserializing FAISS index for this actor...
+2026-05-01 18:13:21 | QueryProcessingActor-3 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-3] Created independent FAISS vector store for this actor
+2026-05-01 18:13:21 | QueryProcessingActor-3 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-3] Recreated retriever with search_type=mmr
+2026-05-01 18:13:21 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 18:13:23 | QueryProcessingActor-3 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-3] Recreated RAG spec with retrieval mode
+2026-05-01 18:16:18 | Controller | INFO | controller.py:1192 | [experimentOscar:Controller] Pipeline 7 completed all 4 shards
+2026-05-01 18:16:18 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 7 completed shard 3 (1 batches, 450.18s)
+2026-05-01 18:16:18 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 11 (Pipeline 11) on actor 1 for shard 3 (1 batches)
+2026-05-01 18:16:18 | QueryProcessingActor-1 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-1] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 18:16:18 | QueryProcessingActor-1 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-1] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 18:16:18 | QueryProcessingActor-1 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-1] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 18:16:18 | QueryProcessingActor-1 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-1] Deserializing FAISS index for this actor...
+2026-05-01 18:16:18 | QueryProcessingActor-1 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-1] Created independent FAISS vector store for this actor
+2026-05-01 18:16:18 | QueryProcessingActor-1 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-1] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 18:16:18 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for cross-encoder/ms-marco-MiniLM-L6-v2, initializing a new CrossEncoder model.
+2026-05-01 18:16:19 | QueryProcessingActor-1 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-1] Recreated RAG spec with retrieval mode
+2026-05-01 18:20:35 | Controller | INFO | controller.py:1192 | [experimentOscar:Controller] Pipeline 9 completed all 4 shards
+2026-05-01 18:20:35 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 9 completed shard 3 (1 batches, 439.54s)
+2026-05-01 18:20:35 | Controller | INFO | controller.py:1422 | [experimentOscar:Controller] Scheduling pipeline 12 (Pipeline 12) on actor 2 for shard 3 (1 batches)
+2026-05-01 18:20:35 | QueryProcessingActor-2 | INFO | query_actor.py:169 | [experimentOscar:QueryProcessingActor-2] Reusing existing inference engine (config hash: 29bb82c2)
+2026-05-01 18:20:35 | QueryProcessingActor-2 | INFO | query_actor.py:198 | [experimentOscar:QueryProcessingActor-2] Recreated embedding function: OpenAIEmbeddings
+2026-05-01 18:20:35 | QueryProcessingActor-2 | INFO | query_actor.py:211 | [experimentOscar:QueryProcessingActor-2] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-01 18:20:35 | QueryProcessingActor-2 | INFO | query_actor.py:215 | [experimentOscar:QueryProcessingActor-2] Deserializing FAISS index for this actor...
+2026-05-01 18:20:35 | QueryProcessingActor-2 | INFO | query_actor.py:230 | [experimentOscar:QueryProcessingActor-2] Created independent FAISS vector store for this actor
+2026-05-01 18:20:35 | QueryProcessingActor-2 | INFO | query_actor.py:260 | [experimentOscar:QueryProcessingActor-2] Recreated retriever with search_type=similarity_score_threshold
+2026-05-01 18:20:36 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-01 18:20:38 | QueryProcessingActor-2 | INFO | query_actor.py:277 | [experimentOscar:QueryProcessingActor-2] Recreated RAG spec with retrieval mode
+2026-05-01 18:21:07 | Controller | INFO | controller.py:1192 | [experimentOscar:Controller] Pipeline 8 completed all 4 shards
+2026-05-01 18:21:07 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 8 completed shard 3 (1 batches, 538.93s)
+2026-05-01 18:21:20 | Controller | INFO | controller.py:1192 | [experimentOscar:Controller] Pipeline 10 completed all 4 shards
+2026-05-01 18:21:20 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 10 completed shard 3 (1 batches, 476.74s)
+2026-05-01 18:24:08 | Controller | INFO | controller.py:1192 | [experimentOscar:Controller] Pipeline 11 completed all 4 shards
+2026-05-01 18:24:08 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 11 completed shard 3 (1 batches, 468.64s)
+2026-05-01 18:27:59 | Controller | INFO | controller.py:1192 | [experimentOscar:Controller] Pipeline 12 completed all 4 shards
+2026-05-01 18:27:59 | Controller | INFO | controller.py:1299 | [experimentOscar:Controller] Pipeline 12 completed shard 3 (1 batches, 441.39s)
+2026-05-01 18:27:59 | Controller | INFO | controller.py:1386 | [experimentOscar:Controller] All pipelines completed all shards!
+2026-05-01 18:27:59 | Controller | INFO | controller.py:695 | [experimentOscar:Controller] Computing final metrics for all pipelines...
+2026-05-01 18:27:59 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experimentOscar:Experiment] Ending run: 90eacd15448541ddade13f2a119546c3, 1 in rf_mlflow
+2026-05-01 18:27:59 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experimentOscar:Experiment] Run 90eacd15448541ddade13f2a119546c3 is not the active run, no local context to clear
+2026-05-01 18:27:59 | Controller | INFO | controller.py:853 | [experimentOscar:Controller] Pipeline 1 (Pipeline 1) completed successfully
+2026-05-01 18:28:00 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experimentOscar:Experiment] Ending run: d0f4ae82ccb946b6b8cfd35a549b0c22, 2 in rf_mlflow
+2026-05-01 18:28:00 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experimentOscar:Experiment] Run d0f4ae82ccb946b6b8cfd35a549b0c22 is not the active run, no local context to clear
+2026-05-01 18:28:00 | Controller | INFO | controller.py:853 | [experimentOscar:Controller] Pipeline 2 (Pipeline 2) completed successfully
+2026-05-01 18:28:00 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experimentOscar:Experiment] Ending run: 3003bcfa85e148afa35b1d8b0eb5771f, 3 in rf_mlflow
+2026-05-01 18:28:00 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experimentOscar:Experiment] Run 3003bcfa85e148afa35b1d8b0eb5771f is not the active run, no local context to clear
+2026-05-01 18:28:00 | Controller | INFO | controller.py:853 | [experimentOscar:Controller] Pipeline 3 (Pipeline 3) completed successfully
+2026-05-01 18:28:00 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experimentOscar:Experiment] Ending run: 53284b1cc3ea46c7bcd6177dee059421, 4 in rf_mlflow
+2026-05-01 18:28:00 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experimentOscar:Experiment] Run 53284b1cc3ea46c7bcd6177dee059421 is not the active run, no local context to clear
+2026-05-01 18:28:00 | Controller | INFO | controller.py:853 | [experimentOscar:Controller] Pipeline 4 (Pipeline 4) completed successfully
+2026-05-01 18:28:00 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experimentOscar:Experiment] Ending run: eb732441ab0e491aa508e7e00c44c2cf, 5 in rf_mlflow
+2026-05-01 18:28:00 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experimentOscar:Experiment] Run eb732441ab0e491aa508e7e00c44c2cf is not the active run, no local context to clear
+2026-05-01 18:28:00 | Controller | INFO | controller.py:853 | [experimentOscar:Controller] Pipeline 5 (Pipeline 5) completed successfully
+2026-05-01 18:28:01 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experimentOscar:Experiment] Ending run: a1cbe46482d6451594a3bb4463fbeb95, 6 in rf_mlflow
+2026-05-01 18:28:01 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experimentOscar:Experiment] Run a1cbe46482d6451594a3bb4463fbeb95 is not the active run, no local context to clear
+2026-05-01 18:28:01 | Controller | INFO | controller.py:853 | [experimentOscar:Controller] Pipeline 6 (Pipeline 6) completed successfully
+2026-05-01 18:28:01 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experimentOscar:Experiment] Ending run: 05fce3b060bf4c6b8a3459924b60d3e3, 7 in rf_mlflow
+2026-05-01 18:28:01 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experimentOscar:Experiment] Run 05fce3b060bf4c6b8a3459924b60d3e3 is not the active run, no local context to clear
+2026-05-01 18:28:01 | Controller | INFO | controller.py:853 | [experimentOscar:Controller] Pipeline 7 (Pipeline 7) completed successfully
+2026-05-01 18:28:01 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experimentOscar:Experiment] Ending run: 043d6ec94f6441f8bb58e798a5925c16, 8 in rf_mlflow
+2026-05-01 18:28:01 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experimentOscar:Experiment] Run 043d6ec94f6441f8bb58e798a5925c16 is not the active run, no local context to clear
+2026-05-01 18:28:01 | Controller | INFO | controller.py:853 | [experimentOscar:Controller] Pipeline 8 (Pipeline 8) completed successfully
+2026-05-01 18:28:01 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experimentOscar:Experiment] Ending run: ca227e3dfa524c1c9bb92bfa3b7ec6e3, 9 in rf_mlflow
+2026-05-01 18:28:01 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experimentOscar:Experiment] Run ca227e3dfa524c1c9bb92bfa3b7ec6e3 is not the active run, no local context to clear
+2026-05-01 18:28:01 | Controller | INFO | controller.py:853 | [experimentOscar:Controller] Pipeline 9 (Pipeline 9) completed successfully
+2026-05-01 18:28:02 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experimentOscar:Experiment] Ending run: e6e7f2b824b2470db347dead43d5997a, 10 in rf_mlflow
+2026-05-01 18:28:02 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experimentOscar:Experiment] Run e6e7f2b824b2470db347dead43d5997a is not the active run, no local context to clear
+2026-05-01 18:28:02 | Controller | INFO | controller.py:853 | [experimentOscar:Controller] Pipeline 10 (Pipeline 10) completed successfully
+2026-05-01 18:28:02 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experimentOscar:Experiment] Ending run: 16c9f09cf1e24082b0474db3bc8932b6, 11 in rf_mlflow
+2026-05-01 18:28:02 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experimentOscar:Experiment] Run 16c9f09cf1e24082b0474db3bc8932b6 is not the active run, no local context to clear
+2026-05-01 18:28:02 | Controller | INFO | controller.py:853 | [experimentOscar:Controller] Pipeline 11 (Pipeline 11) completed successfully
+2026-05-01 18:28:02 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experimentOscar:Experiment] Ending run: 07e3f97bcc4344b4bd73cfb0b47efa2a, 12 in rf_mlflow
+2026-05-01 18:28:02 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experimentOscar:Experiment] Run 07e3f97bcc4344b4bd73cfb0b47efa2a is not the active run, no local context to clear
+2026-05-01 18:28:02 | Controller | INFO | controller.py:853 | [experimentOscar:Controller] Pipeline 12 (Pipeline 12) completed successfully
+2026-05-01 18:28:02 | ExperimentUtils | INFO | experiment_utils.py:180 | [experimentOscar:ExperimentUtils] Reset experiment states - marked ongoing pipelines, contexts, and tasks as failed
+2026-05-01 18:28:02 | ExperimentUtils | INFO | experiment_utils.py:188 | [experimentOscar:ExperimentUtils] Experiment marked as cancelled. Ongoing pipelines, contexts, and tasks have been marked as failed.
+2026-05-01 18:28:02 | ExperimentUtils | INFO | experiment_utils.py:154 | [experimentOscar:ExperimentUtils] Experiment experimentOscar ended
+2026-05-01 18:28:05 | Experiment | INFO | experiment.py:574 | [experimentOscar:Experiment] All actors shut down
+2026-05-01 18:28:05 | Experiment | INFO | experiment.py:575 | [experimentOscar:Experiment] Dispatcher will automatically shut down (daemon thread)

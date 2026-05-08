@@ -1,0 +1,25 @@
+2026-05-07 12:09:54 | DocProcessingActor | INFO | doc_actor.py:59 | [experiment_hybrid_16:DocProcessingActor] DocProcessingActor initialized
+2026-05-07 12:09:56 | DocProcessingActor | INFO | doc_actor.py:96 | [experiment_hybrid_16:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-07 12:09:56 | DocProcessingActor | INFO | doc_actor.py:107 | [experiment_hybrid_16:DocProcessingActor] Building document index...
+2026-05-07 12:09:59 | DocProcessingActor | INFO | doc_actor.py:109 | [experiment_hybrid_16:DocProcessingActor] Document index built successfully
+2026-05-07 12:09:59 | DocProcessingActor | INFO | doc_actor.py:134 | [experiment_hybrid_16:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-07 12:09:59 | DocProcessingActor | INFO | doc_actor.py:144 | [experiment_hybrid_16:DocProcessingActor] FAISS index serialized: 606720 bytes
+2026-05-07 12:09:59 | DocProcessingActor | INFO | doc_actor.py:189 | [experiment_hybrid_16:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-07 12:10:22 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [experiment_hybrid_16:QueryProcessingActor-0] Initializing new inference engine (config hash: bdbc8bf6)
+2026-05-07 12:10:22 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_16:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 12:10:22 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_16:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 12:10:22 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_16:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 12:10:22 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_16:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 12:10:22 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_16:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 12:10:22 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_16:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 12:23:38 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_16:QueryProcessingActor-0] Reusing existing inference engine (config hash: bdbc8bf6)
+2026-05-07 12:23:38 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_16:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 12:23:38 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_16:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 12:23:38 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_16:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 12:23:38 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_16:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 12:23:38 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_16:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 12:23:38 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_16:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 13:09:22 | ExperimentUtils | INFO | experiment_utils.py:180 | [experiment_hybrid_16:ExperimentUtils] Reset experiment states - marked ongoing pipelines, contexts, and tasks as failed
+2026-05-07 13:09:22 | ExperimentUtils | INFO | experiment_utils.py:188 | [experiment_hybrid_16:ExperimentUtils] Experiment marked as cancelled. Ongoing pipelines, contexts, and tasks have been marked as failed.
+2026-05-07 13:09:22 | ExperimentUtils | INFO | experiment_utils.py:154 | [experiment_hybrid_16:ExperimentUtils] Experiment experiment_hybrid_16 ended
+2026-05-07 13:09:22 | Experiment | INFO | experiment.py:165 | [otran_aliang_final_configs:Experiment] The previously running experiment experiment_hybrid_16 was forcibly ended. Created a new experiment 'otran_aliang_final_configs' with Experiment ID: 62 at /home/ostran/rapidfireai/rapidfire_experiments/otran_aliang_final_configs

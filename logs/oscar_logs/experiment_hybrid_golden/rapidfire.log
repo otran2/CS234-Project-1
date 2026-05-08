@@ -1,0 +1,88 @@
+2026-05-07 02:51:54 | Experiment | INFO | experiment.py:165 | [experiment_hybrid_golden:Experiment] Experiment experiment_hybrid_golden created with Experiment ID: 48 at /home/ostran/rapidfireai/rapidfire_experiments/experiment_hybrid_golden
+2026-05-07 02:52:17 | Experiment | INFO | metric_rfmetric_manager.py:55 | [experiment_hybrid_golden:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-07 02:52:17 | Experiment | INFO | metric_rfmetric_manager.py:119 | [experiment_hybrid_golden:Experiment] Creating MLflow experiment: experiment_hybrid_golden
+2026-05-07 02:52:17 | Experiment | INFO | experiment.py:210 | [experiment_hybrid_golden:Experiment] Initialized MetricLogger experiment: 45
+2026-05-07 02:52:17 | Experiment | INFO | experiment.py:226 | [experiment_hybrid_golden:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-07 02:52:18 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 02:52:20 | Experiment | WARNING | experiment.py:381 | [experiment_hybrid_golden:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-07 02:52:20 | Experiment | INFO | experiment.py:383 | [experiment_hybrid_golden:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-07 02:52:20 | Experiment | INFO | experiment.py:392 | [experiment_hybrid_golden:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-07 02:52:21 | Controller | INFO | controller.py:895 | [experiment_hybrid_golden:Controller] Dataset sharded into 4 shard(s). Shard sizes: [5, 5, 5, 5]
+2026-05-07 02:52:21 | Controller | INFO | controller.py:900 | [experiment_hybrid_golden:Controller] Received 1 pipeline configuration(s)
+2026-05-07 02:52:21 | Controller | INFO | controller.py:309 | [experiment_hybrid_golden:Controller] Found 1 unique RAG context(s)
+2026-05-07 02:52:21 | Controller | INFO | controller.py:320 | [experiment_hybrid_golden:Controller] Will build new context 2686e34e...
+2026-05-07 02:52:21 | Controller | INFO | controller.py:346 | [experiment_hybrid_golden:Controller] Building 1 context(s) in parallel...
+2026-05-07 02:52:21 | Controller | INFO | controller.py:373 | [experiment_hybrid_golden:Controller] Creating 1 DocProcessingActor(s) for parallel processing
+2026-05-07 02:52:23 | Controller | INFO | controller.py:461 | [experiment_hybrid_golden:Controller] Submitted 1 build task(s) in parallel
+2026-05-07 02:52:50 | DocProcessingActor | INFO | doc_actor.py:59 | [experiment_hybrid_golden:DocProcessingActor] DocProcessingActor initialized
+2026-05-07 02:59:16 | ExperimentUtils | INFO | experiment_utils.py:180 | [experiment_hybrid_golden:ExperimentUtils] Reset experiment states - marked ongoing pipelines, contexts, and tasks as failed
+2026-05-07 02:59:16 | ExperimentUtils | INFO | experiment_utils.py:188 | [experiment_hybrid_golden:ExperimentUtils] Experiment marked as cancelled. Ongoing pipelines, contexts, and tasks have been marked as failed.
+2026-05-07 02:59:16 | Experiment | INFO | experiment.py:165 | [experiment_hybrid_golden:Experiment] Experiment experiment_hybrid_golden is currently running. Returning the same experiment object.
+2026-05-07 02:59:16 | Experiment | INFO | experiment.py:165 | [experiment_hybrid_golden:Experiment] Any running tasks have been cancelled.
+2026-05-07 02:59:37 | Experiment | INFO | metric_rfmetric_manager.py:55 | [experiment_hybrid_golden:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-07 02:59:37 | Experiment | INFO | metric_rfmetric_manager.py:119 | [experiment_hybrid_golden:Experiment] Creating MLflow experiment: experiment_hybrid_golden
+2026-05-07 02:59:37 | Experiment | WARNING | experiment.py:212 | [experiment_hybrid_golden:Experiment] Failed to initialize MetricLogger: RESOURCE_ALREADY_EXISTS: Experiment(name=experiment_hybrid_golden) already exists. Error: (sqlite3.IntegrityError) UNIQUE constraint failed: experiments.workspace, experiments.name
+[SQL: INSERT INTO experiments (name, workspace, artifact_location, lifecycle_stage, creation_time, last_update_time) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('experiment_hybrid_golden', 'default', '', 'active', 1778147977958, 1778147977958)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj). MetricLogger logging will be disabled.
+2026-05-07 02:59:37 | Experiment | INFO | experiment.py:226 | [experiment_hybrid_golden:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-07 02:59:38 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-07 02:59:40 | Experiment | WARNING | experiment.py:381 | [experiment_hybrid_golden:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-07 02:59:40 | Experiment | INFO | experiment.py:383 | [experiment_hybrid_golden:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-07 02:59:41 | Experiment | INFO | experiment.py:392 | [experiment_hybrid_golden:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-07 02:59:41 | Controller | INFO | controller.py:895 | [experiment_hybrid_golden:Controller] Dataset sharded into 4 shard(s). Shard sizes: [5, 5, 5, 5]
+2026-05-07 02:59:41 | Controller | INFO | controller.py:900 | [experiment_hybrid_golden:Controller] Received 1 pipeline configuration(s)
+2026-05-07 02:59:41 | Controller | INFO | controller.py:309 | [experiment_hybrid_golden:Controller] Found 1 unique RAG context(s)
+2026-05-07 02:59:41 | Controller | INFO | controller.py:320 | [experiment_hybrid_golden:Controller] Will build new context 2686e34e...
+2026-05-07 02:59:41 | Controller | INFO | controller.py:346 | [experiment_hybrid_golden:Controller] Building 1 context(s) in parallel...
+2026-05-07 02:59:41 | Controller | INFO | controller.py:373 | [experiment_hybrid_golden:Controller] Creating 1 DocProcessingActor(s) for parallel processing
+2026-05-07 02:59:43 | Controller | INFO | controller.py:461 | [experiment_hybrid_golden:Controller] Submitted 1 build task(s) in parallel
+2026-05-07 03:00:11 | DocProcessingActor | INFO | doc_actor.py:59 | [experiment_hybrid_golden:DocProcessingActor] DocProcessingActor initialized
+2026-05-07 03:00:14 | DocProcessingActor | INFO | doc_actor.py:96 | [experiment_hybrid_golden:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-07 03:00:14 | DocProcessingActor | INFO | doc_actor.py:107 | [experiment_hybrid_golden:DocProcessingActor] Building document index...
+2026-05-07 03:00:30 | DocProcessingActor | INFO | doc_actor.py:109 | [experiment_hybrid_golden:DocProcessingActor] Document index built successfully
+2026-05-07 03:00:30 | DocProcessingActor | INFO | doc_actor.py:134 | [experiment_hybrid_golden:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-07 03:00:30 | DocProcessingActor | INFO | doc_actor.py:144 | [experiment_hybrid_golden:DocProcessingActor] FAISS index serialized: 606720 bytes
+2026-05-07 03:00:30 | DocProcessingActor | INFO | doc_actor.py:189 | [experiment_hybrid_golden:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-07 03:00:30 | Controller | INFO | controller.py:482 | [experiment_hybrid_golden:Controller] Built context 1 (2686e34e...) successfully in 48.98s
+2026-05-07 03:00:30 | Controller | INFO | controller.py:523 | [experiment_hybrid_golden:Controller] Completed parallel context building for 1 context(s)
+2026-05-07 03:00:30 | Controller | INFO | controller.py:920 | [experiment_hybrid_golden:Controller] Created 4 query processing actors (generic pool)
+2026-05-07 03:00:30 | Controller | INFO | controller.py:931 | [experiment_hybrid_golden:Controller] Initialized scheduler with 1 pipelines, 4 actors, 4 shards
+2026-05-07 03:00:30 | Controller | INFO | controller.py:1118 | [experiment_hybrid_golden:Controller] Created experiment-wide rate limiter actor for 1 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-07 03:00:30 | Controller | INFO | controller.py:1124 | [experiment_hybrid_golden:Controller] Starting multi-pipeline inference scheduling...
+2026-05-07 03:00:30 | Controller | INFO | controller.py:1422 | [experiment_hybrid_golden:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 0 (1 batches)
+2026-05-07 03:01:00 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [experiment_hybrid_golden:QueryProcessingActor-0] Initializing new inference engine (config hash: 89cd46fa)
+2026-05-07 03:01:00 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_golden:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-07 03:01:00 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_golden:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-07 03:01:00 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_golden:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-07 03:01:00 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_golden:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-07 03:01:00 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_golden:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-07 03:01:00 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_golden:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-07 03:10:38 | Controller | INFO | controller.py:1299 | [experiment_hybrid_golden:Controller] Pipeline 1 completed shard 0 (1 batches, 571.32s)
+2026-05-07 03:10:38 | Controller | INFO | controller.py:1422 | [experiment_hybrid_golden:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 1 (1 batches)
+2026-05-07 03:10:38 | Experiment | ERROR | experiment.py:423 | [experiment_hybrid_golden:Experiment] Error running multi-config experiment
+Traceback (most recent call last):
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/db/db_interface.py", line 120, in execute
+    result = self.cursor.execute(query, params) if params else self.cursor.execute(query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: FOREIGN KEY constraint failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/experiment.py", line 412, in run_evals
+    results = self.controller.run_multi_pipeline_inference(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/scheduling/controller.py", line 1428, in run_multi_pipeline_inference
+    task_id = db.create_actor_task(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/db/rf_db.py", line 881, in create_actor_task
+    self.db.execute(
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/db/db_interface.py", line 64, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/cse234/lib/python3.12/site-packages/rapidfireai/evals/db/db_interface.py", line 131, in execute
+    raise Exception(f"Database error executing query '{query[:50]}...': {e}") from e
+Exception: Database error executing query '
+        INSERT INTO actor_tasks (
+            pip...': FOREIGN KEY constraint failed

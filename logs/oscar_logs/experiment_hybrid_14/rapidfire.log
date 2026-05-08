@@ -1,0 +1,21 @@
+2026-05-06 23:10:57 | DocProcessingActor | INFO | doc_actor.py:59 | [experiment_hybrid_14:DocProcessingActor] DocProcessingActor initialized
+2026-05-06 23:10:59 | DocProcessingActor | INFO | doc_actor.py:96 | [experiment_hybrid_14:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-06 23:10:59 | DocProcessingActor | INFO | doc_actor.py:107 | [experiment_hybrid_14:DocProcessingActor] Building document index...
+2026-05-06 23:11:02 | DocProcessingActor | INFO | doc_actor.py:109 | [experiment_hybrid_14:DocProcessingActor] Document index built successfully
+2026-05-06 23:11:02 | DocProcessingActor | INFO | doc_actor.py:134 | [experiment_hybrid_14:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-06 23:11:02 | DocProcessingActor | INFO | doc_actor.py:144 | [experiment_hybrid_14:DocProcessingActor] FAISS index serialized: 606720 bytes
+2026-05-06 23:11:02 | DocProcessingActor | INFO | doc_actor.py:189 | [experiment_hybrid_14:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-06 23:11:24 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [experiment_hybrid_14:QueryProcessingActor-0] Initializing new inference engine (config hash: 76f1150f)
+2026-05-06 23:11:24 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_14:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 23:11:24 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_14:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 23:11:24 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_14:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-06 23:11:24 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_14:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-06 23:11:24 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_14:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-06 23:11:24 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_14:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-06 23:32:11 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_14:QueryProcessingActor-0] Reusing existing inference engine (config hash: 76f1150f)
+2026-05-06 23:32:11 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_14:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 23:32:11 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_14:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 23:32:11 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_14:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-06 23:32:11 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_14:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-06 23:32:11 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_14:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-06 23:32:11 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_14:QueryProcessingActor-0] Recreated RAG spec with retrieval mode

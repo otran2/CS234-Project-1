@@ -1,0 +1,11 @@
+2026-05-07 03:35:39 | DocProcessingActor | INFO | doc_actor.py:59 | [experiment_hybrid_golden_pair_4:DocProcessingActor] DocProcessingActor initialized
+2026-05-07 03:35:41 | DocProcessingActor | INFO | doc_actor.py:96 | [experiment_hybrid_golden_pair_4:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-07 03:35:41 | DocProcessingActor | INFO | doc_actor.py:107 | [experiment_hybrid_golden_pair_4:DocProcessingActor] Building document index...
+2026-05-07 03:38:06 | ExperimentUtils | INFO | experiment_utils.py:180 | [experiment_hybrid_golden_pair_4:ExperimentUtils] Reset experiment states - marked ongoing pipelines, contexts, and tasks as failed
+2026-05-07 03:38:06 | ExperimentUtils | INFO | experiment_utils.py:188 | [experiment_hybrid_golden_pair_4:ExperimentUtils] Experiment marked as cancelled. Ongoing pipelines, contexts, and tasks have been marked as failed.
+2026-05-07 03:38:06 | ExperimentUtils | INFO | experiment_utils.py:154 | [experiment_hybrid_golden_pair_4:ExperimentUtils] Experiment experiment_hybrid_golden_pair_4 ended
+2026-05-07 03:38:06 | Experiment | INFO | experiment.py:165 | [experiment_hybrid_golden_pair_5:Experiment] The previously running experiment experiment_hybrid_golden_pair_4 was forcibly ended. Created a new experiment 'experiment_hybrid_golden_pair_5' with Experiment ID: 55 at /home/ostran/rapidfireai/rapidfire_experiments/experiment_hybrid_golden_pair_5
+2026-05-07 03:38:25 | Experiment | INFO | metric_rfmetric_manager.py:55 | [experiment_hybrid_golden_pair_5:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-07 03:38:25 | Experiment | INFO | metric_rfmetric_manager.py:119 | [experiment_hybrid_golden_pair_5:Experiment] Creating MLflow experiment: experiment_hybrid_golden_pair_5
+2026-05-07 03:38:25 | Experiment | INFO | experiment.py:210 | [experiment_hybrid_golden_pair_5:Experiment] Initialized MetricLogger experiment: 49
+2026-05-07 03:38:25 | Experiment | INFO | experiment.py:226 | [experiment_hybrid_golden_pair_5:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.

@@ -18,8 +18,6 @@ args = parser.parse_args()
 #Get API Key
 from pathlib import Path
 TRITON_API_KEY = Path(args.apikey_txt).expanduser().read_text(encoding="utf-8").splitlines()[0].strip()
-os.environ["OPENAI_API_KEY"] = TRITON_API_KEY
-os.environ.setdefault("JUDGE_BASE_URL", "https://tritonai-api.ucsd.edu/v1")
 
 #RapidFireAI Imports
 from rapidfireai.automl import (
@@ -29,12 +27,7 @@ from rapidfireai.automl import (
     RFPromptManager,
     RFGridSearch,
 )
-###################### Import before Experiment
-# from rapidfireai_datahub_compat import (
-#     patch_rapidfireai_for_datahub
-# )
-# print(patch_rapidfireai_for_datahub())
-######################
+
 from rapidfireai import Experiment
 
 from typing import List as listtype, Dict, Any, Optional

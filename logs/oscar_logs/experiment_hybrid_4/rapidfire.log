@@ -1,0 +1,97 @@
+2026-05-06 02:19:41 | Experiment | INFO | experiment.py:165 | [experiment_hybrid_4:Experiment] Experiment experiment_hybrid_4 created with Experiment ID: 36 at /home/ostran/rapidfireai/rapidfire_experiments/experiment_hybrid_4
+2026-05-06 02:19:59 | Experiment | INFO | metric_rfmetric_manager.py:55 | [experiment_hybrid_4:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-06 02:19:59 | Experiment | INFO | metric_rfmetric_manager.py:119 | [experiment_hybrid_4:Experiment] Creating MLflow experiment: experiment_hybrid_4
+2026-05-06 02:19:59 | Experiment | INFO | experiment.py:210 | [experiment_hybrid_4:Experiment] Initialized MetricLogger experiment: 33
+2026-05-06 02:19:59 | Experiment | INFO | experiment.py:226 | [experiment_hybrid_4:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-06 02:19:59 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 02:20:01 | Experiment | WARNING | experiment.py:381 | [experiment_hybrid_4:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-06 02:20:01 | Experiment | INFO | experiment.py:383 | [experiment_hybrid_4:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-06 02:20:01 | Experiment | INFO | experiment.py:392 | [experiment_hybrid_4:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-06 02:20:02 | Controller | INFO | controller.py:895 | [experiment_hybrid_4:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-06 02:20:02 | Controller | INFO | controller.py:900 | [experiment_hybrid_4:Controller] Received 1 pipeline configuration(s)
+2026-05-06 02:20:02 | Controller | INFO | controller.py:309 | [experiment_hybrid_4:Controller] Found 1 unique RAG context(s)
+2026-05-06 02:20:02 | Controller | INFO | controller.py:320 | [experiment_hybrid_4:Controller] Will build new context 573e5f2c...
+2026-05-06 02:20:02 | Controller | INFO | controller.py:346 | [experiment_hybrid_4:Controller] Building 1 context(s) in parallel...
+2026-05-06 02:20:02 | Controller | INFO | controller.py:373 | [experiment_hybrid_4:Controller] Creating 1 DocProcessingActor(s) for parallel processing
+2026-05-06 02:20:03 | Controller | INFO | controller.py:461 | [experiment_hybrid_4:Controller] Submitted 1 build task(s) in parallel
+2026-05-06 02:20:23 | DocProcessingActor | INFO | doc_actor.py:59 | [experiment_hybrid_4:DocProcessingActor] DocProcessingActor initialized
+2026-05-06 02:20:25 | DocProcessingActor | INFO | doc_actor.py:96 | [experiment_hybrid_4:DocProcessingActor] DocProcessingActor: Starting context initialization...
+2026-05-06 02:20:25 | DocProcessingActor | INFO | doc_actor.py:107 | [experiment_hybrid_4:DocProcessingActor] Building document index...
+2026-05-06 02:20:26 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 02:20:31 | DocProcessingActor | INFO | doc_actor.py:109 | [experiment_hybrid_4:DocProcessingActor] Document index built successfully
+2026-05-06 02:20:31 | DocProcessingActor | INFO | doc_actor.py:134 | [experiment_hybrid_4:DocProcessingActor] Serializing FAISS index for cross-actor sharing...
+2026-05-06 02:20:31 | DocProcessingActor | INFO | doc_actor.py:144 | [experiment_hybrid_4:DocProcessingActor] FAISS index serialized: 1276456 bytes
+2026-05-06 02:20:31 | DocProcessingActor | INFO | doc_actor.py:189 | [experiment_hybrid_4:DocProcessingActor] DocProcessingActor: Context components ready for sharing
+2026-05-06 02:20:31 | Controller | INFO | controller.py:482 | [experiment_hybrid_4:Controller] Built context 1 (573e5f2c...) successfully in 29.15s
+2026-05-06 02:20:31 | Controller | INFO | controller.py:523 | [experiment_hybrid_4:Controller] Completed parallel context building for 1 context(s)
+2026-05-06 02:20:31 | Controller | INFO | controller.py:920 | [experiment_hybrid_4:Controller] Created 4 query processing actors (generic pool)
+2026-05-06 02:20:31 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experiment_hybrid_4:Experiment] Created MLflow run: d7fee018095241ec8c56ea11d2b45d6f, 1
+2026-05-06 02:20:31 | Controller | INFO | controller.py:931 | [experiment_hybrid_4:Controller] Initialized scheduler with 1 pipelines, 4 actors, 4 shards
+2026-05-06 02:20:31 | Controller | INFO | controller.py:1118 | [experiment_hybrid_4:Controller] Created experiment-wide rate limiter actor for 1 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-06 02:20:31 | Controller | INFO | controller.py:1124 | [experiment_hybrid_4:Controller] Starting multi-pipeline inference scheduling...
+2026-05-06 02:20:31 | Controller | INFO | controller.py:1422 | [experiment_hybrid_4:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 0 (1 batches)
+2026-05-06 02:20:53 | QueryProcessingActor-0 | INFO | query_actor.py:165 | [experiment_hybrid_4:QueryProcessingActor-0] Initializing new inference engine (config hash: 9c793746)
+2026-05-06 02:20:53 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_4:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 02:20:53 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_4:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 02:20:53 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_4:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-06 02:20:53 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_4:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-06 02:20:53 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_4:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-06 02:20:54 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 02:20:55 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_4:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-06 02:28:52 | Controller | INFO | controller.py:1299 | [experiment_hybrid_4:Controller] Pipeline 1 completed shard 0 (1 batches, 472.24s)
+2026-05-06 02:28:52 | Controller | INFO | controller.py:1422 | [experiment_hybrid_4:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 1 (1 batches)
+2026-05-06 02:28:52 | QueryProcessingActor-0 | INFO | query_actor.py:169 | [experiment_hybrid_4:QueryProcessingActor-0] Reusing existing inference engine (config hash: 9c793746)
+2026-05-06 02:28:52 | QueryProcessingActor-0 | INFO | query_actor.py:198 | [experiment_hybrid_4:QueryProcessingActor-0] Recreated embedding function: OpenAIEmbeddings
+2026-05-06 02:28:52 | QueryProcessingActor-0 | INFO | query_actor.py:211 | [experiment_hybrid_4:QueryProcessingActor-0] Using CPU-based FAISS for retrieval (avoids GPU memory conflicts)
+2026-05-06 02:28:52 | QueryProcessingActor-0 | INFO | query_actor.py:215 | [experiment_hybrid_4:QueryProcessingActor-0] Deserializing FAISS index for this actor...
+2026-05-06 02:28:52 | QueryProcessingActor-0 | INFO | query_actor.py:230 | [experiment_hybrid_4:QueryProcessingActor-0] Created independent FAISS vector store for this actor
+2026-05-06 02:28:52 | QueryProcessingActor-0 | INFO | query_actor.py:260 | [experiment_hybrid_4:QueryProcessingActor-0] Recreated retriever with search_type=similarity
+2026-05-06 02:28:52 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 02:28:54 | QueryProcessingActor-0 | INFO | query_actor.py:277 | [experiment_hybrid_4:QueryProcessingActor-0] Recreated RAG spec with retrieval mode
+2026-05-06 03:01:02 | ExperimentUtils | INFO | experiment_utils.py:180 | [experiment_hybrid_4:ExperimentUtils] Reset experiment states - marked ongoing pipelines, contexts, and tasks as failed
+2026-05-06 03:01:02 | ExperimentUtils | INFO | experiment_utils.py:188 | [experiment_hybrid_4:ExperimentUtils] Experiment marked as cancelled. Ongoing pipelines, contexts, and tasks have been marked as failed.
+2026-05-06 03:01:02 | ExperimentUtils | INFO | experiment_utils.py:154 | [experiment_hybrid_4:ExperimentUtils] Experiment experiment_hybrid_4 ended
+2026-05-06 03:01:02 | Experiment | INFO | experiment.py:165 | [experiment_hybrid_5:Experiment] The previously running experiment experiment_hybrid_4 was forcibly ended. Created a new experiment 'experiment_hybrid_5' with Experiment ID: 37 at /home/ostran/rapidfireai/rapidfire_experiments/experiment_hybrid_5
+2026-05-06 03:01:20 | Experiment | INFO | metric_rfmetric_manager.py:55 | [experiment_hybrid_5:Experiment] Initialized MLflowMetricLogger: rf_mlflow
+2026-05-06 03:01:20 | Experiment | INFO | metric_rfmetric_manager.py:119 | [experiment_hybrid_5:Experiment] Creating MLflow experiment: experiment_hybrid_5
+2026-05-06 03:01:20 | Experiment | INFO | experiment.py:210 | [experiment_hybrid_5:Experiment] Initialized MetricLogger experiment: 34
+2026-05-06 03:01:20 | Experiment | INFO | experiment.py:226 | [experiment_hybrid_5:Experiment] Using existing dispatcher/api server at 127.0.0.1:8851.
+2026-05-06 03:01:22 | sentence_transformers.base.model | INFO | model.py:962 | No modules.json found for BAAI/bge-reranker-v2-m3, initializing a new CrossEncoder model.
+2026-05-06 03:01:29 | Experiment | WARNING | experiment.py:381 | [experiment_hybrid_5:Experiment] No GPUs available. Be sure to use external APIs for inference.
+2026-05-06 03:01:29 | Experiment | INFO | experiment.py:383 | [experiment_hybrid_5:Experiment] Running multi-config experiment with 4 shard(s), (0.0 GPUs per actor, 8.0 CPUs per actor, 4 actors)
+2026-05-06 03:01:29 | Experiment | INFO | experiment.py:392 | [experiment_hybrid_5:Experiment] Reset states of existing pipelines/contexts/tasks (marked as failed)
+2026-05-06 03:01:29 | Controller | INFO | controller.py:895 | [experiment_hybrid_5:Controller] Dataset sharded into 4 shard(s). Shard sizes: [12, 11, 11, 11]
+2026-05-06 03:01:29 | Controller | INFO | controller.py:900 | [experiment_hybrid_5:Controller] Received 1 pipeline configuration(s)
+2026-05-06 03:01:29 | Controller | INFO | controller.py:309 | [experiment_hybrid_5:Controller] Found 1 unique RAG context(s)
+2026-05-06 03:01:29 | Controller | INFO | controller.py:320 | [experiment_hybrid_5:Controller] Will build new context 35ffa0b8...
+2026-05-06 03:01:29 | Controller | INFO | controller.py:346 | [experiment_hybrid_5:Controller] Building 1 context(s) in parallel...
+2026-05-06 03:01:29 | Controller | INFO | controller.py:373 | [experiment_hybrid_5:Controller] Creating 1 DocProcessingActor(s) for parallel processing
+2026-05-06 03:01:31 | matplotlib.font_manager | INFO | font_manager.py:1639 | generated new fontManager
+2026-05-06 03:01:31 | Controller | INFO | controller.py:461 | [experiment_hybrid_5:Controller] Submitted 1 build task(s) in parallel
+2026-05-06 03:01:56 | Controller | INFO | controller.py:482 | [experiment_hybrid_5:Controller] Built context 1 (35ffa0b8...) successfully in 26.84s
+2026-05-06 03:01:56 | Controller | INFO | controller.py:523 | [experiment_hybrid_5:Controller] Completed parallel context building for 1 context(s)
+2026-05-06 03:01:56 | Controller | INFO | controller.py:920 | [experiment_hybrid_5:Controller] Created 4 query processing actors (generic pool)
+2026-05-06 03:01:56 | Experiment | INFO | metric_rfmetric_manager.py:141 | [experiment_hybrid_5:Experiment] Created MLflow run: e93b9186be744552875d73ec1abefbbf, 1
+2026-05-06 03:01:56 | Controller | INFO | controller.py:931 | [experiment_hybrid_5:Controller] Initialized scheduler with 1 pipelines, 4 actors, 4 shards
+2026-05-06 03:01:56 | Controller | INFO | controller.py:1118 | [experiment_hybrid_5:Controller] Created experiment-wide rate limiter actor for 1 OpenAI pipeline(s) with per-model limits (api-mistral-small-3.2-2506: 120 RPM, 1000000 TPM)
+2026-05-06 03:01:56 | Controller | INFO | controller.py:1124 | [experiment_hybrid_5:Controller] Starting multi-pipeline inference scheduling...
+2026-05-06 03:01:56 | Controller | INFO | controller.py:1422 | [experiment_hybrid_5:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 0 (1 batches)
+2026-05-06 03:07:50 | Controller | INFO | controller.py:1299 | [experiment_hybrid_5:Controller] Pipeline 1 completed shard 0 (1 batches, 328.12s)
+2026-05-06 03:07:50 | Controller | INFO | controller.py:1422 | [experiment_hybrid_5:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 1 (1 batches)
+2026-05-06 03:13:23 | Controller | INFO | controller.py:1299 | [experiment_hybrid_5:Controller] Pipeline 1 completed shard 1 (1 batches, 331.51s)
+2026-05-06 03:13:23 | Controller | INFO | controller.py:1422 | [experiment_hybrid_5:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 2 (1 batches)
+2026-05-06 03:18:36 | Controller | INFO | controller.py:1299 | [experiment_hybrid_5:Controller] Pipeline 1 completed shard 2 (1 batches, 310.53s)
+2026-05-06 03:18:36 | Controller | INFO | controller.py:1422 | [experiment_hybrid_5:Controller] Scheduling pipeline 1 (Pipeline 1) on actor 0 for shard 3 (1 batches)
+2026-05-06 03:23:42 | Controller | INFO | controller.py:1192 | [experiment_hybrid_5:Controller] Pipeline 1 completed all 4 shards
+2026-05-06 03:23:43 | Controller | INFO | controller.py:1299 | [experiment_hybrid_5:Controller] Pipeline 1 completed shard 3 (1 batches, 305.42s)
+2026-05-06 03:23:43 | Controller | INFO | controller.py:1386 | [experiment_hybrid_5:Controller] All pipelines completed all shards!
+2026-05-06 03:23:43 | Controller | INFO | controller.py:695 | [experiment_hybrid_5:Controller] Computing final metrics for all pipelines...
+2026-05-06 03:23:43 | Experiment | INFO | metric_rfmetric_manager.py:190 | [experiment_hybrid_5:Experiment] Ending run: e93b9186be744552875d73ec1abefbbf, 1 in rf_mlflow
+2026-05-06 03:23:43 | Experiment | WARNING | metric_mlflow_manager.py:101 | [experiment_hybrid_5:Experiment] Run e93b9186be744552875d73ec1abefbbf is not the active run, no local context to clear
+2026-05-06 03:23:43 | Controller | INFO | controller.py:853 | [experiment_hybrid_5:Controller] Pipeline 1 (Pipeline 1) completed successfully
+2026-05-06 03:23:43 | ExperimentUtils | INFO | experiment_utils.py:180 | [experiment_hybrid_5:ExperimentUtils] Reset experiment states - marked ongoing pipelines, contexts, and tasks as failed
+2026-05-06 03:23:43 | ExperimentUtils | INFO | experiment_utils.py:188 | [experiment_hybrid_5:ExperimentUtils] Experiment marked as cancelled. Ongoing pipelines, contexts, and tasks have been marked as failed.
+2026-05-06 03:23:43 | ExperimentUtils | INFO | experiment_utils.py:154 | [experiment_hybrid_5:ExperimentUtils] Experiment experiment_hybrid_5 ended
+2026-05-06 03:23:47 | Experiment | INFO | experiment.py:574 | [experiment_hybrid_5:Experiment] All actors shut down
+2026-05-06 03:23:47 | Experiment | INFO | experiment.py:575 | [experiment_hybrid_5:Experiment] Dispatcher will automatically shut down (daemon thread)
+2026-05-06 04:08:15 | Experiment | INFO | experiment.py:165 | [experiment_hybrid_6:Experiment] Experiment experiment_hybrid_6 created with Experiment ID: 38 at /home/ostran/rapidfireai/rapidfire_experiments/experiment_hybrid_6
