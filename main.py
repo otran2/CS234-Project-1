@@ -1,11 +1,15 @@
 import argparse
 import sys
 import os
+import json
 
 #Parse command line arguments for the input/output file paths
 parser = argparse.ArgumentParser(description='Command line input for the automated RAG pipleline')
 parser.add_argument('--input', required=True, help="Input json file path")
 parser.add_argument('--output', required=True, help="Desired output json file path")
+parser.add_argument('--corpus-dir', required=True, help="Root directory of the .rst corpus")
+parser.add_argument('--apikey-txt', required=True, help="Path to the gateway API key text file")
+parser.add_argument('--generation-model', required=True, help="Gateway model id used for generation")
 
 args = parser.parse_args()
 # input = open(args.input, "r")
@@ -13,11 +17,9 @@ args = parser.parse_args()
 
 #Get API Key
 from pathlib import Path
-TRITON_API_KEY = Path("~/api-key.txt").expanduser().read_text(encoding="utf-8").splitlines()[0].strip()
-#Issues with API keys
-os.environ.setdefault("OPENAI_API_KEY", TRITON_API_KEY)
+TRITON_API_KEY = Path(args.apikey_txt).expanduser().read_text(encoding="utf-8").splitlines()[0].strip()
+os.environ["OPENAI_API_KEY"] = TRITON_API_KEY
 os.environ.setdefault("JUDGE_BASE_URL", "https://tritonai-api.ucsd.edu/v1")
-os.environ.setdefault("JUDGE_MODEL", "claude-sonnet-4-6-aws")
 
 #RapidFireAI Imports
 from rapidfireai.automl import (
@@ -35,13 +37,9 @@ from rapidfireai.automl import (
 ######################
 from rapidfireai import Experiment
 
-import re, json
 from typing import List as listtype, Dict, Any, Optional
 
-import pandas as pd
 from datasets import Dataset
-from project1_eval import call_judge, f1_at_k, precision_at_k, recall_at_k, to_spans
-from rapidfire_integration_example import sample_compute_metrics_fn, sample_accumulate_metrics_fn
 
 # =============================================================================
 # LOAD INPUT JSON & BUILD HUGGINGFACE DATASET
@@ -55,8 +53,6 @@ rows = [
     {
         "query_id": int(entry["question_id"]),          
         "query":    str(entry["question"]),
-        "reference_answer": str(entry.get("reference_answer", "")), 
-        "source_evidence": entry.get("source_evidence", []),
     }
     for entry in data
 ]
@@ -71,44 +67,37 @@ if output_rows_jsonl.exists():
 # =============================================================================
 # CREATE EXPERIMENT
 # =============================================================================
-experiment = Experiment(experiment_name="early_sub", mode="evals")
+experiment = Experiment(experiment_name="otran_aliang_final_configs", mode="evals")
 
 #Knobs for langchain part of RAG pipeline
-from langchain_community.document_loaders import DirectoryLoader, JSONLoader, TextLoader
+from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_classic.retrievers.document_compressors import CrossEncoderReranker
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_openai import OpenAIEmbeddings
-from typing import Dict
 
 batch_size = 32
 
-# CPU-based RAG
 rag_cpu = RFLangChainRagSpec(
-    # Replace document_loader in rag_cpu
     document_loader=DirectoryLoader(
-        path="sourcedocs/sourcedocs/",
+        path=args.corpus_dir,
         glob="**/*.rst",
         loader_cls=TextLoader,
         loader_kwargs={"encoding": "utf-8"},
         sample_seed=1337,
     ),
     text_splitter=RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-        encoding_name="gpt2", chunk_size=512, chunk_overlap=16, add_start_index=True
+        encoding_name="gpt2", chunk_size=512, chunk_overlap=32, add_start_index=True
     ),
     embedding_cfg={
-            "class": HuggingFaceEmbeddings,
-            "model_name": "sentence-transformers/all-MiniLM-L6-v2",
-            "model_kwargs": {"device": "cpu"},
-            "encode_kwargs": {"normalize_embeddings": True, "batch_size": batch_size},
-        },
-    # FAISS is an in-memory store and only works in create mode. 
-    vector_store_cfg={
-        "type": "faiss", 
-        "batch_size": batch_size
-    }, # if not set, uses FAISS by default
-    search_cfg={"type": "similarity", "k": 10},
+        "class": OpenAIEmbeddings,
+        "model": "api-tgpt-embeddings",
+        "api_key": TRITON_API_KEY,
+        "base_url": "https://tritonai-api.ucsd.edu",
+        "check_embedding_ctx_length": False,
+    },
+    vector_store_cfg={"type": "faiss", "batch_size": batch_size},
+    search_cfg={"type": "similarity", "k": 15},
     reranker_cfg={
         "class": CrossEncoderReranker,
         "model_name": "BAAI/bge-reranker-v2-m3",
@@ -141,45 +130,20 @@ Source Evidence: source_evidence": [
     ]
 """
 
-# Cap serialized retrieval text (characters) for generator + judge token use.
-# Set to None to disable truncation.
-# MAX_RETRIEVED_CONTEXT_CHARS: Optional[int] = 8000
-
-
-def _truncate_context(text: str, max_chars: Optional[int]) -> str:
-    if max_chars is None or len(text) <= max_chars:
-        return text
-    return text[:max_chars] + "\n\n[context truncated]"
-
-# Token-aware truncation.
-import tiktoken
-
-# Per-query token budget and safety margin
+# Token-aware truncation
 MAX_TOKENS_PER_QUERY: int = 2000
 SAFETY_TOKENS: int = 50
 
-def _truncate_context_by_tokens(text: str, max_tokens: Optional[int], encoding) -> str:
-    if max_tokens is None:
-        return text
-    if max_tokens <= 0:
-        return ""
-    if encoding is None:
-        #Basically character level truncation matching our fallback of the 8000 max chars
-        return _truncate_context(text, max_chars=int(max_tokens * 4))
-    toks = encoding.encode(text)
-    # We don't reach token quota
+
+def count_tokens(text: str) -> int:
+    return len(text.split())
+
+
+def truncate_tokens(text: str, max_tokens: int) -> str:
+    toks = text.split()
     if len(toks) <= max_tokens:
         return text
-    # Truncate tokens to quota
-    try:
-        return encoding.decode(toks[:max_tokens]) + "\n\n[context truncated]"
-    except Exception:
-        #If any issues with decoding
-        try:
-            return "".join(toks[:max_tokens]) + "\n\n[context truncated]"
-        except Exception:
-            return "\n\n[context truncated]"
-
+    return " ".join(toks[:max_tokens])
 
 def chunk_to_lines(doc: Document) -> listtype:
     """Convert a chunk's character `start_index` into [start_line, end_line]."""
@@ -204,30 +168,20 @@ def openai_sample_preprocess_fn(
 
     all_context = rag.get_context(batch_queries=batch["query"], serialize=False)
     serialized_context = rag.serialize_documents(all_context)
-    # Token-aware per-query truncation: reserve tokens for system + question + template
-    encoding = tiktoken.get_encoding("gpt2")
-    system_tokens = len(encoding.encode(INSTRUCTIONS or ""))
-    template_tokens = len(encoding.encode("\nQuestion:\n\nContext:\n\nAnswer:"))
+    system_tokens = count_tokens(INSTRUCTIONS)
+    template_tokens = count_tokens("\nQuestion:\n\nContext:\n\nAnswer:")
     new_serialized = []
+
     for question, ctx in zip(batch.get("query", []), serialized_context):
-        q_tokens = len(encoding.encode(question or ""))
+        q_tokens = count_tokens(question)
         avail = MAX_TOKENS_PER_QUERY - (system_tokens + q_tokens + template_tokens + SAFETY_TOKENS)
         if avail <= 0:
-            # no room for context after reserved tokens
             new_serialized.append("")
         else:
-            new_serialized.append(_truncate_context_by_tokens(ctx, avail, encoding))
+            new_serialized.append(truncate_tokens(ctx, avail))
+
     serialized_context = new_serialized
     batch["query_id"] = [int(query_id) for query_id in batch["query_id"]]
-
-    batch["ground_truth_spans"] = [
-        [
-            (item["file"], int(item["lines"][0]), int(item["lines"][1]))
-            for item in evidence
-            if item.get("file") and item.get("lines") and len(item["lines"]) >= 2
-        ]
-        for evidence in batch.get("source_evidence", [])
-    ]
 
     per_doc_lines = [[chunk_to_lines(doc) for doc in docs] for docs in all_context]
 
@@ -287,6 +241,15 @@ def sample_postprocess_fn(batch: Dict[str, listtype]) -> Dict[str, listtype]:
 # =============================================================================
 # CUSTOM EVALUATION METRIC FUNCTIONS FOR RAG TODO
 # =============================================================================
+    # Minimal no-op metric functions to satisfy the evals API when metrics are
+    # intentionally disabled. These return empty metrics so the pipeline runs.
+
+def compute_metrics_fn(batch: Dict[str, listtype]) -> Dict[str, Dict[str, Any]]:
+    return {}
+
+
+def accumulate_metrics_fn(aggregated_metrics: Dict[str, listtype]) -> Dict[str, Dict[str, Any]]:
+    return {}
 # Use metrics implemented in rapidfire_integration_example.py
 
 
@@ -297,8 +260,9 @@ def sample_postprocess_fn(batch: Dict[str, listtype]) -> Dict[str, listtype]:
 openai_config = RFOpenAIAPIModelConfig(
     client_config={"api_key": TRITON_API_KEY, "base_url": "https://tritonai-api.ucsd.edu", "max_retries": 2},
     model_config={
-        "model": "api-mistral-small-3.2-2506",
+        "model": args.generation_model,
         "max_completion_tokens": 2048,
+        "temperature": 0.8,
     },
     rpm_limit=120, 
     tpm_limit=1_000_000, 
@@ -310,8 +274,8 @@ config_set = {
     "openai_config": openai_config,
     "preprocess_fn": openai_sample_preprocess_fn,
     "postprocess_fn": sample_postprocess_fn,
-    "compute_metrics_fn": sample_compute_metrics_fn,
-    "accumulate_metrics_fn": sample_accumulate_metrics_fn,
+    "compute_metrics_fn": compute_metrics_fn,
+    "accumulate_metrics_fn": accumulate_metrics_fn,
     "batch_size": batch_size,
 }
 config_group = RFGridSearch(config_set)
