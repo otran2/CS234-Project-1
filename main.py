@@ -9,7 +9,7 @@ parser.add_argument('--input', required=True, help="Input json file path")
 parser.add_argument('--output', required=True, help="Desired output json file path")
 parser.add_argument('--corpus-dir', required=True, help="Root directory of the .rst corpus")
 parser.add_argument('--apikey-txt', required=True, help="Path to the gateway API key text file")
-parser.add_argument('--generation-model', required=True, help="Gateway model id used for generation")
+parser.add_argument('--generation-model', required=False, default="api-gpt-oss-120b", help="Gateway model id used for generation (default: api-gpt-oss-120b)")
 
 args = parser.parse_args()
 # input = open(args.input, "r")
